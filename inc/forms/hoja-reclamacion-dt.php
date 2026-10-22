@@ -22,13 +22,10 @@ function copam_theme_hoja_dt_definicion($forms)
         && sanitize_key(wp_unslash($_POST['form'])) === COPAM_THEME_HOJA_DT
         && in_array(sanitize_text_field(wp_unslash($_POST['menor'])), ['1', 'on', 'true'], true);
 
-    $opciones = function_exists('get_field') ? get_field('opciones_correos', 'option') : null;
-    $correos  = is_array($opciones) ? (array) ($opciones['deposito'] ?? []) : [];
-
     $forms[COPAM_THEME_HOJA_DT] = [
         'title'    => 'Hoja de reclamación · Depósito Temporal',
         'subject'  => 'Nueva queja o reclamo del Depósito Temporal',
-        'to'       => array_values(array_filter(array_map(static fn($fila): string => (string) ($fila['correo'] ?? ''), $correos))),
+        'to'       => copam_theme_correos('deposito'),
         'reply_to' => 'correo',
         'store'    => 'all',
         'redirect' => '',

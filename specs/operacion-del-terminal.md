@@ -23,7 +23,7 @@
   - En el diseño el bloque de FAQ se desliza sobre las secciones anteriores (pila con escala y desenfoque, espacio `faqHold`)
   - se resuelve en la etapa C
   - Animaciones del diseño (`data-rise`, `data-clip`, `data-sr`, parallax) se reescriben en un módulo JS que respeta `prefers-reduced-motion`
-- **Estado:** pendiente
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -32,7 +32,8 @@
 - **Grupo:** `operacion_del_terminal_hero`
 - **Skill:** ninguna
 - **Comportamiento:** componente `migas` con Inicio (portada) > Zona Clientes (sin enlace) > Operación del terminal (actual, `aria-current="page"`); son fijas, no campos. Imagen a todo el ancho con parallax y zoom al desplazarse (JS), `loading="eager"` (imagen principal). `h1` "Operaciones" con la bajada y el botón "Descargar REOP" con el componente `boton` (variante primario) que descarga el PDF: el texto del botón es un campo `text` y la URL sale del campo `file`; si no hay archivo el botón se oculta. Tarjeta lateral "Accesos directos" (`h2`) con 5 enlaces: 4 anclas de la página y uno a Tarifario; flecha de esquina y color `--color-brand` al hover; en escritorio va a la derecha en columna de 33.3vw y en móvil se apila bajo el texto. Mismo bloque que el hero de `servicios-especiales`. Hover del botón `#07702F` (valor suelto). Sin alturas fijas.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -51,11 +52,11 @@ Alt de la imagen en el diseño: "Grúa celosía en el muelle del terminal junto 
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen del hero con `loading="eager"`
-- [ ] Migas con el componente `migas` dentro de `<nav aria-label="Ruta de navegación">`
-- [ ] El botón de descarga usa `boton` con el archivo del campo `file`; se oculta si está vacío
-- [ ] Los accesos son `<a href>` con anclas que existen en la página
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen del hero con `loading="eager"`
+- [x] Migas con el componente `migas` dentro de `<nav aria-label="Ruta de navegación">`
+- [x] El botón de descarga usa `boton` con el archivo del campo `file`; se oculta si está vacío
+- [x] Los accesos son `<a href>` con anclas que existen en la página
 
 ## Sección: informacion
 
@@ -64,7 +65,8 @@ Alt de la imagen en el diseño: "Grúa celosía en el muelle del terminal junto 
 - **Grupo:** `operacion_del_terminal_informacion`
 - **Skill:** ninguna
 - **Comportamiento:** `section id="informacion"`; `titulo-linea` y debajo rejilla de tarjetas (3 columnas desde 1180 px, 2 desde 600 px, 1 en móvil) sobre una banda de fondo. Cada tarjeta: `h3`, descripción y, si existe, un botón (`boton`). El botón de la primera tarjeta descarga un PDF (campo `file` + texto aparte), el de la segunda va a los canales de la página Contacto y el de la tercera baja a `#infraestructura`. Si la tarjeta no tiene archivo ni enlace, el botón no se muestra; si hay archivo, tiene prioridad sobre el enlace. Entrada escalonada de las tarjetas (JS). Hover del botón `#07702F` (valor suelto).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -82,10 +84,10 @@ Tarjetas actuales: (1) Reglamento de Operaciones, con archivo y texto "Descargar
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Usa `titulo-linea` y `boton` sin duplicar su marcado
-- [ ] Cada tarjeta es un `<article>` con `h3`; el botón solo aparece si hay archivo o enlace
-- [ ] La rejilla cambia de 3 a 2 y a 1 columnas en 1180 px y 600 px
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Usa `titulo-linea` y `boton` sin duplicar su marcado
+- [x] Cada tarjeta es un `<article>` con `h3`; el botón solo aparece si hay archivo o enlace
+- [x] La rejilla cambia de 3 a 2 y a 1 columnas en 1180 px y 600 px
 
 ## Sección: infraestructura
 
@@ -94,7 +96,8 @@ Tarjetas actuales: (1) Reglamento de Operaciones, con archivo y texto "Descargar
 - **Grupo:** `operacion_del_terminal_infraestructura`
 - **Skill:** ninguna
 - **Comportamiento:** `section id="infraestructura"`; `titulo-linea` y una tabla de dos columnas (Elemento / Capacidad, la segunda alineada a la derecha) con filas separadas por líneas finas. Hay filas de grupo (fondo #F6F6F6, texto en negrita a todo el ancho: "Infraestructura", "Equipamiento") y filas de dato (elemento + capacidad; la capacidad en gris #7A7A7A). Se marca como `<table>` real con `<th>` en la cabecera. Texto `clamp(14px, .85vw, 16px)`. Revelado por filas (JS). Valores sueltos: #F6F6F6, #7A7A7A.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -113,19 +116,20 @@ Filas actuales: Infraestructura (Muelle marginal 120 m × 47 m; Almacén techado
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Usa `titulo-linea` sin duplicar su marcado
-- [ ] La tabla es una `<table>` con `<th scope>` en cabecera y filas de grupo; grupos y filas salen de los repeaters
-- [ ] Sin alturas fijas: el texto largo se ajusta sin romper la tabla
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Usa `titulo-linea` sin duplicar su marcado
+- [x] La tabla es una `<table>` con `<th scope>` en cabecera y filas de grupo; grupos y filas salen de los repeaters
+- [x] Sin alturas fijas: el texto largo se ajusta sin romper la tabla
 
 ## Sección: versiones
 
 - **Origen:** `operacion-del-terminal.html` líneas 261-310 (datos en el `<script>`, línea 748)
-- **Destino:** `template-parts/accordions/` (acordeón de `wp-accordion`), `template-parts/pages/operacion-del-terminal/versiones.php`
+- **Destino:** `template-parts/pages/operacion-del-terminal/versiones.php`, `template-parts/accordions/documentos-grupos.php`
 - **Grupo:** `operacion_del_terminal_versiones`
 - **Skill:** wp-accordion
 - **Comportamiento:** `section id="versiones"`; `titulo-linea` y un acordeón con un ítem por año (2026, 2024, 2020): el año como cabecera, a la derecha el conteo ("1 documento" / "N documentos", calculado, no es campo) y un ícono más/menos; el primer año abre por defecto en el diseño. Dentro, cada documento muestra título, subtítulo (resolución y fecha), una pastilla "Vigente" si corresponde y un botón "Descargar PDF" que descarga el archivo (campo `file`; puede usar `documento-card`). Si un año no tiene documentos muestra el mensaje de "próximamente". Esta sección no lleva marcado propio: `wp-accordion` lo construye. Hover del botón `#07702F` (valor suelto).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -147,20 +151,21 @@ Años actuales: 2026 (vigente, "Reglamento de Operaciones del TPY-NR · Código 
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`<details>`/`<summary>`, teclado, `prefers-reduced-motion`)
-- [ ] Usa `titulo-linea` sin duplicar su marcado
-- [ ] Los PDF salen de campos `file`; el botón de descarga avisa si abre en pestaña nueva
-- [ ] El conteo de documentos se calcula con los ítems del repeater
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`<details>`/`<summary>`, teclado, `prefers-reduced-motion`)
+- [x] Usa `titulo-linea` sin duplicar su marcado
+- [x] Los PDF salen de campos `file`; el botón de descarga avisa si abre en pestaña nueva
+- [x] El conteo de documentos se calcula con los ítems del repeater
 
 ## Sección: faq
 
 - **Origen:** `operacion-del-terminal.html` líneas 315-346 (datos en el `<script>`, línea 709)
-- **Destino:** `template-parts/components/faq-ayuda.php`, `template-parts/accordions/` (acordeón de `wp-accordion`)
+- **Destino:** `template-parts/pages/operacion-del-terminal/faq.php`, `template-parts/components/faq-ayuda.php`, `template-parts/accordions/faq-ayuda.php`
 - **Grupo:** `operacion_del_terminal_faq`
 - **Skill:** wp-accordion
 - **Comportamiento:** usa el componente compartido `faq-ayuda` (`titulo`, `descripcion`, `items`) y `encabezado-seccion` con etiqueta "Ayuda". `id="faq"` como ancla. Acordeón con `<details>`/`<summary>`; la primera pregunta abre por defecto en el diseño; ícono más/menos. Esta sección no lleva marcado propio: `wp-accordion` lo construye. En el diseño la FAQ se desliza sobre la sección anterior (pila con escala y desenfoque, espacio `faqHold`); se resuelve en la etapa C. Mismo bloque que `servicios-especiales` (faq).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -177,9 +182,9 @@ Preguntas actuales: (1) ¿Qué es el Reglamento de Operaciones (REOP)?; (2) ¿Cu
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`<details>`/`<summary>`, teclado, `prefers-reduced-motion`)
-- [ ] Usa `faq-ayuda` y `encabezado-seccion` sin duplicar su marcado
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`<details>`/`<summary>`, teclado, `prefers-reduced-motion`)
+- [x] Usa `faq-ayuda` y `encabezado-seccion` sin duplicar su marcado
 
 ## Sección: cta
 
@@ -188,7 +193,8 @@ Preguntas actuales: (1) ¿Qué es el Reglamento de Operaciones (REOP)?; (2) ¿Cu
 - **Grupo:** `operacion_del_terminal_cta`
 - **Skill:** ninguna
 - **Comportamiento:** usa el componente compartido `cta-cotizar` (`titulo`, `bajada`, `boton`, `imagen`). Dos columnas (texto 886fr, imagen 1454fr) desde 1000 px y apilado en móvil; el título entra palabra por palabra; botón "Contáctanos" con `boton` hacia el formulario de contacto; imagen con `object-cover`, alto mínimo `max(380px, 22.9vw)` en escritorio y `56vw` en móvil, `loading="lazy"`. Misma estructura que el cta de las páginas de servicios; aquí cambian el título, la bajada y la imagen.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -203,7 +209,7 @@ Alt de la imagen en el diseño: "Montacargas trasladando tubos en el patio del t
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `loading="lazy"` y alto mínimo `max(380px, 22.9vw)` en escritorio / `56vw` en móvil
-- [ ] Usa `cta-cotizar` y `boton` sin duplicar su marcado
-- [ ] El botón apunta al formulario de la página Contacto del tema
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `loading="lazy"` y alto mínimo `max(380px, 22.9vw)` en escritorio / `56vw` en móvil
+- [x] Usa `cta-cotizar` y `boton` sin duplicar su marcado
+- [x] El botón apunta al formulario de la página Contacto del tema

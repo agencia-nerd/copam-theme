@@ -155,9 +155,9 @@ Regla para todas las páginas: todo PDF o archivo descargable subido al sitio es
 ### documentos-por-anio
 
 - **Origen:** acordeón de grupos con filas de documento (título, subtítulo, etiqueta "Vigente", botón "Descargar PDF") en `tarifario.html` (secciones `versiones` y `reta`); estructura parecida en `normativa-ositran.html` (sección `normativa`)
-- **Destino:** `template-parts/components/documentos-por-anio.php`, dentro de un acordeón de `wp-accordion`
-- **Argumentos:** `grupos` (array con `nombre` y `documentos`), `texto_boton` (string), `mensaje_vacio` (string)
-- **Se usa en:** `tarifario`, `normativa-ositran`. Repeater dentro de repeater: si ACF Pro del proyecto lo complica, se aplana en el paso de ACF
+- **Destino:** no se creó como componente aparte: lo cubre el acordeón `template-parts/accordions/documentos-grupos.php` (wp-accordion), que ya usaban Sistema Integrado de Gestión y Depósito Temporal
+- **Argumentos:** `id`, `grupos` (array con `nombre`, `estado_vacio`, `abierto` opcional, `enlace_extra` opcional y `documentos` con `titulo`, `subtitulo`, `vigente`, `archivo`, `enlace_externo`, `boton_texto`), `mensaje_vacio`, `boton_texto`, `vigente_texto`
+- **Se usa en:** `tarifario` (versiones, reta), `normativa-ositran` (normativa), `operacion-del-terminal` (versiones), `sistema-integrado-de-gestion`, `deposito-temporal`. Repeater dentro de repeater
 
 ### tarjeta-paso
 
