@@ -1,0 +1,66 @@
+<?php
+defined('ABSPATH') || exit;
+
+/**
+ * Botón con texto que se desliza al pasar el cursor y, si lleva flecha, un ícono que entra en diagonal.
+ *
+ * $args:
+ *  - texto    (string, requerido)  texto visible
+ *  - enlace   (array|string)       campo Link de ACF o URL; sin destino válido no se imprime
+ *  - variante (string)             'verde' (por defecto) | 'oscuro'
+ *  - flecha   (bool)               agrega la flecha diagonal
+ *  - titulo   (string)             atributo title (tipo y peso del archivo en descargas)
+ *  - datos    (array)              atributos data-* extra: ['sr' => 'rise', 'sr-delay' => '120']
+ *  - relleno  (string)             relleno horizontal con flecha ('px-[26px]' por defecto)
+ *  - clase    (string)             clases extra para el <a>
+ */
+$texto    = (string) ($args['texto'] ?? '');
+$enlace   = $args['enlace'] ?? '';
+$variante = (string) ($args['variante'] ?? 'verde');
+$flecha   = !empty($args['flecha']);
+$titulo   = (string) ($args['titulo'] ?? '');
+$datos    = (array) ($args['datos'] ?? []);
+$relleno  = (string) ($args['relleno'] ?? 'px-[26px]');
+$clase    = (string) ($args['clase'] ?? '');
+
+$data = copam_theme_link_data($enlace);
+if ($texto === '' || !$data) {
+    return;
+}
+
+$colores = $variante === 'oscuro'
+    ? 'bg-[#3D3D3D] hover:bg-[#1F1F1F]'
+    : 'bg-brand hover:bg-brand-hover';
+$forma = $flecha
+    ? "gap-3.5 rounded-[3px] $relleno text-base"
+    : 'justify-center rounded px-6 text-[clamp(16px,.95vw,18px)]';
+
+$clases = trim("group flex h-[52px] items-center font-medium tracking-[.02em] text-white uppercase transition-colors duration-[350ms] hover:text-white $colores $forma $clase");
+
+$extra = '';
+foreach ($datos as $nombre => $valor) {
+    $extra .= ' data-' . esc_attr((string) $nombre) . '="' . esc_attr((string) $valor) . '"';
+}
+if ($titulo !== '') {
+    $extra .= ' title="' . esc_attr($titulo) . '"';
+}
+
+$abre_nueva = copam_theme_link_resolve($data, [])['blank'];
+?>
+<a<?= copam_theme_link_attrs($enlace, ['class' => $clases]) . $extra ?>>
+    <span class="block h-[1.15em] overflow-hidden leading-[1.15em]">
+        <span class="flex flex-col transition-transform duration-[550ms] ease-in-out group-hover:-translate-y-1/2">
+            <span class="whitespace-nowrap"><?= esc_html($texto) ?></span>
+            <span class="whitespace-nowrap" aria-hidden="true"><?= esc_html($texto) ?></span>
+        </span>
+    </span>
+    <?php if ($flecha) : ?>
+        <span class="relative block size-3.5 overflow-hidden" aria-hidden="true">
+            <svg class="absolute inset-0 transition-transform duration-[550ms] ease-in-out group-hover:translate-x-[120%] group-hover:-translate-y-[120%]" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="#fff" stroke-width="1.6"></path></svg>
+            <svg class="absolute inset-0 -translate-x-[120%] translate-y-[120%] transition-transform duration-[550ms] ease-in-out group-hover:translate-x-0 group-hover:translate-y-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="#fff" stroke-width="1.6"></path></svg>
+        </span>
+    <?php endif; ?>
+    <?php if ($abre_nueva) : ?>
+        <span class="sr-only">(<?= esc_html__('se abre en una pestaña nueva', 'copam-theme') ?>)</span>
+    <?php endif; ?>
+</a>

@@ -1,0 +1,580 @@
+{
+    "key": "group_bf442b580b08f",
+    "title": "Ajustes del sitio",
+    "fields": [
+        {
+            "key": "field_24a7eb9947532",
+            "label": "Aviso",
+            "name": "opciones_aviso",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_fece0c3339125",
+                    "label": "Activo",
+                    "name": "activo",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Activa o desactiva el aviso en todo el sitio",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_556a37b762352",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título del aviso. Recomendado: ~20 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_2137b40f070f4",
+                    "label": "Detalle",
+                    "name": "detalle",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Fecha, horario y sistema afectado. Recomendado: ~60 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_741107b50347a",
+            "label": "Pie",
+            "name": "opciones_pie",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_dbb85619d6188",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Frase bajo la marca. Recomendado: ~60 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_fea61dd5eb74e",
+                    "label": "Teléfono",
+                    "name": "telefono",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Número visible; el enlace `tel:` se arma con los dígitos",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_be6cea91d3946",
+                    "label": "Correo",
+                    "name": "correo",
+                    "aria-label": "",
+                    "type": "email",
+                    "instructions": "Correo de atención al cliente",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_5eec84022ac2c",
+                    "label": "Copyright",
+                    "name": "copyright",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Línea legal. Recomendado: ~80 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_7a4f5c176722c",
+            "label": "Correos",
+            "name": "opciones_correos",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_9281c8913f7a2",
+                    "label": "Contacto",
+                    "name": "contacto",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Destinatarios del formulario de Contacto. Añade una fila por correo",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_8fe22358c4768",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Destinatarios del formulario de Contacto. Añade una fila por correo",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_c036fc8cb4cd1",
+                    "label": "Buzon",
+                    "name": "buzon",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Destinatarios del Buzón de sugerencias (página Contacto). Añade una fila por correo",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_efe40de67ed39",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Destinatarios del Buzón de sugerencias (página Contacto)",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_c5b8d03d8a360",
+                    "label": "Transparencia",
+                    "name": "transparencia",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Destinatarios de la solicitud de acceso a la información. Añade una fila por correo",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_2f23401141de7",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Destinatarios de la solicitud de acceso a la información",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_50f6adcf8602e",
+                    "label": "Reclamos",
+                    "name": "reclamos",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Destinatarios del formulario de Reclamos. Por confirmar con el cliente. Añade una fila por correo",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_72beea9548e89",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Destinatarios del formulario de Reclamos. Por confirmar con el cliente",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_a96d8799ddd76",
+                    "label": "Libro",
+                    "name": "libro",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Destinatarios del Libro de Reclamaciones virtual. Por confirmar con el cliente. Añade una fila por correo",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_962d62d874a1c",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Destinatarios del Libro de Reclamaciones virtual. Por confirmar con el cliente",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_dd7596cdc6b06",
+                    "label": "Deposito",
+                    "name": "deposito",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Destinatarios de quejas y reclamos del Depósito Temporal. Añade una fila por correo",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_871844f9e0fb7",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Destinatarios de quejas y reclamos del Depósito Temporal",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_d20112c90ce06",
+                    "label": "Hostigamiento",
+                    "name": "hostigamiento",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Destinatarios del Canal de hostigamiento sexual (Delegado). Confidencial: solo estos correos reciben el reporte. Añade una fila por correo",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_efef2cd41d8c8",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Destinatarios del Canal de hostigamiento sexual (Delegado). Confidencial: solo estos correos reciben el reporte",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_1f9a089061130",
+                    "label": "Operaciones",
+                    "name": "operaciones",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Correo del área de Operaciones que se muestra en la tarjeta de Contacto. Añade una fila por correo",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_f6d6ed1609ddd",
+                            "label": "Correo",
+                            "name": "correo",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "Correo del área de Operaciones que se muestra en la tarjeta de Contacto",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "ajustes-del-sitio"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792639795
+}

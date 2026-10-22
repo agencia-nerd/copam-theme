@@ -1,0 +1,26 @@
+{
+    "key": "ui_options_page_7cd1f02eb110d",
+    "title": "Ajustes del sitio",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Ajustes del sitio",
+    "menu_slug": "ajustes-del-sitio",
+    "parent_slug": "",
+    "advanced_configuration": false,
+    "icon_url": "",
+    "menu_title": "Ajustes del sitio",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "menu_icon": {
+        "type": "dashicons",
+        "value": "dashicons-admin-generic"
+    },
+    "update_button": "Guardar cambios",
+    "updated_message": "Cambios guardados",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": false,
+    "modified": 1792639795
+}
