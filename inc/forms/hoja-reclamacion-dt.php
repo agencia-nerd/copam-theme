@@ -163,23 +163,6 @@ function copam_theme_hoja_dt_proveedor($post_id = 0)
     ];
 }
 
-// Siguiente número correlativo del año. El incremento se hace en una sola consulta para que dos envíos
-// simultáneos no reciban el mismo número.
-function copam_theme_hoja_dt_siguiente_numero()
-{
-    global $wpdb;
-
-    $anio   = wp_date('Y');
-    $opcion = 'copam_theme_hoja_dt_' . $anio;
-    add_option($opcion, '0', '', false);
-    $wpdb->query($wpdb->prepare("UPDATE {$wpdb->options} SET option_value = LAST_INSERT_ID(option_value + 1) WHERE option_name = %s", $opcion));
-    $numero = (int) $wpdb->get_var('SELECT LAST_INSERT_ID()');
-    wp_cache_delete($opcion, 'options');
-    wp_cache_delete('notoptions', 'options');
-
-    return sprintf('DT-%s-%05d', $anio, $numero);
-}
-
 // Número y fecha de la hoja en curso (se asignan una sola vez por envío, al armar el correo).
 function copam_theme_hoja_dt_actual(?array $nueva = null)
 {
@@ -245,7 +228,7 @@ function copam_theme_hoja_dt_correo($mail, $form, $data)
         return $mail;
     }
 
-    $hoja = copam_theme_hoja_dt_actual(['numero' => copam_theme_hoja_dt_siguiente_numero(), 'fecha' => wp_date('d/m/Y')]);
+    $hoja = copam_theme_hoja_dt_actual(['numero' => copam_theme_hoja_siguiente_numero('DT'), 'fecha' => wp_date('d/m/Y')]);
     $mail['subject'] .= ' · N.° ' . $hoja['numero'];
     $mail['message']  = copam_theme_hoja_dt_texto($form, $data, $hoja);
 

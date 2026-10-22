@@ -16,10 +16,13 @@ defined('ABSPATH') || exit;
  *    temporal privada, viaja adjunta en el correo y se borra al enviar. Nada pasa por la biblioteca de medios.
  */
 const COPAM_THEME_FORM_REPORTE = 'reporte-hostigamiento';
-const COPAM_THEME_REPORTE_TIPOS = ['pdf' => 'application/pdf', 'jpg|jpeg' => 'image/jpeg', 'png' => 'image/png'];
-const COPAM_THEME_REPORTE_MAX_ARCHIVOS = 5;
-const COPAM_THEME_REPORTE_MAX_BYTES = 10 * MB_IN_BYTES; // Entre todos los archivos de un envío.
-const COPAM_THEME_REPORTE_VIDA = 2 * HOUR_IN_SECONDS;   // Un lote sin enviar se borra pasado este tiempo.
+// Evidencia: hasta 5 archivos y 10 MB entre todos (inc/helpers/adjuntos.php).
+const COPAM_THEME_REPORTE_ADJUNTOS = [
+    'carpeta'      => 'copam-reporte-tmp',
+    'limite'       => 'reporte-adjuntos',
+    'max_archivos' => 5,
+    'max_bytes'    => 10 * MB_IN_BYTES,
+];
 
 add_filter('copam_theme_forms', 'copam_theme_reporte_definicion');
 function copam_theme_reporte_definicion($forms)
@@ -168,16 +171,6 @@ function copam_theme_reporte_exito()
  * Correo: solo al Delegado, con la evidencia adjunta
  * ---------------------------------------------------------------------- */
 
-// Archivos del envío en curso; se adjuntan en wp_mail y se borran al terminar.
-function copam_theme_reporte_pendientes(?array $nuevos = null)
-{
-    static $archivos = [];
-    if ($nuevos !== null) {
-        $archivos = $nuevos;
-    }
-    return $archivos;
-}
-
 add_filter('copam_theme_form_mail', 'copam_theme_reporte_correo', 10, 3);
 function copam_theme_reporte_correo($mail, $form, $data)
 {
@@ -189,8 +182,8 @@ function copam_theme_reporte_correo($mail, $form, $data)
     $mail['to'] = copam_theme_correos('hostigamiento');
 
     $lote     = (string) ($data['adjuntos'] ?? '');
-    $archivos = copam_theme_reporte_archivos($lote);
-    copam_theme_reporte_pendientes($archivos);
+    $archivos = copam_theme_adjuntos_archivos(COPAM_THEME_REPORTE_ADJUNTOS['carpeta'], $lote);
+    copam_theme_adjuntos_pendientes($archivos);
 
     // En el cuerpo, el identificador del lote se cambia por los nombres de los archivos.
     if ($lote !== '') {
@@ -198,158 +191,31 @@ function copam_theme_reporte_correo($mail, $form, $data)
         $mail['message'] = str_replace('Evidencia adjunta: ' . $lote, 'Evidencia adjunta: ' . $nombres, $mail['message']);
     }
     // Sin la URL de la página: el correo no debe decir más de lo necesario.
-    $mail['message'] = preg_replace('/\n\nPágina: .*$/u', '', $mail['message']);
+    $mail['message'] = preg_replace('/
+
+Página: .*$/u', '', $mail['message']);
 
     return $mail;
 }
 
-add_filter('wp_mail', 'copam_theme_reporte_wp_mail');
-function copam_theme_reporte_wp_mail($args)
-{
-    $archivos = copam_theme_reporte_pendientes();
-    if ($archivos) {
-        $args['attachments'] = array_merge((array) ($args['attachments'] ?? []), $archivos);
-    }
-    return $args;
-}
-
 // Enviado el correo, la evidencia se borra del servidor. Si falló, el lote queda para el reintento
-// y se borra solo pasado COPAM_THEME_REPORTE_VIDA.
+// y se borra solo pasado COPAM_THEME_ADJUNTOS_VIDA.
 add_action('copam_theme_form_submitted', 'copam_theme_reporte_limpiar', 10, 3);
 function copam_theme_reporte_limpiar($form_id, $data, $sent)
 {
     if ($form_id !== COPAM_THEME_FORM_REPORTE) {
         return;
     }
-    copam_theme_reporte_pendientes([]);
+    copam_theme_adjuntos_pendientes([]);
     if ($sent) {
-        copam_theme_reporte_borrar_lote((string) ($data['adjuntos'] ?? ''));
+        copam_theme_adjuntos_borrar_lote(COPAM_THEME_REPORTE_ADJUNTOS['carpeta'], (string) ($data['adjuntos'] ?? ''));
     }
 }
 
-/* -------------------------------------------------------------------------
- * Evidencia: carpeta temporal privada
- * ---------------------------------------------------------------------- */
-
-function copam_theme_reporte_carpeta()
-{
-    $base = trailingslashit(wp_upload_dir(null, false)['basedir']) . 'copam-reporte-tmp';
-    if (!is_dir($base)) {
-        wp_mkdir_p($base);
-    }
-    // Sin listado ni acceso directo desde la web (Apache); en nginx los nombres aleatorios y la vida corta
-    // son la protección.
-    if (!file_exists($base . '/.htaccess')) {
-        file_put_contents($base . '/.htaccess', "Require all denied\nDeny from all\n");
-    }
-    if (!file_exists($base . '/index.php')) {
-        file_put_contents($base . '/index.php', "<?php\n// Silence is golden.\n");
-    }
-    return $base;
-}
-
-function copam_theme_reporte_lote_valido($lote)
-{
-    return is_string($lote) && preg_match('/^[a-f0-9]{32}$/', $lote) === 1;
-}
-
-// Rutas de los archivos de un lote, o [] si no existe.
-function copam_theme_reporte_archivos($lote)
-{
-    if (!copam_theme_reporte_lote_valido($lote)) {
-        return [];
-    }
-    $dir = copam_theme_reporte_carpeta() . '/' . $lote;
-    if (!is_dir($dir)) {
-        return [];
-    }
-    return array_values(array_filter(glob($dir . '/*') ?: [], 'is_file'));
-}
-
-function copam_theme_reporte_borrar_lote($lote)
-{
-    if (!copam_theme_reporte_lote_valido($lote)) {
-        return;
-    }
-    $dir = copam_theme_reporte_carpeta() . '/' . $lote;
-    foreach (glob($dir . '/*') ?: [] as $archivo) {
-        wp_delete_file($archivo);
-    }
-    if (is_dir($dir)) {
-        rmdir($dir);
-    }
-}
-
-// Borra los lotes que nadie envió.
-function copam_theme_reporte_borrar_viejos()
-{
-    foreach (glob(copam_theme_reporte_carpeta() . '/*', GLOB_ONLYDIR) ?: [] as $dir) {
-        if (filemtime($dir) < time() - COPAM_THEME_REPORTE_VIDA) {
-            copam_theme_reporte_borrar_lote(wp_basename($dir));
-        }
-    }
-}
-
-/*
- * Endpoint de la evidencia: recibe los archivos elegidos (todos juntos, cada vez que cambia la selección),
- * los valida y responde con el identificador del lote, que el form envía en el campo `adjuntos`.
- */
+// Endpoint de la evidencia: responde con el identificador del lote, que el form envía en el campo `adjuntos`.
 add_action('wp_ajax_copam_theme_reporte_adjuntos', 'copam_theme_reporte_adjuntos');
 add_action('wp_ajax_nopriv_copam_theme_reporte_adjuntos', 'copam_theme_reporte_adjuntos');
 function copam_theme_reporte_adjuntos()
 {
-    nocache_headers();
-    copam_theme_reporte_borrar_viejos();
-
-    // El lote anterior de esta misma selección se reemplaza.
-    $anterior = isset($_POST['anterior']) ? sanitize_key(wp_unslash($_POST['anterior'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification -- endpoint público; los límites de abajo lo protegen
-    copam_theme_reporte_borrar_lote($anterior);
-
-    if (!copam_theme_form_rate_limit('reporte-adjuntos', 30)) {
-        wp_send_json_error(['message' => 'Recibimos varios archivos seguidos. Intenta de nuevo más tarde.'], 429);
-    }
-
-    $files = $_FILES['archivos'] ?? null; // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput -- se valida cada archivo abajo
-    if (!is_array($files) || !isset($files['name']) || !is_array($files['name'])) {
-        wp_send_json_error(['message' => 'No recibimos ningún archivo.'], 400);
-    }
-
-    $total = count($files['name']);
-    if ($total < 1 || $total > COPAM_THEME_REPORTE_MAX_ARCHIVOS) {
-        wp_send_json_error(['message' => sprintf('Puedes adjuntar hasta %d archivos.', COPAM_THEME_REPORTE_MAX_ARCHIVOS)], 400);
-    }
-    if (array_sum(array_map('intval', (array) $files['size'])) > COPAM_THEME_REPORTE_MAX_BYTES) {
-        wp_send_json_error(['message' => 'Los archivos superan los 10 MB en total.'], 400);
-    }
-
-    // Primero se valida todo; si un archivo no sirve, no se guarda ninguno.
-    $validos = [];
-    for ($i = 0; $i < $total; $i++) {
-        $tmp    = (string) ($files['tmp_name'][$i] ?? '');
-        $nombre = sanitize_file_name((string) ($files['name'][$i] ?? ''));
-        if ((int) ($files['error'][$i] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK || !is_uploaded_file($tmp)) {
-            wp_send_json_error(['message' => 'No pudimos recibir uno de los archivos. Vuelve a elegirlo.'], 400);
-        }
-        $tipo = wp_check_filetype_and_ext($tmp, $nombre, COPAM_THEME_REPORTE_TIPOS);
-        if (empty($tipo['ext']) || empty($tipo['type'])) {
-            wp_send_json_error(['message' => 'Solo se aceptan archivos PDF, JPG o PNG.'], 400);
-        }
-        $base = pathinfo($nombre, PATHINFO_FILENAME);
-        $validos[] = [$tmp, ($base !== '' ? $base : 'evidencia') . '.' . $tipo['ext']];
-    }
-
-    $lote = bin2hex(random_bytes(16));
-    $dir  = copam_theme_reporte_carpeta() . '/' . $lote;
-    if (!wp_mkdir_p($dir)) {
-        wp_send_json_error(['message' => 'No pudimos guardar los archivos. Intenta de nuevo.'], 500);
-    }
-    foreach ($validos as [$tmp, $nombre]) {
-        $destino = $dir . '/' . wp_unique_filename($dir, $nombre);
-        if (!move_uploaded_file($tmp, $destino)) {
-            copam_theme_reporte_borrar_lote($lote);
-            wp_send_json_error(['message' => 'No pudimos guardar los archivos. Intenta de nuevo.'], 500);
-        }
-    }
-
-    wp_send_json_success(['lote' => $lote]);
+    copam_theme_adjuntos_recibir(COPAM_THEME_REPORTE_ADJUNTOS);
 }

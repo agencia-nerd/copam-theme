@@ -28,7 +28,7 @@
   - Elementos fuera de la página: header, footer, buscador y aviso de mantenimiento (sitio)
   - Pendiente del diseño: el reCAPTCHA/Turnstile aparece como `[PENDIENTE: ...]`
   - el texto no se imprime
-- **Estado:** pendiente
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -37,7 +37,8 @@
 - **Grupo:** `reclamos_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas "Inicio > Reclamos" con el componente `migas` (sin campos). Sin imagen: fondo liso. En escritorio el texto va a la izquierda y la tarjeta "Accesos directos" a la derecha (ancho 33.3vw); en móvil la tarjeta pasa debajo en una columna. El botón "Presentar reclamo" usa el componente `boton` y baja a `#formulario`. Cada fila de "Accesos directos" lleva el texto y una flecha de esquina que se desliza al hover; son anclas internas de la misma página. Animaciones de entrada (subida del título, clip del texto, tarjeta con retraso de 250 ms) en un módulo JS que respeta `prefers-reduced-motion`. Valor suelto: hover del botón `#07702F`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -54,10 +55,10 @@ Valores del repetidor (texto y ancla): Formulario de reclamos (`#formulario`), D
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Enlaces con destinos reales; los externos con `rel` seguro (helper de enlaces de `wp-helper`)
-- [ ] Migas y botón usan los componentes `migas` y `boton`, sin duplicar su marcado
-- [ ] La tarjeta de accesos directos se apila bajo el texto en móvil y es navegable con teclado
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Enlaces con destinos reales; los externos con `rel` seguro (helper de enlaces de `wp-helper`)
+- [x] Migas y botón usan los componentes `migas` y `boton`, sin duplicar su marcado
+- [x] La tarjeta de accesos directos se apila bajo el texto en móvil y es navegable con teclado
 
 ## Sección: proceso
 
@@ -65,8 +66,9 @@ Valores del repetidor (texto y ancla): Formulario de reclamos (`#formulario`), D
 - **Destino:** `template-parts/pages/reclamos/proceso.php`
 - **Grupo:** `reclamos_proceso`
 - **Skill:** ninguna
-- **Comportamiento:** `id="proceso"`. Título con `encabezado-seccion`. 5 pasos en rejilla de 5 columnas desde 1180 px, 2 desde 600 px y 1 en móvil, con una franja de fondo y aparición escalonada. Cada tarjeta: número ("01"..."05", lo genera la plantilla por posición, no es campo), título y descripción. En la descripción, las expresiones "N días" / "N días hábiles" salen en verde `--color-brand` y peso 600: se escriben con los marcadores de `copam_theme_highlight` (ver `inc/helpers/text-styles.php`). El diseño trae también una etiqueta por paso ("60 días", "Silencio positivo"…) que no se muestra; no se crea campo. Alto de tarjeta flexible.
-- **Estado:** pendiente
+- **Comportamiento:** `id="proceso"`. Título con `encabezado-seccion`. 5 pasos en rejilla de 5 columnas desde 1180 px, 2 desde 600 px y 1 en móvil, con una franja de fondo y aparición escalonada. Cada tarjeta: número ("01"..."05", lo genera la plantilla por posición, no es campo), título y descripción. En la descripción, las expresiones "N días" / "N días hábiles" salen en verde `--color-brand` y peso 600: se escriben entre `~` (estilo `plazo` de `copam_theme_highlight`, ver `inc/helpers/text-styles.php`). El diseño trae también una etiqueta por paso ("60 días", "Silencio positivo"…) que no se muestra; no se crea campo. Alto de tarjeta flexible.
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -75,16 +77,16 @@ Valores del repetidor (texto y ancla): Formulario de reclamos (`#formulario`), D
 | `reclamos_proceso_titulo` | text | Título de la sección (h2). Recomendado: ~30 caracteres | Proceso de atención | sí |
 | `reclamos_proceso_pasos` | repeater | Pasos del procedimiento, en orden. 5 pasos; el número lo pone la plantilla. | — | sí |
 | `reclamos_proceso_pasos.titulo` | text | Título del paso. Recomendado: ~30 caracteres | Presenta tu reclamo | sí |
-| `reclamos_proceso_pasos.descripcion` | textarea | Explicación del paso. Los plazos ("60 días", "15 días hábiles") se marcan en verde con los marcadores del helper de texto. Recomendado: ~120 caracteres | Ante COPAM, dentro de los 60 días de ocurrido el hecho o de conocido este. | sí |
+| `reclamos_proceso_pasos.descripcion` | textarea | Explicación del paso. Los plazos ("60 días", "15 días hábiles") se marcan en verde con los marcadores del helper de texto. Recomendado: ~120 caracteres | Ante COPAM, dentro de los ~60 días~ de ocurrido el hecho o de conocido este. | sí |
 
 Valores del repetidor (título: descripción): 1 Presenta tu reclamo: Ante COPAM, dentro de los 60 días de ocurrido el hecho o de conocido este. 2 Subsana, si falta un requisito: COPAM te pide subsanar en 2 días hábiles y tienes 2 días hábiles para hacerlo. 3 COPAM resuelve: En 15 días hábiles, ampliables hasta 30 días hábiles en casos complejos, por decisión motivada. 4 Te notificamos la resolución: A más tardar dentro de los 5 días hábiles posteriores a su emisión, en el domicilio o correo que indicaste (art. 29 del Reglamento de Reclamos de OSITRAN). 5 Si COPAM no responde: Si COPAM no responde dentro del plazo, se aplica el silencio administrativo positivo.
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Repeated block: las tarjetas usan un solo componente con `$args`, el mismo de `conforme` y `otros_canales`
-- [ ] Los plazos salen en verde con `copam_theme_highlight`, sin `<span>` ni estilos escritos a mano
-- [ ] La sección tiene `id="proceso"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Repeated block: las tarjetas usan un solo componente con `$args`, el mismo de `conforme` y `otros_canales`
+- [x] Los plazos salen en verde con `copam_theme_highlight`, sin `<span>` ni estilos escritos a mano
+- [x] La sección tiene `id="proceso"` y el título usa `encabezado-seccion`
 
 ## Sección: formulario
 
@@ -93,7 +95,8 @@ Valores del repetidor (título: descripción): 1 Presenta tu reclamo: Ante COPAM
 - **Grupo:** `reclamos_formulario`
 - **Skill:** wp-form
 - **Comportamiento:** `id="formulario"`. Título con `encabezado-seccion` y, debajo, la nota de campos obligatorios. El formulario lo construye `wp-form`; sin marcado propio. Estructura: (1) "Tipo de solicitud *": grupo de tres opciones tipo radio (Reclamo, Reconsideración, Apelación; por defecto Reclamo) y, debajo, una nota que cambia según la opción más el enlace al PDF del procedimiento. Los botones de `conforme` ("Solicitar reconsideración", "Presentar apelación") y las tarjetas del hero abren esta sección con el tipo preseleccionado (módulo JS por `data-`). (2) Solo con Reconsideración o Apelación: "N.° de reclamo *" (texto, solo dígitos, máximo 10; "Ej. 000123") y "N.° y fecha de la resolución que impugnas *" (texto; "Ej. Res. N.° 045-2026 · 12-08-2026"). (3) "Datos del solicitante": Nombre y apellidos * (mínimo 3; "Ingresa tu nombre completo"), DNI, CE o RUC * (solo dígitos, 8 a 11; "Ej.: 45678912 o 20543480291"), Domicilio * ("Dirección completa"), Domicilio para notificaciones * ("Dirección donde recibirás las notificaciones") con la casilla "Es el mismo que mi domicilio" que copia el domicilio y deja el campo de solo lectura, Teléfono (opcional; números, + ( ) espacio y guion, 7 a 20; "Ej. 987 654 321"), Correo electrónico * (formato válido; "nombre@empresa.com"). (4) Casilla "Presento esta solicitud en representación de otra persona o empresa"; al marcarla se despliega "Representante o apoderado (opcional)" con Nombre y apellidos del representante (mínimo 3, solo letras; "Solo si actúas mediante representante"), Documento de identidad del representante (8 a 11 dígitos; "DNI o CE") y Documento que acredita la representación (archivo PDF, JPG o PNG; "Adjunta poder o vigencia de poder · PDF, JPG o PNG"); al elegir razón social la representación pasa a obligatoria (el diseño no trae el control de empresa visible; a confirmar si se necesita). (5) "Detalle de la solicitud": Servicio relacionado * (selector con "Selecciona un servicio" deshabilitada y opciones Servicios a la nave, Servicios a la carga, Servicios especiales, Depósito Temporal, Atención al usuario), Referencia de la operación (opcional; "N.° de comprobante, B/L, contenedor o manifiesto"), Pretensión * (textarea 2 filas, mínimo 10; "Indica qué solicitas que COPAM resuelva"), Fundamentos * (textarea 4 filas, mínimo 10; "Describe lo ocurrido y los hechos que motivan tu solicitud") y Medios probatorios (opcional; zona de arrastre con varios archivos PDF, JPG o PNG, hasta 10 MB; texto "Arrastra tus archivos o haz clic para adjuntar · PDF, JPG o PNG, hasta 10 MB"). (6) Casillas: "Autorizo que COPAM me notifique la respuesta y los actos de este procedimiento al correo electrónico indicado." (opcional, con la nota "Si no autorizas, la notificación se realizará en tu domicilio para notificaciones."), "Declaro que la información proporcionada es veraz." (requerida), "Solicito informe oral." (opcional) y "Acepto la Política de privacidad y el tratamiento de mis datos personales." (requerida, enlaza a la página de privacidad del tema). (7) Anti-robot "No soy un robot": el diseño deja un marcador de reCAPTCHA o Turnstile; lo define el anti-spam de `wp-form` (a confirmar cuál) y el texto `[PENDIENTE]` no se imprime. (8) Botón "Enviar solicitud". Campos en 2 columnas desde 760 px, 1 en móvil; los de ancho completo son Domicilio para notificaciones con su casilla, Documento que acredita, Pretensión, Fundamentos y Medios probatorios. Validación al salir del campo y al escribir, mensaje bajo el campo con `role="alert"` y color `--color-danger`. Destinatario: `comercial@copam.com.pe` (README del diseño; confirmar). Envío: el diseño muestra "Recibimos tu solicitud. En la versión final recibirás un número de reclamo y una copia en tu correo." y esa frase habla de la "versión final", así que no se imprime tal cual: se propone "Recibimos tu solicitud. Te enviaremos una copia a tu correo." (a confirmar; el número de reclamo exige guardar los envíos). Bajo el formulario, un bloque con dos párrafos de plazo y un enlace con flecha que descarga el diagrama del procedimiento (PDF subido al sitio, campo `file`). Valores sueltos: hover del botón `#07702F`; borde punteado de la zona de adjuntos `#DADADA` (verde `--color-brand` al hover) y fondo `#F0F8F3`. El correo de destino no es campo de esta página: sale de `opciones_correos_reclamos.correo` en Ajustes del sitio (se admite más de uno).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -114,17 +117,17 @@ Valores del repetidor (título: descripción): 1 Presenta tu reclamo: Ante COPAM
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-form` (`references/acceptance.md` de esa skill)
-- [ ] Cada campo tiene `label`, validación igual en el front y en PHP, y el mensaje de error se anuncia con `role="alert"`
-- [ ] El tipo de solicitud es un grupo de radios accesible (flechas y teclado); los campos N.° de reclamo y resolución solo aparecen y se exigen con Reconsideración o Apelación
-- [ ] La nota bajo el selector cambia con el tipo elegido y los botones de `conforme` preseleccionan el tipo
-- [ ] La casilla "Es el mismo que mi domicilio" copia el domicilio y bloquea el campo; la representación se despliega al marcarla
-- [ ] Los adjuntos aceptan PDF, JPG y PNG (varios en medios probatorios) y se validan también en PHP
-- [ ] El envío llega a los correos de `opciones_correos_reclamos` y muestra el estado de éxito
-- [ ] El anti-spam elegido reemplaza al marcador `[PENDIENTE]` del diseño y este texto no se imprime
-- [ ] Los PDF se descargan desde el campo `file`, con `rel` seguro y aviso de pestaña nueva
-- [ ] La sección tiene `id="formulario"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-form` (`references/acceptance.md` de esa skill)
+- [x] Cada campo tiene `label`, validación igual en el front y en PHP, y el mensaje de error se anuncia con `role="alert"`
+- [x] El tipo de solicitud es un grupo de radios accesible (flechas y teclado); los campos N.° de reclamo y resolución solo aparecen y se exigen con Reconsideración o Apelación
+- [x] La nota bajo el selector cambia con el tipo elegido y los botones de `conforme` preseleccionan el tipo
+- [x] La casilla "Es el mismo que mi domicilio" copia el domicilio y bloquea el campo; la representación se despliega al marcarla
+- [x] Los adjuntos aceptan PDF, JPG y PNG (varios en medios probatorios) y se validan también en PHP
+- [x] El envío llega a los correos de `opciones_correos_reclamos` y muestra el estado de éxito
+- [x] El anti-spam elegido reemplaza al marcador `[PENDIENTE]` del diseño y este texto no se imprime
+- [x] Los PDF se descargan desde el campo `file`, con `rel` seguro y aviso de pestaña nueva
+- [x] La sección tiene `id="formulario"` y el título usa `encabezado-seccion`
 
 ## Sección: conforme
 
@@ -133,7 +136,8 @@ Valores del repetidor (título: descripción): 1 Presenta tu reclamo: Ante COPAM
 - **Grupo:** `reclamos_conforme`
 - **Skill:** ninguna
 - **Comportamiento:** `id="conforme"`; el contenedor de las tarjetas lleva `id="queja"` (ancla usada por el diseño). Título con `encabezado-seccion`, seguido de un párrafo introductorio y una nota. 3 tarjetas en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil, con aparición escalonada; mismo componente de tarjeta que `proceso` y `otros_canales`. Los plazos ("15 días hábiles") salen en verde y peso 600 con `copam_theme_highlight`. Los botones de Reconsideración y Apelación bajan a `#formulario` y preseleccionan el tipo en el formulario (módulo JS por `data-tipo`); su flecha apunta a la derecha. El botón de la queja es un enlace externo al portal de OSITRAN, con flecha de esquina, pestaña nueva y helper de enlaces. La tarjeta de la queja es solo informativa y aclara que no usa el formulario.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -145,18 +149,18 @@ Valores del repetidor (título: descripción): 1 Presenta tu reclamo: Ante COPAM
 | `reclamos_conforme_instancias` | repeater | Tarjetas de las instancias posteriores. 3 tarjetas. | — | sí |
 | `reclamos_conforme_instancias.etiqueta` | text | Etiqueta pequeña sobre el título de la tarjeta. Recomendado: ~35 caracteres | Opcional · ante COPAM | sí |
 | `reclamos_conforme_instancias.titulo` | text | Título de la tarjeta. Recomendado: ~30 caracteres | Reconsideración | sí |
-| `reclamos_conforme_instancias.descripcion` | textarea | Explicación de la instancia; los plazos se marcan en verde con los marcadores del helper de texto. Recomendado: ~260 caracteres | Si tienes una nueva prueba, pide a COPAM que revise su respuesta. Preséntala dentro de los 15 días hábiles de notificada la resolución. COPAM resuelve en 15 días hábiles. | sí |
+| `reclamos_conforme_instancias.descripcion` | textarea | Explicación de la instancia; los plazos se marcan en verde con los marcadores del helper de texto. Recomendado: ~260 caracteres | Si tienes una nueva prueba, pide a COPAM que revise su respuesta. Preséntala dentro de los ~15 días hábiles~ de notificada la resolución. COPAM resuelve en ~15 días hábiles~. | sí |
 | `reclamos_conforme_instancias.boton` | link | Botón de la tarjeta: texto y destino. Los dos primeros llevan a `#formulario` con el tipo preseleccionado; el tercero es externo. | Solicitar reconsideración | sí |
 
 Valores del repetidor (etiqueta / título / botón -> destino): Opcional · ante COPAM / Reconsideración / Solicitar reconsideración -> `#formulario` (tipo reconsideración); Ante OSITRAN / Apelación / Presentar apelación -> `#formulario` (tipo apelación), descripción "Si quieres que tu caso lo resuelva OSITRAN. Preséntala ante COPAM dentro de los 15 días hábiles de notificada la resolución; COPAM eleva el expediente al Tribunal de OSITRAN."; Informativo · OSITRAN / Queja ante OSITRAN / Ir al portal de OSITRAN -> `https://www.gob.pe/ositran`, descripción "Procede si el trámite de tu reclamo se paraliza por demoras, o si se rechaza sin justificación tu reconsideración o apelación. Se presenta ante el Tribunal de OSITRAN, no con este formulario."
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Enlaces con destinos reales; los externos con `rel` seguro y aviso de pestaña nueva (helper de enlaces de `wp-helper`)
-- [ ] Repeated block: las tarjetas usan el mismo componente que `proceso` y `otros_canales`
-- [ ] Los botones de Reconsideración y Apelación bajan a `#formulario` y dejan el tipo elegido, y funcionan con teclado
-- [ ] La sección tiene `id="conforme"`, el contenedor `id="queja"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Enlaces con destinos reales; los externos con `rel` seguro y aviso de pestaña nueva (helper de enlaces de `wp-helper`)
+- [x] Repeated block: las tarjetas usan el mismo componente que `proceso` y `otros_canales`
+- [x] Los botones de Reconsideración y Apelación bajan a `#formulario` y dejan el tipo elegido, y funcionan con teclado
+- [x] La sección tiene `id="conforme"`, el contenedor `id="queja"` y el título usa `encabezado-seccion`
 
 ## Sección: documentos
 
@@ -165,7 +169,8 @@ Valores del repetidor (etiqueta / título / botón -> destino): Opcional · ante
 - **Grupo:** `reclamos_documentos`
 - **Skill:** wp-accordion
 - **Comportamiento:** `id="documentos"`. Título con `encabezado-seccion`. Acordeón de 4 grupos (Normativa OSITRAN, Procedimiento, Formatos, Registro) que construye `wp-accordion`; dentro de cada uno van las filas con el componente `documentos-por-anio`: título, subtítulo, etiqueta "Vigente" opcional y botón "Descargar PDF". Aquí los grupos no son años sino categorías. Cada cabecera muestra el nombre del grupo y el contador ("1 documento", "2 documentos") que calcula la plantilla, más el ícono +/-; líneas separadoras con aparición animada. Ninguna fila lleva hoy "Vigente". Los PDF están en el sitio: campo `file` (botón "Descargar PDF" es un texto aparte que recibe `documentos-por-anio`). Mensaje de grupo vacío: el diseño lo prevé pero no trae texto; la plantilla no imprime nada si no hay documentos. Los PDF "Guía de usuario" y "Diagrama del procedimiento" son los mismos archivos que el formulario enlaza; se cargan de nuevo aquí (a confirmar si se prefiere reutilizar). Valor suelto: hover del botón `#07702F`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -185,11 +190,11 @@ Valores del repetidor (grupo: documento, subtítulo): Normativa OSITRAN: Reglame
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de esa skill)
-- [ ] Las filas de documento usan el componente `documentos-por-anio`, sin duplicar su marcado
-- [ ] Cada PDF se descarga desde su campo `file` y el contador de la cabecera coincide con el número de filas
-- [ ] La sección tiene `id="documentos"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de esa skill)
+- [x] Las filas de documento usan el componente `documentos-por-anio`, sin duplicar su marcado
+- [x] Cada PDF se descarga desde su campo `file` y el contador de la cabecera coincide con el número de filas
+- [x] La sección tiene `id="documentos"` y el título usa `encabezado-seccion`
 
 ## Sección: libro
 
@@ -198,7 +203,8 @@ Valores del repetidor (grupo: documento, subtítulo): Normativa OSITRAN: Reglame
 - **Grupo:** `reclamos_libro`
 - **Skill:** ninguna
 - **Comportamiento:** `id="libro"`. Usa el componente compartido `bloque-acceso` (variante `fila`, por defecto) con título, descripción, botón e imagen; sin marcado propio. El botón lleva a la página `libro-de-reclamaciones` del tema. La imagen se recorta con `object-cover`; es una foto del equipo de COPAM en el muelle (alt del diseño "Equipo de COPAM en el muelle del terminal"). Alto del bloque en el diseño: 528 px en escritorio. Valor suelto: hover del botón `#07702F`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -211,10 +217,10 @@ Valores del repetidor (grupo: documento, subtítulo): Normativa OSITRAN: Reglame
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`
-- [ ] Repeated block: usa el componente `bloque-acceso` con `$args`, sin copiar su marcado
-- [ ] La sección tiene `id="libro"` y el botón lleva a la página real del Libro de Reclamaciones
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`
+- [x] Repeated block: usa el componente `bloque-acceso` con `$args`, sin copiar su marcado
+- [x] La sección tiene `id="libro"` y el botón lleva a la página real del Libro de Reclamaciones
 
 ## Sección: derechos
 
@@ -223,7 +229,8 @@ Valores del repetidor (grupo: documento, subtítulo): Normativa OSITRAN: Reglame
 - **Grupo:** `reclamos_derechos`
 - **Skill:** ninguna
 - **Comportamiento:** `id="derechos"` (ancla del menú "Derechos del usuario" y del acceso del hero). Título con `encabezado-seccion` y una bajada con la norma. Dos tarjetas en dos columnas desde 600 px y una en móvil, con una franja de fondo y aparición escalonada (0 y 110 ms). Cada tarjeta: etiqueta, título y lista con un punto verde decorativo (`aria-hidden`) antes de cada ítem; la lista de derechos es más larga y puede ocupar dos columnas de texto como en el diseño (a verificar al maquetar). Alto de tarjeta flexible.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -244,9 +251,9 @@ Derechos (12): A la información; A presentar reclamos; A presentar sugerencias;
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Las listas son `<ul>` con `<li>` y los puntos verdes son decorativos (`aria-hidden`)
-- [ ] La sección tiene `id="derechos"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Las listas son `<ul>` con `<li>` y los puntos verdes son decorativos (`aria-hidden`)
+- [x] La sección tiene `id="derechos"` y el título usa `encabezado-seccion`
 
 ## Sección: otros_canales
 
@@ -255,7 +262,8 @@ Derechos (12): A la información; A presentar reclamos; A presentar sugerencias;
 - **Grupo:** `reclamos_otros_canales`
 - **Skill:** ninguna
 - **Comportamiento:** `id="otros-canales"`. Título con `encabezado-seccion`. 3 tarjetas en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil; mismo componente de tarjeta que `proceso` y `conforme`, con una nota opcional bajo el texto (solo Denuncias). Botones: Denuncias, enlace externo al portal de OSITRAN (flecha de esquina, pestaña nueva, helper de enlaces); Reglamento de Usuarios, descarga de un PDF subido al sitio (campo `file`, flecha a la derecha, texto del botón aparte); Sugerencias, enlace interno al buzón de la página `contacto` (`#buzon`). Cada tarjeta usa `enlace` si lo tiene y, si no, `archivo` con `texto_archivo`. Alto de tarjeta flexible.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -275,11 +283,11 @@ Valores del repetidor (etiqueta / título -> botón): Ante OSITRAN · Arts. 48 a
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Enlaces con destinos reales; los externos con `rel` seguro y aviso de pestaña nueva (helper de enlaces de `wp-helper`)
-- [ ] Repeated block: las tarjetas usan el mismo componente que `proceso` y `conforme`
-- [ ] El PDF se descarga desde el campo `file` y la tarjeta sin nota no deja hueco
-- [ ] La sección tiene `id="otros-canales"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Enlaces con destinos reales; los externos con `rel` seguro y aviso de pestaña nueva (helper de enlaces de `wp-helper`)
+- [x] Repeated block: las tarjetas usan el mismo componente que `proceso` y `conforme`
+- [x] El PDF se descarga desde el campo `file` y la tarjeta sin nota no deja hueco
+- [x] La sección tiene `id="otros-canales"` y el título usa `encabezado-seccion`
 
 ## Sección: faq
 
@@ -288,7 +296,8 @@ Valores del repetidor (etiqueta / título -> botón): Ante OSITRAN · Arts. 48 a
 - **Grupo:** `reclamos_faq`
 - **Skill:** wp-accordion
 - **Comportamiento:** `id="faq"`. Usa el componente compartido `faq-ayuda` (etiqueta fija "Ayuda" con ícono, título en dos líneas, bajada y acordeón) con el acordeón de `wp-accordion`; sin marcado propio. 5 preguntas; la primera abierta al cargar. Esta sección va al final, fuera del bloque que se apila sobre el pie (efecto de apilado del diseño: módulo JS opcional, a decidir al aplicar). Valor suelto: ninguno.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -304,8 +313,8 @@ Valores del repetidor (pregunta): ¿Qué es la queja ante OSITRAN?; ¿Dónde pre
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de esa skill)
-- [ ] Repeated block: usa el componente `faq-ayuda` con `$args`, igual que las otras 8 páginas
-- [ ] La primera pregunta abre al cargar y el resto con teclado; respeta `prefers-reduced-motion`
-- [ ] La sección tiene `id="faq"`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de esa skill)
+- [x] Repeated block: usa el componente `faq-ayuda` con `$args`, igual que las otras 8 páginas
+- [x] La primera pregunta abre al cargar y el resto con teclado; respeta `prefers-reduced-motion`
+- [x] La sección tiene `id="faq"`

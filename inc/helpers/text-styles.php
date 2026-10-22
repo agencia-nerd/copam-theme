@@ -13,5 +13,6 @@ return [
     // wp-helper:styles:start
     'medio' => ['marker' => '|', 'class' => 'font-medium'],
     'negrita' => ['marker' => '*', 'class' => 'font-bold'],
+    'plazo' => ['marker' => '~', 'class' => 'font-semibold text-brand'],
     // wp-helper:styles:end
 ];
