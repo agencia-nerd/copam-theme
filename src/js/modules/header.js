@@ -12,9 +12,8 @@ const COLOR_TIPO = {
     Servicio: 'bg-[#E3F3E8] text-[#0B7A38]',
     Comunicado: 'bg-[#E6ECF5] text-[#1E3F73]',
     Página: 'bg-[#EFEAF4] text-[#4B2F6E]',
+    Formulario: 'bg-[#FBE8E5] text-[#A8362A]',
 };
-// Sin texto, el buscador sugiere estos resultados del índice.
-const SUGERENCIAS = [0, 4, 8, 13, 14];
 const MAX_RESULTADOS = 8;
 
 const normalizar = (texto) =>
@@ -114,12 +113,35 @@ export function iniciarHeader() {
     const cuenta = buscador?.querySelector('[data-buscar-cuenta]');
     const vacio = buscador?.querySelector('[data-buscar-vacio]');
     const consulta = buscador?.querySelector('[data-buscar-consulta]');
+    // El índice (inc/buscador.php) se pide una sola vez, al acercarse al botón de buscar o al abrirlo.
+    const api = buscador?.dataset.buscadorApi || '';
     let indice = [];
-    try {
-        indice = buscador ? JSON.parse(buscador.dataset.indice || '[]') : [];
-    } catch (e) {
-        indice = [];
-    }
+    let sugerencias = [];
+    let pedidoIndice = null;
+    const cargarIndice = () => {
+        if (pedidoIndice || !api) return pedidoIndice;
+        pedidoIndice = fetch(api, { headers: { Accept: 'application/json' } })
+            .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+            .then((datos) => {
+                indice = (datos.indice || []).map((r, orden) => ({ ...r, orden, buscable: normalizar(`${r.tipo} ${r.titulo} ${r.subtitulo} ${r.claves || ''}`), tituloNormal: normalizar(r.titulo) }));
+                const porUrl = new Map(indice.map((r) => [r.url, r]));
+                sugerencias = (datos.sugerencias || []).map((url) => porUrl.get(url)).filter(Boolean);
+            })
+            .catch(() => {
+                pedidoIndice = null;
+            })
+            .finally(() => {
+                if (buscadorAbierto()) pintarResultados();
+            });
+        return pedidoIndice;
+    };
+    // Cuenta el resultado elegido para las sugerencias ("más buscados"). Anónimo: solo la URL.
+    const contarClic = (url) => {
+        if (!api || !navigator.sendBeacon) return;
+        const datos = new FormData();
+        datos.append('url', url);
+        navigator.sendBeacon(`${api}/clic`, datos);
+    };
 
     const fila = (r, palabras) => {
         const a = document.createElement('a');
@@ -170,17 +192,22 @@ export function iniciarHeader() {
     const pintarResultados = () => {
         if (!lista) return;
         const q = campo.value.trim();
-        const palabras = normalizar(q).split(/\s+/).filter(Boolean);
+        const frase = normalizar(q);
+        const palabras = frase.split(/\s+/).filter(Boolean);
+        // Puntaje: el título empieza con lo escrito > el título lo contiene > solo en el resto. Luego, lo más elegido.
+        const puntaje = (r) => (r.tituloNormal.startsWith(frase) ? 3 : palabras.every((p) => r.tituloNormal.includes(p)) ? 2 : 1);
         const filas = palabras.length
-            ? indice.filter((r) => {
-                  const pajar = normalizar(`${r.tipo} ${r.titulo} ${r.subtitulo}`);
-                  return palabras.every((p) => pajar.includes(p));
-              })
-            : SUGERENCIAS.map((i) => indice[i]).filter(Boolean);
+            ? indice
+                  .filter((r) => palabras.every((p) => r.buscable.includes(p)))
+                  .map((r) => ({ r, p: puntaje(r) }))
+                  .sort((a, b) => b.p - a.p || (b.r.popularidad || 0) - (a.r.popularidad || 0) || a.r.orden - b.r.orden)
+                  .map(({ r }) => r)
+            : sugerencias;
+        const cargando = !!pedidoIndice && !indice.length;
         lista.replaceChildren(...filas.slice(0, MAX_RESULTADOS).map((r) => fila(r, palabras)));
-        titulo.textContent = palabras.length ? 'Resultados' : 'Sugerencias';
-        cuenta.textContent = palabras.length ? (filas.length === 1 ? '1 resultado' : `${filas.length} resultados`) : '';
-        const sinResultados = palabras.length > 0 && filas.length === 0;
+        titulo.textContent = cargando ? 'Cargando…' : palabras.length ? 'Resultados' : 'Más buscados';
+        cuenta.textContent = palabras.length && !cargando ? (filas.length === 1 ? '1 resultado' : `${filas.length} resultados`) : '';
+        const sinResultados = palabras.length > 0 && filas.length === 0 && !cargando;
         vacio.classList.toggle('hidden', !sinResultados);
         consulta.textContent = `“${q}”`;
     };
@@ -199,6 +226,7 @@ export function iniciarHeader() {
         alternarMenuMovil(false);
         cerrarMenus();
         abridor = boton;
+        cargarIndice();
         pintarResultados();
         buscador.inert = false;
         buscador.setAttribute('data-abierto', '');
@@ -208,14 +236,35 @@ export function iniciarHeader() {
     }
 
     if (buscador && campo) {
-        header.querySelectorAll('[data-buscar-abrir]').forEach((b) => b.addEventListener('click', () => (buscadorAbierto() ? cerrarBuscador() : abrirBuscador(b))));
+        header.querySelectorAll('[data-buscar-abrir]').forEach((b) => {
+            b.addEventListener('click', () => (buscadorAbierto() ? cerrarBuscador() : abrirBuscador(b)));
+            ['pointerenter', 'focus'].forEach((evento) => b.addEventListener(evento, cargarIndice, { once: true }));
+        });
         buscador.querySelectorAll('[data-buscar-cerrar]').forEach((b) => b.addEventListener('click', () => cerrarBuscador()));
-        buscador.querySelector('[data-buscar-form]').addEventListener('submit', (e) => e.preventDefault());
+        // Enter abre el primer resultado.
+        buscador.querySelector('[data-buscar-form]').addEventListener('submit', (e) => {
+            e.preventDefault();
+            lista.querySelector('a')?.click();
+        });
         campo.addEventListener('input', pintarResultados);
-        // Al elegir un resultado de esta misma página (ancla) el panel se cierra.
+        // Flechas: del campo a los resultados y entre ellos.
+        buscador.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+            const enlaces = [...lista.querySelectorAll('a')];
+            if (!enlaces.length) return;
+            const actual = enlaces.indexOf(document.activeElement);
+            if (actual === -1 && document.activeElement !== campo) return;
+            e.preventDefault();
+            const siguiente = actual + (e.key === 'ArrowDown' ? 1 : -1);
+            if (siguiente < 0) campo.focus();
+            else enlaces[Math.min(siguiente, enlaces.length - 1)].focus();
+        });
+        // Al elegir un resultado se cuenta; si es de esta misma página (ancla), el panel se cierra.
         buscador.addEventListener('click', (e) => {
             const enlace = e.target.closest('a');
-            if (enlace && !enlace.target) cerrarBuscador(false);
+            if (!enlace || !lista.contains(enlace)) return;
+            contarClic(enlace.href);
+            if (!enlace.target) cerrarBuscador(false);
         });
     }
 
