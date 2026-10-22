@@ -40,10 +40,10 @@ return [
                         ['titulo' => 'Tarifario', 'url' => '/tarifario/'],
                         ['titulo' => 'Operación del terminal', 'url' => '/operacion-del-terminal/'],
                         ['titulo' => 'Servicios', 'url' => '#', 'clases' => 'subtitulo'],
-                        ['titulo' => 'Servicios a la nave', 'url' => '/servicios-a-la-nave/'],
-                        ['titulo' => 'Servicios a la carga', 'url' => '/servicios-a-la-carga/'],
-                        ['titulo' => 'Servicios al pasajero', 'url' => '/servicios-al-pasajero/'],
-                        ['titulo' => 'Servicios especiales', 'url' => '/servicios-especiales/'],
+                        ['titulo' => 'Servicios a la nave', 'url' => '/servicios/servicios-a-la-nave/'],
+                        ['titulo' => 'Servicios a la carga', 'url' => '/servicios/servicios-a-la-carga/'],
+                        ['titulo' => 'Servicios al pasajero', 'url' => '/servicios/servicios-al-pasajero/'],
+                        ['titulo' => 'Servicios especiales', 'url' => '/servicios/servicios-especiales/'],
                     ],
                 ],
                 [
@@ -110,7 +110,7 @@ return [
                         ['titulo' => 'Tarifario', 'url' => '/tarifario/'],
                         ['titulo' => 'Operación del terminal', 'url' => '/operacion-del-terminal/'],
                         ['titulo' => 'Servicios', 'url' => '/#servicios'],
-                        ['titulo' => 'Servicios al pasajero', 'url' => '/servicios-al-pasajero/'],
+                        ['titulo' => 'Servicios al pasajero', 'url' => '/servicios/servicios-al-pasajero/'],
                     ],
                 ],
                 [

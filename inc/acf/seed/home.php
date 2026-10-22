@@ -140,11 +140,11 @@ return [
             'titulo'   => 'Servicios',
             'bajada'   => 'Cada servicio está descrito con la misma denominación del tarifario vigente.',
             'items'    => [
-                ['titulo' => 'Servicios a la nave', 'descripcion' => 'Amarre y desamarre y uso de amarradero para las naves que recalan en el terminal.', 'enlace' => ['title' => 'Ver detalle de Servicios a la nave', 'url' => '/servicios-a-la-nave/']],
-                ['titulo' => 'Servicios a la carga', 'descripcion' => 'Embarque, descarga, transferencia y almacenamiento de carga general, contenedores y graneles.', 'enlace' => ['title' => 'Ver detalle de Servicios a la carga', 'url' => '/servicios-a-la-carga/']],
-                ['titulo' => 'Servicios especiales', 'descripcion' => 'Almacenamiento prolongado, consolidación, pesaje, energía reefer, provisión de equipos y otros servicios del tarifario vigente.', 'enlace' => ['title' => 'Ver detalle de Servicios especiales', 'url' => '/servicios-especiales/']],
+                ['titulo' => 'Servicios a la nave', 'descripcion' => 'Amarre y desamarre y uso de amarradero para las naves que recalan en el terminal.', 'enlace' => ['title' => 'Ver detalle de Servicios a la nave', 'url' => '/servicios/servicios-a-la-nave/']],
+                ['titulo' => 'Servicios a la carga', 'descripcion' => 'Embarque, descarga, transferencia y almacenamiento de carga general, contenedores y graneles.', 'enlace' => ['title' => 'Ver detalle de Servicios a la carga', 'url' => '/servicios/servicios-a-la-carga/']],
+                ['titulo' => 'Servicios especiales', 'descripcion' => 'Almacenamiento prolongado, consolidación, pesaje, energía reefer, provisión de equipos y otros servicios del tarifario vigente.', 'enlace' => ['title' => 'Ver detalle de Servicios especiales', 'url' => '/servicios/servicios-especiales/']],
                 ['titulo' => 'Depósito temporal', 'descripcion' => 'Recepción, almacenamiento y retiro de mercancía bajo control aduanero de SUNAT, con requisitos y plazos propios.', 'enlace' => ['title' => 'Ver detalle de Depósito temporal', 'url' => '/deposito-temporal/']],
-                ['titulo' => 'Servicios al pasajero', 'descripcion' => 'Embarque, desembarque y tránsito de pasajeros en naves fluviales, con áreas de espera y control de acceso.', 'enlace' => ['title' => 'Ver detalle de Servicios al pasajero', 'url' => '/servicios-al-pasajero/']],
+                ['titulo' => 'Servicios al pasajero', 'descripcion' => 'Embarque, desembarque y tránsito de pasajeros en naves fluviales, con áreas de espera y control de acceso.', 'enlace' => ['title' => 'Ver detalle de Servicios al pasajero', 'url' => '/servicios/servicios-al-pasajero/']],
             ],
         ],
 

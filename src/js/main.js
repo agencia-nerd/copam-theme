@@ -7,6 +7,7 @@ import { iniciarHero } from './modules/hero.js';
 import { iniciarIndice } from './modules/indice.js';
 import { iniciarOceano } from './modules/ocean.js';
 import { iniciarParalaje } from './modules/parallax.js';
+import { iniciarPila } from './modules/pila.js';
 import { iniciarPrecarga } from './modules/precarga.js';
 import { iniciarRevelado } from './modules/reveal.js';
 import { iniciarScroll } from './modules/scroll.js';
@@ -22,6 +23,7 @@ iniciarConoce();
 iniciarConectividad();
 iniciarCarga();
 iniciarParalaje();
+iniciarPila();
 iniciarIndice();
 iniciarOceano();
 

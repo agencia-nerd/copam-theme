@@ -9,6 +9,7 @@
 - **Skills usadas:** wp-accordion (faq), wp-helper
 - **Grupo ACF:** Servicios no portuarios
 - **Ubicación:** plantilla pages/template-servicios-no-portuarios.php
+- **Padre:** servicios
 - **Notas de página:**
   - `h1` "No portuarios" en el hero (el diseño parte el título en dos líneas "No" / "portuarios"
   - las migas y el título SEO dicen "Servicios no portuarios")
@@ -23,7 +24,7 @@
   - se omite)
   - Efectos del diseño (entrada con máscara, parallax del hero, pila hero/FAQ con escala y desenfoque, líneas que se dibujan) son comportamiento visual: módulos JS en la etapa C con `prefers-reduced-motion`
   - Las migas ("Inicio > Zona Clientes > Servicios no portuarios") usan el componente `migas` y no llevan campos
-- **Estado:** pendiente
+- **Estado:** descartado
 
 ## Sección: hero
 
@@ -32,7 +33,8 @@
 - **Grupo:** `servicios_no_portuarios_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas con el componente `migas`; imagen a todo el ancho con parallax y zoom al hacer scroll, `loading="eager"` (imagen principal); `h1`, bajada y botón "Solicitar cotización" con el componente `boton` (variante primario) que lleva al formulario de contacto; tarjeta lateral "Accesos directos" (`h2`) con 4 enlaces ancla a las secciones de la página, flecha que se desplaza 2 px al hover y borde verde `--color-brand`; en escritorio la tarjeta va a la derecha en una columna de 33.3vw y en móvil debajo del texto. Mismo bloque que el hero de `servicios-a-la-nave`. Valores sueltos: hover del botón `#07702F` (ya en el componente `boton`). Los destinos son anclas fijas (`#que-incluye`, `#tarifas`, `#documentos`, `#faq`).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -48,11 +50,11 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` (primera pantalla); el `alt` viene del campo de imagen
-- [ ] Imagen pasa por `copam_theme_image`; botón y accesos pasan por `copam_theme_link` (componente `boton` para el botón)
-- [ ] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
-- [ ] Los 4 accesos llevan a las secciones `#que-incluye`, `#tarifas`, `#documentos` y `#faq` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` (primera pantalla); el `alt` viene del campo de imagen
+- [x] Imagen pasa por `copam_theme_image`; botón y accesos pasan por `copam_theme_link` (componente `boton` para el botón)
+- [x] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
+- [x] Los 4 accesos llevan a las secciones `#que-incluye`, `#tarifas`, `#documentos` y `#faq` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`
 
 ## Sección: que_incluye
 
@@ -61,7 +63,8 @@
 - **Grupo:** `servicios_no_portuarios_que_incluye`
 - **Skill:** ninguna
 - **Comportamiento:** `id="que-incluye"` como ancla; encabezado h2 con línea que se dibuja (componente `encabezado-seccion`, sin etiqueta ni bajada); tarjetas en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil, con aparición escalonada; sin alturas fijas. Mismo bloque que `que_incluye` de `servicios-a-la-nave` (allí 2 columnas; aquí 3 en escritorio).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -74,9 +77,9 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los ítems se recorren con un bucle (no hay una tarjeta por ítem escrita a mano) y la rejilla admite más o menos ítems
-- [ ] El `id="que-incluye"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los ítems se recorren con un bucle (no hay una tarjeta por ítem escrita a mano) y la rejilla admite más o menos ítems
+- [x] El `id="que-incluye"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: tarifas
 
@@ -85,7 +88,8 @@
 - **Grupo:** `servicios_no_portuarios_tarifas`
 - **Skill:** ninguna
 - **Comportamiento:** `id="tarifas"`; encabezado h2 con línea (componente `encabezado-seccion`). Debajo, un párrafo, el botón "Descargar tarifario vigente" (componente `boton`, variante primario) que descarga el PDF en pestaña nueva (`copam_theme_link` pone `rel` y el aviso `sr-only`), y el enlace con flecha "Ver versiones anteriores" (componente `enlace-flecha`) que lleva a la página Tarifario, ancla `#versiones` (enlace interno del tema). El diseño muestra el tamaño del PDF como `title` ("PDF · 410 KB"); el tamaño sale del archivo (a confirmar). El botón es una descarga: el archivo es un campo `file` y el texto va en un campo aparte (a confirmar en la etapa C si `boton` acepta un archivo además de un Link). Hover del botón `#07702F` (valor suelto, ya en `boton`).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -99,19 +103,20 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] El botón de descarga pasa por `copam_theme_link` con `rel` seguro y aviso de pestaña nueva; el enlace de versiones apunta a la página Tarifario del tema, no a `tarifario.html`
-- [ ] El botón usa el componente `boton` y el enlace usa `enlace-flecha`; el hover y el foco con teclado muestran el mismo cambio y respetan `prefers-reduced-motion`
-- [ ] El `id="tarifas"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] El botón de descarga pasa por `copam_theme_link` con `rel` seguro y aviso de pestaña nueva; el enlace de versiones apunta a la página Tarifario del tema, no a `tarifario.html`
+- [x] El botón usa el componente `boton` y el enlace usa `enlace-flecha`; el hover y el foco con teclado muestran el mismo cambio y respetan `prefers-reduced-motion`
+- [x] El `id="tarifas"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: documentos
 
 - **Origen:** `servicios-no-portuarios.html` líneas 257-284
-- **Destino:** `template-parts/pages/servicios-no-portuarios/documentos.php`, `template-parts/components/documento-card.php`
+- **Destino:** `template-parts/pages/servicios-no-portuarios/documentos.php`, `template-parts/components/rejilla-documentos.php`, `template-parts/components/documento-card.php`
 - **Grupo:** `servicios_no_portuarios_documentos`
 - **Skill:** ninguna
 - **Comportamiento:** `id="documentos"`; encabezado h2 con línea; tarjetas en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil (en `servicios-a-la-nave` son 4 columnas); cada tarjeta es un enlace que abre el PDF en pestaña nueva (`copam_theme_link` pone `rel` y el aviso `sr-only`) con etiqueta, título, fecha y botón circular verde con flecha de esquina; al hover el botón pasa a `#07702F` (valor suelto) y la flecha sale por una esquina y entra otra; separadores entre filas y columnas. El diseño muestra "PDF · tamaño" como `title`; el tamaño sale del archivo (a confirmar). Usa el componente compartido `documento-card` (`etiqueta`, `titulo`, `fecha`, `archivo`); el número de columnas lo decide la sección, no el componente.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -126,20 +131,21 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
-- [ ] La tarjeta usa el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
-- [ ] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
-- [ ] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
+- [x] La tarjeta usa el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
+- [x] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
+- [x] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: faq
 
 - **Origen:** `servicios-no-portuarios.html` líneas 289-320
-- **Destino:** `template-parts/components/faq-ayuda.php`, `template-parts/accordions/` (acordeón de `wp-accordion`)
+- **Destino:** `template-parts/pages/servicios-no-portuarios/faq.php`, `template-parts/components/faq-ayuda.php`, `template-parts/accordions/faq-ayuda.php`
 - **Grupo:** `servicios_no_portuarios_faq`
 - **Skill:** wp-accordion
 - **Comportamiento:** usa el componente compartido `faq-ayuda` (`titulo`, `descripcion`, `items`) y el encabezado `encabezado-seccion` con etiqueta "Ayuda". `id="faq"` como ancla. Acordeón con `<details>`/`<summary>`; la primera pregunta abre por defecto en el diseño; icono más/menos blanco sobre círculo verde. Esta sección no lleva marcado propio: `wp-accordion` lo construye. En el diseño la FAQ se desliza sobre el hero (pila con escala y desenfoque); se resuelve en la etapa C.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -154,19 +160,20 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
-- [ ] Usa el componente `faq-ayuda` y no redefine su marcado
-- [ ] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
+- [x] Usa el componente `faq-ayuda` y no redefine su marcado
+- [x] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: cta
 
 - **Origen:** `servicios-no-portuarios.html` líneas 322-344
-- **Destino:** `template-parts/pages/servicios-no-portuarios/cta.php`
+- **Destino:** `template-parts/pages/servicios-no-portuarios/cta.php`, `template-parts/components/cta-cotizar.php`
 - **Grupo:** `servicios_no_portuarios_cta`
 - **Skill:** ninguna
 - **Comportamiento:** usa el componente compartido `cta-cotizar` (`titulo`, `bajada`, `boton`, `imagen`). Bloque a dos columnas (texto 886fr, imagen 1454fr) desde 1000 px y apilado en móvil; el título entra palabra por palabra; botón "Contáctanos" con el componente `boton` que lleva al formulario de contacto; la imagen se recorta con `object-cover`, alto mínimo `max(380px, 22.9vw)` en escritorio y `56vw` en móvil, `loading="lazy"`. Mismo texto que el CTA de `servicios-a-la-nave`; cambia la imagen. No es `bloque-acceso`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -179,7 +186,7 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`; pasa por `copam_theme_image`
-- [ ] El botón usa el componente `boton` y `copam_theme_link`; el bloque usa `cta-cotizar` sin redefinirlo
-- [ ] El bloque se apila en móvil sin alturas fijas que corten el texto
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`; pasa por `copam_theme_image`
+- [x] El botón usa el componente `boton` y `copam_theme_link`; el bloque usa `cta-cotizar` sin redefinirlo
+- [x] El bloque se apila en móvil sin alturas fijas que corten el texto
