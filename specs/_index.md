@@ -20,11 +20,11 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | Tarifario                     | [tarifario.md](tarifario.md)                                       | `pages/template-tarifario.php`                    | pendiente |
 | Operación del terminal        | [operacion-del-terminal.md](operacion-del-terminal.md)             | `pages/template-operacion-del-terminal.php`       | pendiente |
 | Depósito Temporal             | [deposito-temporal.md](deposito-temporal.md)                       | `pages/template-deposito-temporal.php`            | pendiente |
-| Servicios a la nave           | [servicios-a-la-nave.md](servicios-a-la-nave.md)                   | `pages/template-servicios-a-la-nave.php`          | pendiente |
-| Servicios a la carga          | [servicios-a-la-carga.md](servicios-a-la-carga.md)                 | `pages/template-servicios-a-la-carga.php`         | pendiente |
-| Servicios al pasajero         | [servicios-al-pasajero.md](servicios-al-pasajero.md)               | `pages/template-servicios-al-pasajero.php`        | pendiente |
-| Servicios especiales          | [servicios-especiales.md](servicios-especiales.md)                 | `pages/template-servicios-especiales.php`         | pendiente |
-| Servicios no portuarios       | [servicios-no-portuarios.md](servicios-no-portuarios.md)           | `pages/template-servicios-no-portuarios.php`      | pendiente |
+| Servicios a la nave           | [servicios-a-la-nave.md](servicios-a-la-nave.md)                   | `pages/template-servicios-a-la-nave.php`          | aplicado  |
+| Servicios a la carga          | [servicios-a-la-carga.md](servicios-a-la-carga.md)                 | `pages/template-servicios-a-la-carga.php`         | aplicado  |
+| Servicios al pasajero         | [servicios-al-pasajero.md](servicios-al-pasajero.md)               | `pages/template-servicios-al-pasajero.php`        | aplicado  |
+| Servicios especiales          | [servicios-especiales.md](servicios-especiales.md)                 | `pages/template-servicios-especiales.php`         | aplicado  |
+| Servicios no portuarios       | [servicios-no-portuarios.md](servicios-no-portuarios.md)           | `pages/template-servicios-no-portuarios.php`      | descartado |
 | Contacto                      | [contacto.md](contacto.md)                                         | `pages/template-contacto.php`                     | pendiente |
 | Canal de hostigamiento sexual | [canal-hostigamiento-sexual.md](canal-hostigamiento-sexual.md)     | `pages/template-canal-hostigamiento-sexual.php`   | pendiente |
 | Reclamos                      | [reclamos.md](reclamos.md)                                         | `pages/template-reclamos.php`                     | pendiente |
@@ -33,4 +33,5 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | Términos y condiciones        | [terminos.md](terminos.md)                                         | `pages/template-terminos.php`                     | pendiente |
 | Política de cookies           | [cookies.md](cookies.md)                                           | `pages/template-cookies.php`                      | pendiente |
 
+| Servicios | [servicios.md](servicios.md) | `pages/template-servicios.php` | aplicado |
 <!-- design-import:paginas:fin -->

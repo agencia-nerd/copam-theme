@@ -9,6 +9,7 @@
 - **Skills usadas:** wp-accordion (faq), wp-helper
 - **Grupo ACF:** Servicios al pasajero
 - **Ubicación:** plantilla pages/template-servicios-al-pasajero.php
+- **Padre:** servicios
 - **Notas de página:**
   - `h1` "Servicios al pasajero" en el hero
   - Título SEO "Servicios al pasajero · COPAM"
@@ -21,7 +22,7 @@
   - Efectos del diseño (entrada con máscara, parallax del hero, pila hero/FAQ con escala y desenfoque, líneas que se dibujan) se reescriben como módulos JS en la etapa C y respetan `prefers-reduced-motion`
   - Esta página sigue la estructura de `servicios-a-la-nave` con una sección extra (`infraestructura`) y una nota bajo "Qué incluye"
   - El script del diseño trae también datos de otras páginas (`panels`, `conn`, `slides`, `relDocs`): no se usan aquí y se descartan
-- **Estado:** pendiente
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -30,7 +31,8 @@
 - **Grupo:** `servicios_al_pasajero_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas con el componente `migas`; imagen a todo el ancho con parallax y zoom al hacer scroll, `loading="eager"` (imagen principal); título `h1`, bajada y botón "Solicitar cotización" con el componente `boton` (variante primario) que lleva al formulario de contacto; tarjeta lateral "Accesos directos" (`h2`) con 5 enlaces ancla a las secciones de la página, flecha que se desplaza 2 px al hover y borde verde `--color-brand`; en escritorio la tarjeta va a la derecha en una columna de 33.3vw y en móvil debajo del texto. Valores sueltos: hover del botón `#07702F` (ya en el componente `boton`). Los destinos de los accesos son anclas fijas (`#que-incluye`, `#infraestructura`, `#tarifas`, `#documentos`, `#faq`).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -46,11 +48,11 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` (primera pantalla); el `alt` viene del campo de imagen
-- [ ] Imagen pasa por `copam_theme_image`; botón y accesos pasan por `copam_theme_link` (componente `boton` para el botón)
-- [ ] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
-- [ ] Los 5 accesos llevan a las secciones `#que-incluye`, `#infraestructura`, `#tarifas`, `#documentos` y `#faq` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` (primera pantalla); el `alt` viene del campo de imagen
+- [x] Imagen pasa por `copam_theme_image`; botón y accesos pasan por `copam_theme_link` (componente `boton` para el botón)
+- [x] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
+- [x] Los 5 accesos llevan a las secciones `#que-incluye`, `#infraestructura`, `#tarifas`, `#documentos` y `#faq` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`
 
 ## Sección: que_incluye
 
@@ -59,7 +61,8 @@
 - **Grupo:** `servicios_al_pasajero_que_incluye`
 - **Skill:** ninguna
 - **Comportamiento:** `id="que-incluye"` como ancla; encabezado h2 con línea que se dibuja (componente `encabezado-seccion`, sin etiqueta ni bajada); tarjetas en rejilla de 2 columnas desde 600 px y 1 en móvil, con aparición escalonada; sin alturas fijas. Bajo la rejilla, una nota de párrafo (opcional: el template la oculta si el campo está vacío, en la etapa ACF).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -73,9 +76,9 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los ítems se recorren con un bucle (no hay una tarjeta por ítem escrita a mano) y la rejilla admite más o menos ítems
-- [ ] El `id="que-incluye"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los ítems se recorren con un bucle (no hay una tarjeta por ítem escrita a mano) y la rejilla admite más o menos ítems
+- [x] El `id="que-incluye"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: infraestructura
 
@@ -84,7 +87,8 @@
 - **Grupo:** `servicios_al_pasajero_infraestructura`
 - **Skill:** ninguna
 - **Comportamiento:** `id="infraestructura"` como ancla; mismo encabezado y misma rejilla de tarjetas que "Qué incluye" (2 columnas desde 600 px, 1 en móvil, aparición escalonada, sin alturas fijas). Las tarjetas de esta sección y las de "Qué incluye" tienen el mismo marcado: ver aviso de componente compartido en el informe.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -97,10 +101,10 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los ítems se recorren con un bucle y la rejilla admite más o menos ítems
-- [ ] Reutiliza el mismo marcado de tarjeta que "Qué incluye" (sin duplicarlo)
-- [ ] El `id="infraestructura"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los ítems se recorren con un bucle y la rejilla admite más o menos ítems
+- [x] Reutiliza el mismo marcado de tarjeta que "Qué incluye" (sin duplicarlo)
+- [x] El `id="infraestructura"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: tarifas
 
@@ -109,7 +113,8 @@
 - **Grupo:** `servicios_al_pasajero_tarifas`
 - **Skill:** ninguna
 - **Comportamiento:** `id="tarifas"`; tabla de dos columnas (Prestación, Unidad de cobro) con líneas que se dibujan entre filas (1 fila en el diseño, debe admitir más); sin montos, solo la unidad de cobro. Debajo, nota con un enlace a la página Tarifario (enlace interno del tema). Semántica: `<table>` con `<th scope>` o lista de definición (decisión de marcado en la etapa C).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -121,23 +126,24 @@
 | `servicios_al_pasajero_tarifas_filas` | repeater | Filas de la tabla (1 en el diseño) | — | sí |
 | `servicios_al_pasajero_tarifas_filas.prestacion` | text | Nombre del servicio cobrado. Recomendado: ~80 caracteres | Servicio al pasajero (servicio estándar, regulado) | sí |
 | `servicios_al_pasajero_tarifas_filas.unidad` | text | Unidad con la que se cobra. Recomendado: ~50 caracteres | Pasajero embarcado o desembarcado | sí |
-| `servicios_al_pasajero_tarifas_nota` | wysiwyg | Nota bajo la tabla, con un enlace a la página Tarifario. Recomendado: ~330 caracteres | Los montos se aplican según el Tarifario de Servicios Portuarios vigente, aprobado por OSITRAN. Consulta el documento oficial en la página de Tarifario. El pago se realiza antes de soltar amarre de la nave de transporte. | no |
+| `servicios_al_pasajero_tarifas_nota` | wysiwyg | Nota bajo la tabla, con un enlace a la página Tarifario. Recomendado: ~330 caracteres | <p>Los montos se aplican según el Tarifario de Servicios Portuarios vigente, aprobado por OSITRAN. Consulta el documento oficial en la página de <a href="/tarifario/">Tarifario</a>. El pago se realiza antes de soltar amarre de la nave de transporte.</p> | no |
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] La tabla tiene encabezados de columna asociados (`<th>`) y se lee bien con lector de pantalla
-- [ ] El enlace "Tarifario" apunta a la página del tema, no a `tarifario.html`
-- [ ] El `id="tarifas"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] La tabla tiene encabezados de columna asociados (`<th>`) y se lee bien con lector de pantalla
+- [x] El enlace "Tarifario" apunta a la página del tema, no a `tarifario.html`
+- [x] El `id="tarifas"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: documentos
 
 - **Origen:** `servicios-al-pasajero.html` líneas 279-306 (datos en 712-721)
-- **Destino:** `template-parts/pages/servicios-al-pasajero/documentos.php`, `template-parts/components/documento-card.php`
+- **Destino:** `template-parts/pages/servicios-al-pasajero/documentos.php`, `template-parts/components/rejilla-documentos.php`, `template-parts/components/documento-card.php`
 - **Grupo:** `servicios_al_pasajero_documentos`
 - **Skill:** ninguna
 - **Comportamiento:** `id="documentos"`; tarjetas en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil (3 tarjetas en el diseño; en nave son 4 columnas); cada tarjeta usa el componente compartido `documento-card` (`etiqueta`, `titulo`, `fecha`, `archivo`): enlace que abre el PDF en pestaña nueva (`copam_theme_link` pone `rel` y el aviso `sr-only`), botón circular verde con flecha de esquina, hover `#07702F` (valor suelto); separadores entre filas y columnas. El diseño muestra "PDF · tamaño" como `title`; el tamaño sale del archivo (a confirmar). Las columnas de la rejilla son del contenedor, no del componente.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -152,20 +158,21 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
-- [ ] La tarjeta usa el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
-- [ ] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
-- [ ] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
+- [x] La tarjeta usa el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
+- [x] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
+- [x] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: faq
 
 - **Origen:** `servicios-al-pasajero.html` líneas 311-342 (datos en 680-686)
-- **Destino:** `template-parts/components/faq-ayuda.php`, `template-parts/accordions/` (acordeón de `wp-accordion`)
+- **Destino:** `template-parts/pages/servicios-al-pasajero/faq.php`, `template-parts/components/faq-ayuda.php`, `template-parts/accordions/faq-ayuda.php`
 - **Grupo:** `servicios_al_pasajero_faq`
 - **Skill:** wp-accordion
 - **Comportamiento:** usa el componente compartido `faq-ayuda` (`titulo`, `descripcion`, `items`) y el encabezado `encabezado-seccion` con etiqueta "Ayuda". `id="faq"` como ancla. Acordeón con `<details>`/`<summary>`; la primera pregunta abre por defecto en el diseño; icono más/menos blanco sobre círculo verde. Esta sección no lleva marcado propio: `wp-accordion` lo construye. En el diseño la FAQ se desliza sobre el hero (pila con escala y desenfoque); se resuelve en la etapa C.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -180,19 +187,20 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
-- [ ] Usa el componente `faq-ayuda` y no redefine su marcado
-- [ ] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
+- [x] Usa el componente `faq-ayuda` y no redefine su marcado
+- [x] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: cta
 
 - **Origen:** `servicios-al-pasajero.html` líneas 344-366
-- **Destino:** `template-parts/components/cta-cotizar.php`
+- **Destino:** `template-parts/pages/servicios-al-pasajero/cta.php`, `template-parts/components/cta-cotizar.php`
 - **Grupo:** `servicios_al_pasajero_cta`
 - **Skill:** ninguna
 - **Comportamiento:** usa el componente compartido `cta-cotizar` (`titulo`, `bajada`, `boton`, `imagen`); bloque a dos columnas (texto 886fr, imagen 1454fr) desde 1000 px y apilado en móvil; el título entra palabra por palabra; botón "Contáctanos" con el componente `boton` que lleva al formulario de contacto; la imagen se recorta con `object-cover`, alto mínimo `max(380px, 22.9vw)` en escritorio y `56vw` en móvil, `loading="lazy"`. Mismo contenido y diseño que en `servicios-a-la-nave`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -205,7 +213,7 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`; pasa por `copam_theme_image`
-- [ ] El bloque usa el componente `cta-cotizar` y el botón el componente `boton` con `copam_theme_link`
-- [ ] El bloque se apila en móvil sin alturas fijas que corten el texto
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`; pasa por `copam_theme_image`
+- [x] El bloque usa el componente `cta-cotizar` y el botón el componente `boton` con `copam_theme_link`
+- [x] El bloque se apila en móvil sin alturas fijas que corten el texto

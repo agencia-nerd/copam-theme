@@ -5,7 +5,8 @@ defined('ABSPATH') || exit;
  * Migas de pan de las páginas internas. El primer ítem lleva el ícono de la casa; el último es la página actual.
  *
  * $args:
- *  - items (array) cada uno ['texto' => string, 'url' => string]; el último sin url
+ *  - items (array) cada uno ['texto' => string, 'url' => string]; el último sin url. Un ítem intermedio sin url
+ *                  (p. ej. "Zona Clientes") se muestra como texto, sin enlace.
  */
 $items = array_values(array_filter((array) ($args['items'] ?? []), static fn($item): bool => trim((string) ($item['texto'] ?? '')) !== ''));
 if (!$items) {
@@ -25,6 +26,8 @@ $ultimo = count($items) - 1;
             <li class="overflow-hidden">
                 <?php if ($actual) : ?>
                     <span class="block text-ink" data-sr="rise" aria-current="page"><?= esc_html($texto) ?></span>
+                <?php elseif (!copam_theme_link_data((string) ($item['url'] ?? ''))) : ?>
+                    <span class="block text-gris-7a" data-sr="rise"><?= esc_html($texto) ?></span>
                 <?php elseif ($i === 0) : ?>
                     <a<?= copam_theme_link_attrs((string) ($item['url'] ?? ''), ['class' => 'flex items-center gap-1.5 text-gris-7a transition-colors duration-[250ms] hover:text-brand']) ?> data-sr="rise">
                         <svg class="block flex-none" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1.75 6.4L7 2l5.25 4.4M3.25 5.3v6.45h2.9V8.6h1.7v3.15h2.9V5.3" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"></path></svg><?= esc_html($texto) ?>
