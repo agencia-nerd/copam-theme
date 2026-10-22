@@ -15,10 +15,10 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | Nosotros                      | [nosotros.md](nosotros.md)                                         | `pages/template-nosotros.php`                     | aplicado  |
 | Sistema Integrado de Gestión  | [sistema-integrado-de-gestion.md](sistema-integrado-de-gestion.md) | `pages/template-sistema-integrado-de-gestion.php` | aplicado  |
 | Compromiso Ambiental          | [compromiso-ambiental.md](compromiso-ambiental.md)                 | `pages/template-compromiso-ambiental.php`         | aplicado  |
-| Normativa OSITRAN             | [normativa-ositran.md](normativa-ositran.md)                       | `pages/template-normativa-ositran.php`            | pendiente |
-| Transparencia                 | [transparencia.md](transparencia.md)                               | `pages/template-transparencia.php`                | pendiente |
-| Tarifario                     | [tarifario.md](tarifario.md)                                       | `pages/template-tarifario.php`                    | pendiente |
-| Operación del terminal        | [operacion-del-terminal.md](operacion-del-terminal.md)             | `pages/template-operacion-del-terminal.php`       | pendiente |
+| Normativa OSITRAN             | [normativa-ositran.md](normativa-ositran.md)                       | `pages/template-normativa-ositran.php`            | aplicado |
+| Transparencia                 | [transparencia.md](transparencia.md)                               | `pages/template-transparencia.php`                | aplicado |
+| Tarifario                     | [tarifario.md](tarifario.md)                                       | `pages/template-tarifario.php`                    | aplicado |
+| Operación del terminal        | [operacion-del-terminal.md](operacion-del-terminal.md)             | `pages/template-operacion-del-terminal.php`       | aplicado |
 | Depósito Temporal             | [deposito-temporal.md](deposito-temporal.md)                       | `pages/template-deposito-temporal.php`            | aplicado |
 | Servicios a la nave           | [servicios-a-la-nave.md](servicios-a-la-nave.md)                   | `pages/template-servicios-a-la-nave.php`          | aplicado  |
 | Servicios a la carga          | [servicios-a-la-carga.md](servicios-a-la-carga.md)                 | `pages/template-servicios-a-la-carga.php`         | aplicado  |

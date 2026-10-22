@@ -12,7 +12,9 @@ return [
     'deposito-temporal' => ['titulo' => 'Depósito Temporal', 'slug' => 'deposito-temporal', 'frente' => false, 'plantilla' => 'pages/template-deposito-temporal.php', 'padre' => ''],
     'home' => ['titulo' => 'Inicio', 'slug' => 'inicio', 'frente' => true, 'plantilla' => '', 'padre' => ''],
     'libro-de-reclamaciones' => ['titulo' => 'Libro de Reclamaciones', 'slug' => 'libro-de-reclamaciones', 'frente' => false, 'plantilla' => 'pages/template-libro-de-reclamaciones.php', 'padre' => ''],
+    'normativa-ositran' => ['titulo' => 'Normativa OSITRAN', 'slug' => 'normativa-ositran', 'frente' => false, 'plantilla' => 'pages/template-normativa-ositran.php', 'padre' => ''],
     'nosotros' => ['titulo' => 'Nosotros', 'slug' => 'nosotros', 'frente' => false, 'plantilla' => 'pages/template-nosotros.php', 'padre' => ''],
+    'operacion-del-terminal' => ['titulo' => 'Operación del terminal', 'slug' => 'operacion-del-terminal', 'frente' => false, 'plantilla' => 'pages/template-operacion-del-terminal.php', 'padre' => ''],
     'reclamos' => ['titulo' => 'Reclamos', 'slug' => 'reclamos', 'frente' => false, 'plantilla' => 'pages/template-reclamos.php', 'padre' => ''],
     'servicios' => ['titulo' => 'Servicios', 'slug' => 'servicios', 'frente' => false, 'plantilla' => 'pages/template-servicios.php', 'padre' => ''],
     'servicios-a-la-carga' => ['titulo' => 'Servicios a la carga', 'slug' => 'servicios-a-la-carga', 'frente' => false, 'plantilla' => 'pages/template-servicios-a-la-carga.php', 'padre' => 'servicios'],
@@ -20,4 +22,6 @@ return [
     'servicios-al-pasajero' => ['titulo' => 'Servicios al pasajero', 'slug' => 'servicios-al-pasajero', 'frente' => false, 'plantilla' => 'pages/template-servicios-al-pasajero.php', 'padre' => 'servicios'],
     'servicios-especiales' => ['titulo' => 'Servicios especiales', 'slug' => 'servicios-especiales', 'frente' => false, 'plantilla' => 'pages/template-servicios-especiales.php', 'padre' => 'servicios'],
     'sistema-integrado-de-gestion' => ['titulo' => 'Sistema Integrado de Gestión', 'slug' => 'sistema-integrado-de-gestion', 'frente' => false, 'plantilla' => 'pages/template-sistema-integrado-de-gestion.php', 'padre' => ''],
+    'tarifario' => ['titulo' => 'Tarifario', 'slug' => 'tarifario', 'frente' => false, 'plantilla' => 'pages/template-tarifario.php', 'padre' => ''],
+    'transparencia' => ['titulo' => 'Transparencia', 'slug' => 'transparencia', 'frente' => false, 'plantilla' => 'pages/template-transparencia.php', 'padre' => ''],
 ];

@@ -103,7 +103,7 @@
 **Criterios de aceptación**
 
 - [x] Cumple los criterios comunes de `_shared.md`
-- [ ] Cada repetidor admite una o más filas; el formulario envía a todas
-- [ ] Ninguna página con formulario guarda su propio correo de destino
-- [ ] El reporte del Canal de hostigamiento llega solo a los correos de `opciones_correos_hostigamiento`
-- [ ] Un correo vacío o inválido no rompe el envío ni se muestra en la página
+- [x] Cada repetidor admite una o más filas; el formulario envía a todas
+- [x] Ninguna página con formulario guarda su propio correo de destino
+- [x] El reporte del Canal de hostigamiento llega solo a los correos de `opciones_correos_hostigamiento`
+- [x] Un correo vacío o inválido no rompe el envío ni se muestra en la página

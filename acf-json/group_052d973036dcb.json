@@ -1,0 +1,1079 @@
+{
+    "key": "group_052d973036dcb",
+    "title": "Operación del terminal",
+    "fields": [
+        {
+            "key": "field_44230eeb56c8f",
+            "label": "Hero",
+            "name": "operacion_del_terminal_hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_b1a149bb9f1eb",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título principal de la página (`h1`). Se muestra en grande sobre la imagen. Recomendado: ~20 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_badfacb1075db",
+                    "label": "Bajada",
+                    "name": "bajada",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Resumen de la página bajo el título. Recomendado: ~240 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_9e408a990dfd9",
+                    "label": "Botón texto",
+                    "name": "boton_texto",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Texto del botón de descarga del REOP. Recomendado: ~20 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_ed334ef2c20a1",
+                    "label": "Botón archivo",
+                    "name": "boton_archivo",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "PDF que descarga el botón (REOP vigente). Si está vacío, el botón se oculta",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_ab0e74d261349",
+                    "label": "Imagen",
+                    "name": "imagen",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Imagen del hero a todo el ancho (grúa celosía en el muelle junto a una nave fluvial cargada con madera). Se recorta para llenar el bloque. Recomendado: 2880 × 1620 px (16:9, a confirmar en la etapa C), mínimo 1440 px de ancho",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_213d506ac1dbb",
+                    "label": "Accesos título",
+                    "name": "accesos_titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la tarjeta lateral de enlaces. Recomendado: ~25 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_b27b221c3bd61",
+                    "label": "Accesos",
+                    "name": "accesos",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Enlaces de la tarjeta lateral (5 en el diseño). Cuatro bajan a secciones de la página y uno va a Tarifario",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_aae5273172d07",
+                            "label": "Enlace",
+                            "name": "enlace",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Texto y destino del acceso. Recomendado: ~40 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_8f712077726e1",
+            "label": "Información",
+            "name": "operacion_del_terminal_informacion",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_29220f1b606e3",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (`h2`). Recomendado: ~30 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_cd06c622cf45a",
+                    "label": "Tarjetas",
+                    "name": "tarjetas",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Tarjetas de información (3 en el diseño)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_aa8c24198a085",
+                            "label": "Título",
+                            "name": "titulo",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Título de la tarjeta (`h3`). Recomendado: ~30 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_710b6098f2ea9",
+                            "label": "Descripción",
+                            "name": "descripcion",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Texto de la tarjeta. Recomendado: ~230 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "rows": 4,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_bfd89084df143",
+                            "label": "Archivo",
+                            "name": "archivo",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "PDF que descarga el botón de la tarjeta. Opcional; si se sube, el botón descarga este archivo y usa el texto de `boton_texto`",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0
+                        },
+                        {
+                            "key": "field_e1f0640bb456a",
+                            "label": "Botón texto",
+                            "name": "boton_texto",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Texto del botón cuando descarga un archivo. Recomendado: ~20 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_96a8c23669f7a",
+                            "label": "Botón",
+                            "name": "boton",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Botón de navegación de la tarjeta (se usa si no hay archivo): texto y destino. Recomendado: ~25 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_3d058c815be67",
+            "label": "Infraestructura",
+            "name": "operacion_del_terminal_infraestructura",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_54b55cc516c6c",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (`h2`). Recomendado: ~45 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_b986006612190",
+                    "label": "Columna elemento",
+                    "name": "columna_elemento",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Encabezado de la primera columna. Recomendado: ~15 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_af50f3fc5d01e",
+                    "label": "Columna capacidad",
+                    "name": "columna_capacidad",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Encabezado de la segunda columna. Recomendado: ~15 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_371337e5d2a5d",
+                    "label": "Grupos",
+                    "name": "grupos",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Grupos de la tabla, cada uno con su fila de título y sus filas de dato (2 en el diseño)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_08fa351f54f47",
+                            "label": "Nombre",
+                            "name": "nombre",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Nombre del grupo; es la fila gris que encabeza sus datos. Recomendado: ~25 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_52034fab702fe",
+                            "label": "Filas",
+                            "name": "filas",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Filas de dato del grupo (5 en el primero, 3 en el segundo)",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Añadir fila",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_81f69c1063974",
+                                    "label": "Elemento",
+                                    "name": "elemento",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Nombre del elemento. Recomendado: ~30 caracteres",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_ff9daa939fb1b",
+                                    "label": "Capacidad",
+                                    "name": "capacidad",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Capacidad o medida, con su unidad. Recomendado: ~15 caracteres",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_b91ebae9af4c5",
+            "label": "Versiones",
+            "name": "operacion_del_terminal_versiones",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_3a33f6c3e4110",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (`h2`). Recomendado: ~70 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_ddc20d5ddaf8f",
+                    "label": "Botón texto",
+                    "name": "boton_texto",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Texto del botón de descarga de cada documento. Recomendado: ~15 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_0ef29ebf05d9f",
+                    "label": "Vigente texto",
+                    "name": "vigente_texto",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Texto de la pastilla de versión vigente. Recomendado: ~10 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_f7ea43edf6b68",
+                    "label": "Vacio",
+                    "name": "vacio",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Mensaje cuando un año no tiene documentos. Recomendado: ~80 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_814a5366e971b",
+                    "label": "Anios",
+                    "name": "anios",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Un ítem del acordeón por año (3 en el diseño)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_1e60c85ece13e",
+                            "label": "Año",
+                            "name": "anio",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Año que titula el ítem. Recomendado: 4 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_4e15603541d47",
+                            "label": "Documentos",
+                            "name": "documentos",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Documentos del año (1 por año en el diseño)",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Añadir fila",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_f54d48b313996",
+                                    "label": "Título",
+                                    "name": "titulo",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Nombre del documento. Recomendado: ~90 caracteres",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_c6f352cd14611",
+                                    "label": "Subtitulo",
+                                    "name": "subtitulo",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Resolución que lo aprueba y fecha. Recomendado: ~70 caracteres",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_0015ae01c7ca5",
+                                    "label": "Vigente",
+                                    "name": "vigente",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "Marca el documento como versión vigente (muestra la pastilla)",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "ui": 1
+                                },
+                                {
+                                    "key": "field_16d7f3f35efd0",
+                                    "label": "Archivo",
+                                    "name": "archivo",
+                                    "aria-label": "",
+                                    "type": "file",
+                                    "instructions": "PDF del documento; lo descarga el botón. Si está vacío, el botón se oculta",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_size": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "allow_in_bindings": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_18221c73e1da0",
+            "label": "Faq",
+            "name": "operacion_del_terminal_faq",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_b088f67179e5e",
+                    "label": "Etiqueta",
+                    "name": "etiqueta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Etiqueta con ícono sobre el título. Recomendado: ~10 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_f9f135a203940",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (`h2`). Recomendado: ~30 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_4c57d331d2899",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Bajada bajo el título. Recomendado: ~100 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_3a471ba6b9bcc",
+                    "label": "Items",
+                    "name": "items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Preguntas y respuestas (5 en el diseño)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_4889971d3bab9",
+                            "label": "Pregunta",
+                            "name": "pregunta",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Pregunta; es el texto que se toca para abrir. Recomendado: ~60 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_4ed05971b5f90",
+                            "label": "Respuesta",
+                            "name": "respuesta",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Respuesta, sin formato. Recomendado: ~320 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "rows": 4,
+                            "new_lines": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_8f511377bd321",
+            "label": "Cta",
+            "name": "operacion_del_terminal_cta",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_06400382bd21a",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título del bloque (`h2`). Se muestra en grande junto a la imagen. Recomendado: ~55 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_22236b5e56f88",
+                    "label": "Bajada",
+                    "name": "bajada",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Frase de apoyo bajo el título. Recomendado: ~110 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_39cfb4afcdd1a",
+                    "label": "Botón",
+                    "name": "boton",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Botón del bloque: texto y destino (formulario de contacto)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_bc1ca0eb615ca",
+                    "label": "Imagen",
+                    "name": "imagen",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Imagen del bloque (montacargas trasladando tubos en el patio); se recorta para llenar la columna. Recomendado: 1800 × 760 px (aprox. 2.35:1), mínimo 900 px de ancho",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "pages/template-operacion-del-terminal.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792700443
+}

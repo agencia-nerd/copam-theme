@@ -1,0 +1,743 @@
+{
+    "key": "group_060adb55fed59",
+    "title": "Normativa OSITRAN",
+    "fields": [
+        {
+            "key": "field_682a0a6f3ffd8",
+            "label": "Hero",
+            "name": "normativa_ositran_hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_8f5d070f4fc5d",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título principal de la página (`h1`). Se muestra en grande. Recomendado: ~15 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_0c7440648282a",
+                    "label": "Bajada",
+                    "name": "bajada",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Resumen de la página bajo el título. Recomendado: ~180 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_73c66da82b95e",
+                    "label": "Botón",
+                    "name": "boton",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Botón principal: texto y destino (portal de OSITRAN, pestaña nueva)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_88e9432698c0c",
+                    "label": "Accesos título",
+                    "name": "accesos_titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la tarjeta lateral de enlaces. Recomendado: ~25 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_596cd2261e4f0",
+                    "label": "Accesos",
+                    "name": "accesos",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Enlaces de la tarjeta lateral (5 en el diseño). Cada uno baja a una sección de la página o lleva a otra página",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_d61df4aee8b56",
+                            "label": "Enlace",
+                            "name": "enlace",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Texto y destino del acceso. Recomendado: ~35 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_0922d46fc0514",
+            "label": "Normativa",
+            "name": "normativa_ositran_normativa",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5056787d06293",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (`h2`). Recomendado: ~30 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_ea2c1dc4ada62",
+                    "label": "Grupos",
+                    "name": "grupos",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Grupos de documentos desplegables (5 en el diseño)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_9337732dc95b7",
+                            "label": "Título",
+                            "name": "titulo",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Nombre del grupo, visible en la cabecera del desplegable. Recomendado: ~70 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_9c5cbad7622e5",
+                            "label": "Estado vacio",
+                            "name": "estado_vacio",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Texto del contador cuando el grupo no tiene documentos. Si hay documentos se ignora. Recomendado: ~20 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_abe989458cbef",
+                            "label": "Enlace extra",
+                            "name": "enlace_extra",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Enlace opcional al final del grupo (en el diseño, \"Ver Operación del terminal\" en el grupo del Reglamento de Operaciones). Recomendado: ~35 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        },
+                        {
+                            "key": "field_1495dfed3261a",
+                            "label": "Documentos",
+                            "name": "documentos",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Documentos del grupo (5 en el primero; el último grupo no tiene)",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Añadir fila",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_4ae73fe229b1d",
+                                    "label": "Título",
+                                    "name": "titulo",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Nombre del documento o norma. Recomendado: ~90 caracteres",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_d3ab93f7597f1",
+                                    "label": "Detalle",
+                                    "name": "detalle",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Número de resolución, fecha o descripción bajo el título. Recomendado: ~160 caracteres",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_56f9d9bb3aca7",
+                                    "label": "Vigente",
+                                    "name": "vigente",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "Marca el documento con la insignia \"Vigente\"",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "ui": 1
+                                },
+                                {
+                                    "key": "field_096dc3acbabd9",
+                                    "label": "Archivo",
+                                    "name": "archivo",
+                                    "aria-label": "",
+                                    "type": "file",
+                                    "instructions": "PDF del documento (se sube a la biblioteca de medios). Si el documento está en otro sitio, usa el campo `enlace_externo`",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_size": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "allow_in_bindings": 0
+                                },
+                                {
+                                    "key": "field_dcbc8bb6cf2b4",
+                                    "label": "Enlace externo",
+                                    "name": "enlace_externo",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "Dirección del documento cuando no se sube a la web (en el diseño, el RETA en el portal de OSITRAN). Solo se usa si no hay archivo",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_010b91b51cd9d",
+            "label": "Contrato",
+            "name": "normativa_ositran_contrato",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_52a942eccb82e",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (`h2`). Recomendado: ~35 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_8423210389310",
+                    "label": "Descripción",
+                    "name": "descripcion",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Párrafo bajo el título que resume el contrato. Recomendado: ~320 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_ff16ec6b55e10",
+                    "label": "Items",
+                    "name": "items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Documentos del contrato, una tarjeta por documento (3 en el diseño)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_55dce7ccc420b",
+                            "label": "Etiqueta",
+                            "name": "etiqueta",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Tipo de documento, sobre el título. Recomendado: ~15 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_60a6bc2ba91c2",
+                            "label": "Título",
+                            "name": "titulo",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Nombre del documento (`h3`). Recomendado: ~60 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_4632610c60d55",
+                            "label": "Fecha",
+                            "name": "fecha",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Fecha, vigencia o fuente, tal como se muestra. Recomendado: ~45 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_f64c69d89cff0",
+                            "label": "Archivo",
+                            "name": "archivo",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Enlace al documento (PDF externo del portal de OSITRAN, pestaña nueva)",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        }
+                    ]
+                },
+                {
+                    "key": "field_c136077380674",
+                    "label": "Enlace",
+                    "name": "enlace",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Enlace final al portal de OSITRAN: texto y destino. Recomendado: ~80 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0
+                }
+            ]
+        },
+        {
+            "key": "field_10dd8a8305628",
+            "label": "Documentos",
+            "name": "normativa_ositran_documentos",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_12ef7c3b269a5",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (`h2`). Recomendado: ~35 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_abb7a9b02eaf1",
+                    "label": "Items",
+                    "name": "items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Documentos relacionados, una tarjeta por documento (3 en el diseño)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_26274c16dcdda",
+                            "label": "Etiqueta",
+                            "name": "etiqueta",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Tipo de documento, sobre el título. Recomendado: ~15 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_71146314232ef",
+                            "label": "Título",
+                            "name": "titulo",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Nombre del documento (`h3`). Recomendado: ~80 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_28dc157602f8b",
+                            "label": "Fecha",
+                            "name": "fecha",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Vigencia, fecha de aprobación o resolución, tal como se muestra. Recomendado: ~70 caracteres",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_7ee3e2974f53e",
+                            "label": "Archivo",
+                            "name": "archivo",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "PDF del documento (se sube a la biblioteca de medios)",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "pages/template-normativa-ositran.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792700443
+}

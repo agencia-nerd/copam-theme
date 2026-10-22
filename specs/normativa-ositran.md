@@ -27,7 +27,7 @@
   - Efectos del diseño (entrada con máscara, líneas que se dibujan, botón con texto deslizante) son comportamiento visual: se reescriben como módulos JS en la etapa C y respetan `prefers-reduced-motion`
   - Código del diseño sin uso en esta página (carrusel `slides`, `panels`, `conn`, `faqs`, `includes`, `tarifas`, `relDocs`, `docs`, `services`): se ignora
   - Componentes compartidos usados: `migas`, `boton`, `titulo-linea`, `documento-card`, `enlace-flecha`
-- **Estado:** pendiente
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -36,7 +36,8 @@
 - **Grupo:** `normativa_ositran_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas con el componente `migas`; título `h1`, bajada y botón "Ir al portal OSITRAN" con el componente `boton` (variante primario) que abre el portal externo en pestaña nueva (`copam_theme_link` pone `rel` y el aviso `sr-only`); no hay imagen en el hero del diseño; tarjeta lateral "Accesos directos" (`h2`) con 5 enlaces: 3 anclas a secciones de esta página y 2 a páginas del tema (Tarifario, Transparencia), flecha que se desplaza 2 px al hover y borde verde `--color-brand`; en escritorio la tarjeta va a la derecha en una columna de 33.3vw y en móvil debajo del texto. Valores sueltos: hover del botón `#07702F` (ya en el componente `boton`). Anclas fijas: `#normativa`, `#contrato`, `#documentos`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -51,20 +52,21 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Botón con el componente `boton` y `copam_theme_link`; el enlace externo abre en pestaña nueva con `rel` seguro y aviso `sr-only`
-- [ ] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
-- [ ] Los 3 accesos ancla llevan a `#normativa`, `#contrato` y `#documentos` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`; Tarifario y Transparencia apuntan a las páginas del tema
-- [ ] La tarjeta lateral se apila bajo el texto en móvil sin alturas fijas
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Botón con el componente `boton` y `copam_theme_link`; el enlace externo abre en pestaña nueva con `rel` seguro y aviso `sr-only`
+- [x] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
+- [x] Los 3 accesos ancla llevan a `#normativa`, `#contrato` y `#documentos` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`; Tarifario y Transparencia apuntan a las páginas del tema
+- [x] La tarjeta lateral se apila bajo el texto en móvil sin alturas fijas
 
 ## Sección: normativa
 
 - **Origen:** `normativa-ositran.html` líneas 207-259 (datos en `groups`, líneas 686-706 del script)
-- **Destino:** `template-parts/pages/normativa-ositran/normativa.php`, `template-parts/accordions/` (acordeón de `wp-accordion`)
+- **Destino:** `template-parts/pages/normativa-ositran/normativa.php`, `template-parts/accordions/documentos-grupos.php`
 - **Grupo:** `normativa_ositran_normativa`
 - **Skill:** wp-accordion
 - **Comportamiento:** `id="normativa"` como ancla; encabezado con el componente `titulo-linea`. Lista de 5 grupos desplegables (acordeón de `wp-accordion` sobre `<details>`/`<summary>`; esta sección no lleva marcado propio): cada cabecera muestra el nombre del grupo, el contador y un ícono más/menos blanco sobre círculo verde. El contador es automático: "N documentos" (o "1 documento") según los documentos cargados; si el grupo no tiene documentos muestra el texto del campo `estado_vacio` ("Por confirmar") y, al abrirse, el mensaje fijo "Los documentos de esta sección se publicarán próximamente." Solo el primer grupo abre por defecto. El diseño abre además los grupos 3 y 4 (resoluciones tarifarias) cuando la URL trae `?grupo=resoluciones`; se conserva como comportamiento del acordeón (a confirmar en la etapa C). Cada documento es una fila con título, detalle, insignia fija "Vigente" cuando está marcado y botón "Descargar PDF" (texto fijo, con texto deslizante al hover, `#07702F` valor suelto) que abre el PDF en pestaña nueva (`copam_theme_link`, tipo `file` para PDF local). El grupo "Reglamento de Operaciones (APN)" lleva al final el enlace "Ver Operación del terminal" con el componente `enlace-flecha` hacia la página Operación del terminal. El título del PDF en el diseño muestra "PDF · tamaño" (a confirmar si el tamaño sale del archivo). Un documento (RETA) apunta a un PDF externo de OSITRAN. Decisión: los documentos son un repeater anidado dentro del repeater de grupos (la lista de 5 grupos y sus documentos es contenido editable por el cliente).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -84,14 +86,14 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
-- [ ] Encabezado con el componente `titulo-linea`; el `id="normativa"` existe y el scroll deja el encabezado visible bajo el header fijo
-- [ ] Grupos y documentos se recorren con bucles (sin una fila escrita a mano por ítem); un grupo sin documentos muestra su `estado_vacio` y el mensaje de próximamente
-- [ ] El contador dice "1 documento" o "N documentos" según los cargados, sin escribirlo a mano
-- [ ] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
-- [ ] Solo el primer grupo abre por defecto; `?grupo=resoluciones` abre los grupos de resoluciones tarifarias (si se mantiene en la etapa C)
-- [ ] El enlace "Ver Operación del terminal" apunta a la página del tema, no a `operacion-del-terminal.html`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
+- [x] Encabezado con el componente `titulo-linea`; el `id="normativa"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Grupos y documentos se recorren con bucles (sin una fila escrita a mano por ítem); un grupo sin documentos muestra su `estado_vacio` y el mensaje de próximamente
+- [x] El contador dice "1 documento" o "N documentos" según los cargados, sin escribirlo a mano
+- [x] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
+- [x] Solo el primer grupo abre por defecto; `?grupo=resoluciones` abre los grupos de resoluciones tarifarias (si se mantiene en la etapa C)
+- [x] El enlace "Ver Operación del terminal" apunta a la página del tema, no a `operacion-del-terminal.html`
 
 ## Sección: contrato
 
@@ -100,7 +102,8 @@
 - **Grupo:** `normativa_ositran_contrato`
 - **Skill:** ninguna
 - **Comportamiento:** `id="contrato"` como ancla (la usan el menú y el pie del sitio); encabezado con el componente `titulo-linea`; párrafo introductorio; tarjetas con el componente compartido `documento-card` (etiqueta, `h3`, fecha y botón circular verde con flecha de esquina) en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil, con separadores entre filas y columnas; cada tarjeta es un enlace a un PDF externo de OSITRAN que abre en pestaña nueva (`copam_theme_link`); al hover el botón pasa a `#07702F` (valor suelto) y la flecha sale por una esquina y entra por otra. Al final, enlace con flecha (componente `enlace-flecha`) al portal de OSITRAN, en pestaña nueva.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -117,12 +120,12 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los enlaces pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
-- [ ] La tarjeta es el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
-- [ ] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
-- [ ] Encabezado con `titulo-linea`; el `id="contrato"` existe (el menú del sitio enlaza a `normativa-ositran#contrato`) y el scroll deja el encabezado visible bajo el header fijo
-- [ ] El enlace final usa el componente `enlace-flecha`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los enlaces pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
+- [x] La tarjeta es el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
+- [x] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
+- [x] Encabezado con `titulo-linea`; el `id="contrato"` existe (el menú del sitio enlaza a `normativa-ositran#contrato`) y el scroll deja el encabezado visible bajo el header fijo
+- [x] El enlace final usa el componente `enlace-flecha`
 
 ## Sección: documentos
 
@@ -131,7 +134,8 @@
 - **Grupo:** `normativa_ositran_documentos`
 - **Skill:** ninguna
 - **Comportamiento:** `id="documentos"` como ancla; encabezado con el componente `titulo-linea`; mismas tarjetas `documento-card` y misma rejilla que la sección contrato (3 columnas desde 1180 px, 2 desde 600 px, 1 en móvil), pero cada tarjeta abre un PDF local de COPAM u OSITRAN subido a la biblioteca de medios, en pestaña nueva (`copam_theme_link`). El diseño muestra "PDF · tamaño" como `title` de la tarjeta; el tamaño sale del archivo (a confirmar). Valor suelto: hover `#07702F`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -146,8 +150,8 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
-- [ ] La tarjeta es el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
-- [ ] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
-- [ ] Encabezado con `titulo-linea`; el `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los enlaces a PDF pasan por `copam_theme_link`, con `rel` seguro y aviso de pestaña nueva
+- [x] La tarjeta es el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
+- [x] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
+- [x] Encabezado con `titulo-linea`; el `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo

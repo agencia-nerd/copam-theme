@@ -20,10 +20,10 @@
   - Los enlaces `contacto.html#formulario`, `deposito-temporal.html#tarifas` y `operacion-del-terminal.html` pasan a las páginas del tema
   - Todo PDF es un campo `file` (tarifarios, reglamentos, políticas)
   - Componentes compartidos: `migas`, `boton`, `encabezado-seccion`, `documento-card`, `faq-ayuda`, `cta-cotizar`
-  - Componente nuevo propuesto `documentos-por-anio` (grupos en acordeón con filas de documento), usado 2 veces en esta página (`versiones` y `reta`)
+  - Se reutiliza el acordeón `documentos-grupos` (template-parts/accordions/) en `versiones` y `reta`; no se crea el componente `documentos-por-anio` que se había propuesto
   - El script del diseño trae datos sin uso en el HTML (`tarifas`, `includes`, `relDocs`, `slides`, `panels`, `conn`, `docs`, `srv`, `news`): se ignoran
   - El toast de mantenimiento queda fuera de la página (es del sitio)
-- **Estado:** pendiente
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -32,7 +32,8 @@
 - **Grupo:** `tarifario_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas con el componente `migas` (Inicio > Zona Clientes > Tarifario, el último sin enlace); `h1` y bajada; botón verde "Descargar tarifario" con el componente `boton` (variante primario) que abre el PDF vigente en pestaña nueva (el diseño lo muestra con `title` "PDF · 410 KB", que el tema puede calcular del archivo); tarjeta lateral "Accesos directos" (`h2`) con 5 enlaces: 2 anclas de la página (`#reta`, `#faq`), 2 páginas internas del tema y 1 externo (Seguimiento de carga, pestaña nueva); flecha de esquina que se desplaza al hover, borde verde `--color-brand`; en escritorio la tarjeta va a la derecha en una columna de 33.3vw y en móvil se apila bajo el texto. El diseño no muestra imagen en este hero (solo un bloque decorativo vacío con parallax), por eso no se pide campo de imagen. Hover del botón `#07702F` (valor suelto). Sin alturas fijas.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -48,21 +49,22 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Un solo `h1` en el hero; la tarjeta lateral usa `h2`
-- [ ] El botón pasa por el componente `boton`; el PDF abre con `rel` seguro y aviso de pestaña nueva
-- [ ] Los 5 accesos pasan por `copam_theme_link`; los internos apuntan a las páginas del tema (no a `.html`) y el externo abre en pestaña nueva
-- [ ] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
-- [ ] Los accesos ancla llevan a `#reta` y `#faq` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`; el foco con teclado muestra el mismo cambio que el hover
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Un solo `h1` en el hero; la tarjeta lateral usa `h2`
+- [x] El botón pasa por el componente `boton`; el PDF abre con `rel` seguro y aviso de pestaña nueva
+- [x] Los 5 accesos pasan por `copam_theme_link`; los internos apuntan a las páginas del tema (no a `.html`) y el externo abre en pestaña nueva
+- [x] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
+- [x] Los accesos ancla llevan a `#reta` y `#faq` con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`; el foco con teclado muestra el mismo cambio que el hover
 
 ## Sección: versiones
 
 - **Origen:** `tarifario.html` líneas 208-257
-- **Destino:** `template-parts/pages/tarifario/versiones.php, template-parts/components/documentos-por-anio.php`
+- **Destino:** `template-parts/pages/tarifario/versiones.php, template-parts/accordions/documentos-grupos.php`
 - **Grupo:** `tarifario_versiones`
 - **Skill:** wp-accordion
-- **Comportamiento:** `id="versiones"` como ancla (destino de los enlaces "Ver versiones anteriores" de las páginas de servicios); `h2` con línea que se dibuja (componente `encabezado-seccion`, sin etiqueta ni bajada). Lista de años en acordeón: cada año es una fila con el año a la izquierda, el contador de documentos ("2 documentos", "1 documento"; el tema lo calcula) y un botón circular verde con más/menos; el primer año abre por defecto. Dentro, una fila por documento con título, subtítulo, etiqueta "Vigente" opcional y botón verde "Descargar PDF" (abre en pestaña nueva, `title` "PDF · 520 KB" calculado del archivo; hover `#07702F`, valor suelto). Si un año no tiene documentos, se muestra el mensaje de sección vacía. Esta sección no lleva marcado propio de acordeón: `wp-accordion` lo construye con `<details>`/`<summary>`; el contenido de cada fila lo pinta el componente nuevo `documentos-por-anio`, compartido con la sección `reta`. Años del diseño: 2026 (2 documentos), 2023 (2), 2022 (1), 2021 (1), del más reciente al más antiguo. Separadores entre años; sin alturas fijas.
-- **Estado:** pendiente
+- **Comportamiento:** `id="versiones"` como ancla (destino de los enlaces "Ver versiones anteriores" de las páginas de servicios); `h2` con línea que se dibuja (componente `titulo-linea`). Lista de años en acordeón: cada año es una fila con el año a la izquierda, el contador de documentos ("2 documentos", "1 documento"; el tema lo calcula) y un botón circular verde con más/menos; el primer año abre por defecto. Dentro, una fila por documento con título, subtítulo, etiqueta "Vigente" opcional y botón verde "Descargar PDF" (abre en pestaña nueva, `title` "PDF · 520 KB" calculado del archivo; hover `#07702F`, valor suelto). Si un año no tiene documentos, se muestra el mensaje de sección vacía. Esta sección no lleva marcado propio de acordeón: `wp-accordion` lo construye con `<details>`/`<summary>`; el contenido de cada fila lo pinta el acordeón `documentos-grupos` (template-parts/accordions/), compartido con la sección `reta`. Años del diseño: 2026 (2 documentos), 2023 (2), 2022 (1), 2021 (1), del más reciente al más antiguo. Separadores entre años; sin alturas fijas.
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -81,21 +83,22 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Usa `wp-accordion` (`<details>`/`<summary>`) y pasa sus criterios (`references/acceptance.md` de la skill)
-- [ ] Los años y documentos se recorren con bucles; el contador "N documento(s)" se calcula, no se escribe a mano
-- [ ] Los botones "Descargar PDF" abren con `rel` seguro y aviso de pestaña nueva
-- [ ] El `id="versiones"` existe y el scroll deja el encabezado visible bajo el header fijo; `servicios-especiales` y las demás páginas de servicios enlazan a `tarifario#versiones`
-- [ ] El componente `documentos-por-anio` está documentado en `_shared.md` con sus argumentos
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Usa `wp-accordion` (`<details>`/`<summary>`) y pasa sus criterios (`references/acceptance.md` de la skill)
+- [x] Los años y documentos se recorren con bucles; el contador "N documento(s)" se calcula, no se escribe a mano
+- [x] Los botones "Descargar PDF" abren con `rel` seguro y aviso de pestaña nueva
+- [x] El `id="versiones"` existe y el scroll deja el encabezado visible bajo el header fijo; `servicios-especiales` y las demás páginas de servicios enlazan a `tarifario#versiones`
+- [x] Reutiliza `documentos-grupos` (template-parts/accordions/documentos-grupos.php); no se crea `documentos-por-anio`
 
 ## Sección: reta
 
 - **Origen:** `tarifario.html` líneas 259-308
-- **Destino:** `template-parts/pages/tarifario/reta.php, template-parts/components/documentos-por-anio.php`
+- **Destino:** `template-parts/pages/tarifario/reta.php, template-parts/accordions/documentos-grupos.php`
 - **Grupo:** `tarifario_reta`
 - **Skill:** wp-accordion
-- **Comportamiento:** `id="reta"` como ancla (la usan el acceso directo del hero, el menú y el pie: "Reglamento de Tarifas y Precios"); `h2` con línea (componente `encabezado-seccion`). Mismo acordeón y mismo componente `documentos-por-anio` que `versiones`; aquí 2 grupos: "2026" (Reglamento V 5.3, con etiqueta "Vigente") y "Anterior" (V 5.2); el primero abre por defecto. El nombre del grupo no tiene que ser un año. Sin marcado propio de acordeón (lo construye `wp-accordion`).
-- **Estado:** pendiente
+- **Comportamiento:** `id="reta"` como ancla (la usan el acceso directo del hero, el menú y el pie: "Reglamento de Tarifas y Precios"); `h2` con línea (componente `titulo-linea`). Mismo acordeón `documentos-grupos` que `versiones`; aquí 2 grupos: "2026" (Reglamento V 5.3, con etiqueta "Vigente") y "Anterior" (V 5.2); el primero abre por defecto. El nombre del grupo no tiene que ser un año. Sin marcado propio de acordeón (lo construye `wp-accordion`).
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -114,11 +117,11 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Usa `wp-accordion` y pasa sus criterios (`references/acceptance.md` de la skill)
-- [ ] Reutiliza `documentos-por-anio`; no repite su marcado
-- [ ] Los botones "Descargar PDF" abren con `rel` seguro y aviso de pestaña nueva
-- [ ] El `id="reta"` existe, el scroll deja el encabezado visible bajo el header fijo y `tarifario#reta` funciona desde el menú y el pie
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Usa `wp-accordion` y pasa sus criterios (`references/acceptance.md` de la skill)
+- [x] Reutiliza `documentos-grupos`; no repite su marcado
+- [x] Los botones "Descargar PDF" abren con `rel` seguro y aviso de pestaña nueva
+- [x] El `id="reta"` existe, el scroll deja el encabezado visible bajo el header fijo y `tarifario#reta` funciona desde el menú y el pie
 
 ## Sección: documentos
 
@@ -127,7 +130,8 @@
 - **Grupo:** `tarifario_documentos`
 - **Skill:** ninguna
 - **Comportamiento:** `id="documentos"`; `h2` con línea (componente `encabezado-seccion`); tarjetas con el componente `documento-card` en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil; cada tarjeta es un enlace a un PDF en pestaña nueva con etiqueta, título, fecha y botón circular verde con flecha de esquina (hover `#07702F`, valor suelto); separadores entre filas y columnas. Mismo bloque que `servicios-especiales` (documentos). En el diseño las etiquetas (Tarifario, Política, Reglamento) salen en gris por defecto (`#F2F2F2` / `#2B2B2B`), porque el mapa de colores solo cubre las categorías de comunicados.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -142,20 +146,21 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los enlaces a PDF llevan `rel` seguro y aviso de pestaña nueva (lo arma el componente `documento-card`)
-- [ ] La tarjeta es el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
-- [ ] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
-- [ ] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los enlaces a PDF llevan `rel` seguro y aviso de pestaña nueva (lo arma el componente `documento-card`)
+- [x] La tarjeta es el componente `documento-card` con `$args` y la rejilla admite más o menos tarjetas
+- [x] El hover y el foco con teclado muestran el mismo cambio (botón y flecha) y respetan `prefers-reduced-motion`
+- [x] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: faq
 
 - **Origen:** `tarifario.html` líneas 342-373
-- **Destino:** `template-parts/components/faq-ayuda.php, template-parts/accordions/`
+- **Destino:** `template-parts/pages/tarifario/faq.php`, `template-parts/components/faq-ayuda.php`, `template-parts/accordions/faq-ayuda.php`
 - **Grupo:** `tarifario_faq`
 - **Skill:** wp-accordion
 - **Comportamiento:** usa el componente compartido `faq-ayuda` (`titulo`, `descripcion`, `items`) y `encabezado-seccion` con etiqueta "Ayuda". `id="faq"` como ancla (la usa el acceso directo del hero). Acordeón con `<details>`/`<summary>`; la primera pregunta abre por defecto en el diseño; icono más/menos blanco sobre círculo verde. Esta sección no lleva marcado propio: `wp-accordion` lo construye. En el diseño la FAQ se desliza sobre la sección anterior (pila con escala y desenfoque, espacio `faqHold`); se resuelve en la etapa C. Mismo bloque que las otras páginas de servicios.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -170,10 +175,10 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
-- [ ] Usa el componente `faq-ayuda` y no redefine su marcado
-- [ ] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`references/acceptance.md` de la skill)
+- [x] Usa el componente `faq-ayuda` y no redefine su marcado
+- [x] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: cta
 
@@ -182,7 +187,8 @@
 - **Grupo:** `tarifario_cta`
 - **Skill:** ninguna
 - **Comportamiento:** usa el componente compartido `cta-cotizar` (`titulo`, `bajada`, `boton`, `imagen`). Bloque a dos columnas (texto 886fr, imagen 1454fr) desde 1000 px y apilado en móvil; el título entra palabra por palabra; botón "Solicitar cotización" con `boton` hacia el formulario de contacto; imagen con `object-cover`, alto mínimo `max(380px, 22.9vw)` en escritorio y `56vw` en móvil, `loading="lazy"`. Aquí el texto es propio ("¿Necesitas una cotización?"), distinto al de las otras páginas de servicios; el componente es el mismo.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -195,7 +201,7 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`; pasa por `copam_theme_image`
-- [ ] El bloque usa el componente `cta-cotizar` y su botón `boton` con `copam_theme_link`
-- [ ] El bloque se apila en móvil sin alturas fijas que corten el texto
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="lazy"`; pasa por `copam_theme_image`
+- [x] El bloque usa el componente `cta-cotizar` y su botón `boton` con `copam_theme_link`
+- [x] El bloque se apila en móvil sin alturas fijas que corten el texto

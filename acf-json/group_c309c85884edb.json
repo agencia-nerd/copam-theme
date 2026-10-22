@@ -1,0 +1,374 @@
+{
+    "key": "group_c309c85884edb",
+    "title": "Transparencia",
+    "fields": [
+        {
+            "key": "field_02d6167093c71",
+            "label": "Hero",
+            "name": "transparencia_hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_ac445dc19cf2b",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título principal de la página (h1). Se muestra en grande bajo las migas. Recomendado: ~20 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_4d98db80531f6",
+                    "label": "Bajada",
+                    "name": "bajada",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Texto de presentación bajo el título. Recomendado: ~160 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_9684a2a7a9775",
+                    "label": "Botón texto",
+                    "name": "boton_texto",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Texto del botón principal. Lleva a la sección de solicitud. Recomendado: ~35 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_aaa063761012f",
+                    "label": "Accesos título",
+                    "name": "accesos_titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la tarjeta lateral de accesos (h2). Recomendado: ~25 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_2f29c4e76663f",
+                    "label": "Accesos",
+                    "name": "accesos",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Enlaces de la tarjeta lateral. 5 ítems; cada uno es una fila con texto y flecha.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_1c4c51dacf83a",
+                            "label": "Texto",
+                            "name": "texto",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Texto del enlace. Recomendado: ~35 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_ea4a3b636d409",
+                            "label": "Enlace",
+                            "name": "enlace",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Destino del enlace: ancla de esta página o página del tema",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_e3664d37c6a48",
+            "label": "Información",
+            "name": "transparencia_informacion",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_7579ecbc1aa4a",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (h2, con línea). Recomendado: ~35 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_17113520a3163",
+                    "label": "Filas",
+                    "name": "filas",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Filas de información publicada. 6 ítems.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Añadir fila",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_94b303bbfc849",
+                            "label": "Título",
+                            "name": "titulo",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Nombre del documento o información. Recomendado: ~80 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_9df58ae604e6b",
+                            "label": "Texto enlace",
+                            "name": "texto_enlace",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Texto del enlace de la fila. Recomendado: ~45 caracteres",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_8924c20614446",
+                            "label": "Enlace",
+                            "name": "enlace",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Página del tema a la que lleva la fila",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_df23c2da89421",
+            "label": "Solicitud",
+            "name": "transparencia_solicitud",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_f719d3722b0f8",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título de la sección (h2, con línea). Recomendado: ~55 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_144985ed9b7aa",
+                    "label": "Nota envio",
+                    "name": "nota_envio",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Aviso bajo el formulario que indica a dónde se envía. Va antes del correo, que se imprime aparte. Recomendado: ~35 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "pages/template-transparencia.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792700443
+}
