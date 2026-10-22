@@ -1,0 +1,127 @@
+{
+    "key": "group_d1dafdfe39abf",
+    "title": "Política de cookies",
+    "fields": [
+        {
+            "key": "field_45b02a42e4e4d",
+            "label": "Hero",
+            "name": "cookies_hero",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_dfd9e558ea8cc",
+                    "label": "Título",
+                    "name": "titulo",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Título principal de la página (`h1`). Se muestra en grande bajo las migas. Recomendado: ~15 caracteres",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_2ff4a63dc941a",
+                    "label": "Actualizacion",
+                    "name": "actualizacion",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Línea con la fecha de última actualización de la política. Se muestra bajo el título. Recomendado: ~50 caracteres",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_39605079ad038",
+            "label": "Contenido",
+            "name": "cookies_contenido",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_a0116b11dd93d",
+                    "label": "Texto",
+                    "name": "texto",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Texto completo de la política de cookies: títulos de sección (nivel 2), párrafos, listas, enlaces y, si hace falta, una tabla de cookies. Se muestra como columna de lectura bajo el hero. Recomendado: secciones numeradas como en el diseño (Qué son las cookies, Cookies que utilizamos, Cómo gestionar las cookies)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "pages/template-cookies.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792705639
+}

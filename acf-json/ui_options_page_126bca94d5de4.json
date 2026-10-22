@@ -1,0 +1,26 @@
+{
+    "key": "ui_options_page_126bca94d5de4",
+    "title": "Archivo de comunicado",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Archivo de comunicado",
+    "menu_slug": "archivo-de-comunicado",
+    "parent_slug": "ajustes-del-sitio",
+    "advanced_configuration": false,
+    "icon_url": "",
+    "menu_title": "Archivo de comunicado",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "menu_icon": {
+        "type": "dashicons",
+        "value": "dashicons-admin-generic"
+    },
+    "update_button": "Guardar cambios",
+    "updated_message": "Cambios guardados",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": false,
+    "modified": 1792707511
+}

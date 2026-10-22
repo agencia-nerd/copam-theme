@@ -2,18 +2,16 @@
 defined('ABSPATH') || exit;
 
 /**
- * Portada · comunicados: los tres más recientes como filas. Por ahora son tres comunicados de
- * muestra fijos; al conectar la consulta se reemplaza este arreglo por las entradas reales.
+ * Portada · comunicados: las tres entradas más recientes como filas, cada una enlazada a su comunicado.
  * El encabezado y el botón leen el grupo `home_comunicados` (ACF; contenido inicial en inc/acf/seed/home.php).
  */
 $sec = get_field('home_comunicados') ?: [];
-$comunicados = [
-    ['categoria' => 'Operativo', 'titulo' => 'Atención restringida en ventanilla durante los feriados del 28 y 29 de julio', 'fecha' => '18 jul 2026'],
-    ['categoria' => 'Noticias', 'titulo' => 'Publicación del tarifario vigente 2026 aprobado por OSITRAN', 'fecha' => '02 jul 2026'],
-    ['categoria' => 'Noticias', 'titulo' => 'Publicación del Plan Maestro APN 2025 para el TPY-NR', 'fecha' => '03 jun 2026'],
-];
+$comunicados = get_posts([
+    'numberposts'         => 3,
+    'ignore_sticky_posts' => true,
+    'no_found_rows'       => true,
+]);
 $boton = $sec['boton'] ?? null;
-$url_comunicados = (string) ($boton['url'] ?? '');
 ?>
 <section class="relative z-[1] bg-white pt-[clamp(72px,5.2vw,100px)] pb-[clamp(96px,7.8vw,150px)]" aria-label="<?= esc_attr((string) ($sec['titulo'] ?? '')) ?>">
     <?php get_template_part('template-parts/components/encabezado-seccion', null, [
@@ -30,8 +28,7 @@ $url_comunicados = (string) ($boton['url'] ?? '');
                 <span class="absolute top-0 bottom-0 left-0 w-px origin-top bg-line" data-sr="lineY" data-sr-delay="120"></span>
                 <span class="absolute top-0 right-0 bottom-0 w-px origin-top bg-line" data-sr="lineY" data-sr-delay="120"></span>
                 <?php foreach ($comunicados as $i => $c) :
-                    // Cada fila enlaza a su comunicado; hasta conectar las entradas reales, a la página de comunicados.
-                    get_template_part('template-parts/components/comunicado-card', null, $c + ['url' => $url_comunicados, 'separador' => $i > 0]);
+                    get_template_part('template-parts/components/comunicado-card', null, copam_theme_comunicado($c) + ['separador' => $i > 0]);
                 endforeach; ?>
             </div>
         </div>

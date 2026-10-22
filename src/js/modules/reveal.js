@@ -43,6 +43,9 @@ function revelar(el) {
     }
 }
 
+// Observadores compartidos: los crea iniciarRevelado() y los reutiliza observarRevelado() con contenido nuevo.
+let observadores = null;
+
 export function iniciarRevelado() {
     if (!efectosActivos() || !('IntersectionObserver' in window)) return;
 
@@ -51,14 +54,25 @@ export function iniciarRevelado() {
         entradas.forEach((entrada) => {
             if (!entrada.isIntersecting) return;
             observador.unobserve(entrada.target);
-            porObjetivo.get(entrada.target).forEach(revelar);
+            (porObjetivo.get(entrada.target) || []).forEach(revelar);
+            porObjetivo.delete(entrada.target);
         });
     };
     const normal = new IntersectionObserver((e) => alEntrar(normal)(e), { rootMargin: '0px 0px -12% 0px' });
     // data-sr-early: se revela antes de entrar del todo (el logo del pie, al fondo de la página).
     const temprano = new IntersectionObserver((e) => alEntrar(temprano)(e), { rootMargin: '0px 0px 25% 0px' });
 
-    document.querySelectorAll('[data-sr]').forEach((el) => {
+    observadores = { porObjetivo, normal, temprano };
+    observarRevelado(document);
+}
+
+// Observa los [data-sr] dentro de `raiz` (p. ej. resultados que llegan por fetch). Sin efectos, no hace nada.
+export function observarRevelado(raiz) {
+    if (!observadores) return;
+    const { porObjetivo, normal, temprano } = observadores;
+
+    raiz.querySelectorAll('[data-sr]').forEach((el) => {
+        if (el.dataset.srDone) return;
         const destino = objetivo(el);
         if (!porObjetivo.has(destino)) porObjetivo.set(destino, []);
         porObjetivo.get(destino).push(el);
