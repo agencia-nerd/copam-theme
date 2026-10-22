@@ -12,6 +12,7 @@ defined('ABSPATH') || exit;
  *  - imagen      (mixed)   campo de imagen de ACF (se imprime con copam_theme_image)
  *  - alt         (string)  alt de la imagen; vacío usa el del archivo
  *  - variante    (string)  'fila' (por defecto, ancho completo) | 'columna' (al pie de una columna, 320px de alto)
+ *  - lineas      (int)     líneas visibles de la descripción: 2 (por defecto) | 4
  */
 $titulo      = (string) ($args['titulo'] ?? '');
 $descripcion = (string) ($args['descripcion'] ?? '');
@@ -20,6 +21,7 @@ $nota        = (string) ($args['nota'] ?? '');
 $imagen      = $args['imagen'] ?? null;
 $alt         = $args['alt'] ?? null;
 $columna     = ($args['variante'] ?? 'fila') === 'columna';
+$recorte     = (int) ($args['lineas'] ?? 2) === 4 ? 'line-clamp-4' : 'line-clamp-2';
 if ($titulo === '') {
     return;
 }
@@ -36,7 +38,7 @@ $titulo_cl = $columna ? 'text-[28px]' : 'text-[clamp(28px,2.25vw,43px)]';
         <div class="box-border flex max-w-full min-w-0 flex-col items-start justify-center rounded-lg bg-ink <?= esc_attr($tarjeta) ?>" data-sr="card">
             <h2 class="m-0 leading-[1.1] font-semibold tracking-[-.005em] text-balance text-white uppercase <?= esc_attr($titulo_cl) ?>"><?= esc_html($titulo) ?></h2>
             <?php if ($descripcion !== '') : ?>
-                <p class="mt-4 line-clamp-2 text-[15px] leading-[1.6] text-gris-d2"><?= esc_html($descripcion) ?></p>
+                <p class="mt-4 <?= esc_attr($recorte) ?> text-[15px] leading-[1.6] text-gris-d2"><?= esc_html($descripcion) ?></p>
             <?php endif; ?>
             <div class="mt-8 overflow-hidden rounded">
                 <?php get_template_part('template-parts/components/boton', null, ['texto' => (string) ($boton['title'] ?? ''), 'enlace' => $boton]); ?>

@@ -50,3 +50,7 @@ if (document.querySelector('form[data-buzon]')) {
 if (document.querySelector('form[data-reporte]')) {
     import('./modules/reporte-hostigamiento.js').then(({ iniciarReporteHostigamiento }) => iniciarReporteHostigamiento()).catch(console.error);
 }
+
+if (document.querySelector('form[data-reclamos]')) {
+    import('./modules/reclamos.js').then(({ iniciarReclamos }) => iniciarReclamos()).catch(console.error);
+}

@@ -27,8 +27,8 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | Servicios no portuarios       | [servicios-no-portuarios.md](servicios-no-portuarios.md)           | `pages/template-servicios-no-portuarios.php`      | descartado |
 | Contacto                      | [contacto.md](contacto.md)                                         | `pages/template-contacto.php`                     | aplicado |
 | Canal de hostigamiento sexual | [canal-hostigamiento-sexual.md](canal-hostigamiento-sexual.md)     | `pages/template-canal-hostigamiento-sexual.php`   | aplicado |
-| Reclamos                      | [reclamos.md](reclamos.md)                                         | `pages/template-reclamos.php`                     | pendiente |
-| Libro de Reclamaciones        | [libro-de-reclamaciones.md](libro-de-reclamaciones.md)             | `pages/template-libro-de-reclamaciones.php`       | pendiente |
+| Reclamos                      | [reclamos.md](reclamos.md)                                         | `pages/template-reclamos.php`                     | aplicado |
+| Libro de Reclamaciones        | [libro-de-reclamaciones.md](libro-de-reclamaciones.md)             | `pages/template-libro-de-reclamaciones.php`       | aplicado |
 | Política de privacidad        | [privacidad.md](privacidad.md)                                     | `pages/template-privacidad.php`                   | pendiente |
 | Términos y condiciones        | [terminos.md](terminos.md)                                         | `pages/template-terminos.php`                     | pendiente |
 | Política de cookies           | [cookies.md](cookies.md)                                           | `pages/template-cookies.php`                      | pendiente |
