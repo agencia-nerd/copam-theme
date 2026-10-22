@@ -8,6 +8,7 @@ require_once get_theme_file_path('/inc/cleanup.php');
 require_once get_theme_file_path('/inc/crear-inicio.php');
 require_once get_theme_file_path('/inc/crear-comunicados.php');
 require_once get_theme_file_path('/inc/comunicados-filtros.php');
+require_once get_theme_file_path('/inc/buscador.php');
 require_once get_theme_file_path('/inc/sitio.php');
 require_once get_theme_file_path('/inc/helpers/images.php');
 require_once get_theme_file_path('/inc/helpers/text.php');

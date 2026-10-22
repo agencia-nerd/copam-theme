@@ -6,8 +6,7 @@ defined('ABSPATH') || exit;
  * El logo sale de Personalizar > Identidad del sitio y el menú de Apariencia > Menús (ubicación `principal`);
  * ambos se cargan solos con el contenido inicial (inc/acf/). Comportamiento: src/js/modules/header.js.
  */
-$indice = copam_theme_sitio_indice_busqueda();
-$logo   = get_theme_mod('custom_logo');
+$logo = get_theme_mod('custom_logo');
 
 // Cada elemento de primer nivel es un grupo; sus hijos son los enlaces del panel (los `subtitulo` no llevan enlace).
 $menu = array_map(static function (array $grupo): array {
@@ -131,7 +130,7 @@ $lupa = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden
     </header>
     <?php get_template_part('template-parts/components/aviso-superior', null, ['parte' => 'espaciador']); ?>
 
-    <div class="group/b pointer-events-none invisible fixed inset-x-0 top-16 bottom-0 z-[49] transition-[visibility] delay-[800ms] duration-0 data-[abierto]:pointer-events-auto data-[abierto]:visible data-[abierto]:delay-0" id="buscador" role="dialog" aria-modal="true" aria-label="<?= esc_attr__('Buscar', 'copam-theme') ?>" data-buscador data-indice="<?= esc_attr(wp_json_encode($indice, JSON_UNESCAPED_UNICODE)) ?>" inert>
+    <div class="group/b pointer-events-none invisible fixed inset-x-0 top-16 bottom-0 z-[49] transition-[visibility] delay-[800ms] duration-0 data-[abierto]:pointer-events-auto data-[abierto]:visible data-[abierto]:delay-0" id="buscador" role="dialog" aria-modal="true" aria-label="<?= esc_attr__('Buscar', 'copam-theme') ?>" data-buscador data-buscador-api="<?= esc_url(rest_url('copam/v1/buscador')) ?>" inert>
         <div class="absolute inset-0 bg-[rgba(18,18,18,0)] backdrop-blur-none transition-[background-color,backdrop-filter] delay-[250ms] duration-[800ms] ease-out group-data-[abierto]/b:bg-[rgba(18,18,18,.5)] group-data-[abierto]/b:backdrop-blur-[12px] group-data-[abierto]/b:delay-0" data-buscar-cerrar></div>
         <div class="pointer-events-none relative flex flex-col items-center gap-2 px-[clamp(20px,4.17vw,80px)] pt-[clamp(16px,1.6vw,28px)]">
             <div class="pointer-events-auto w-[min(100%,760px)] overflow-hidden rounded-md">
@@ -150,7 +149,7 @@ $lupa = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden
             <div class="pointer-events-auto w-[min(100%,760px)] overflow-hidden rounded-md">
                 <div class="max-h-[min(62vh,540px)] -translate-y-[110%] overflow-y-auto overscroll-contain rounded-md bg-white p-2 transition-transform duration-[800ms] ease-out group-data-[abierto]/b:translate-y-0 group-data-[abierto]/b:delay-[340ms]" data-buscar-resultados data-native-scroll aria-live="polite">
                     <div class="flex justify-between gap-4 px-3.5 pt-2.5 pb-2 text-xs font-medium tracking-[.08em] text-gris-8a uppercase">
-                        <span data-buscar-titulo><?= esc_html__('Sugerencias', 'copam-theme') ?></span>
+                        <span data-buscar-titulo><?= esc_html__('Más buscados', 'copam-theme') ?></span>
                         <span class="flex-none whitespace-nowrap" data-buscar-cuenta></span>
                     </div>
                     <div data-buscar-lista></div>
