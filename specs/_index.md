@@ -19,7 +19,7 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | Transparencia                 | [transparencia.md](transparencia.md)                               | `pages/template-transparencia.php`                | pendiente |
 | Tarifario                     | [tarifario.md](tarifario.md)                                       | `pages/template-tarifario.php`                    | pendiente |
 | Operación del terminal        | [operacion-del-terminal.md](operacion-del-terminal.md)             | `pages/template-operacion-del-terminal.php`       | pendiente |
-| Depósito Temporal             | [deposito-temporal.md](deposito-temporal.md)                       | `pages/template-deposito-temporal.php`            | pendiente |
+| Depósito Temporal             | [deposito-temporal.md](deposito-temporal.md)                       | `pages/template-deposito-temporal.php`            | aplicado |
 | Servicios a la nave           | [servicios-a-la-nave.md](servicios-a-la-nave.md)                   | `pages/template-servicios-a-la-nave.php`          | aplicado  |
 | Servicios a la carga          | [servicios-a-la-carga.md](servicios-a-la-carga.md)                 | `pages/template-servicios-a-la-carga.php`         | aplicado  |
 | Servicios al pasajero         | [servicios-al-pasajero.md](servicios-al-pasajero.md)               | `pages/template-servicios-al-pasajero.php`        | aplicado  |

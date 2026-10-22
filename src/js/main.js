@@ -30,3 +30,11 @@ iniciarOceano();
 if (document.querySelector('[data-accordion]')) {
     import('./modules/accordion.js').then(({ initAccordions }) => initAccordions()).catch(console.error);
 }
+
+if (document.querySelector('form[data-form]')) {
+    import('./modules/form.js').then(({ initForms }) => initForms()).catch(console.error);
+}
+
+if (document.querySelector('[data-hoja-reclamacion]')) {
+    import('./modules/hoja-reclamacion.js').then(({ iniciarHojaReclamacion }) => iniciarHojaReclamacion()).catch(console.error);
+}

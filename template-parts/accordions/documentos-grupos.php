@@ -2,11 +2,14 @@
 defined('ABSPATH') || exit;
 
 /**
- * Acordeón de documentos del SIG: un panel por grupo, con el conteo de documentos junto al ícono.
- * Lo imprime la sección `documentos` de Sistema Integrado de Gestión (wp-accordion).
+ * Acordeón de documentos por grupo: un panel por grupo, con el conteo de documentos junto al ícono y una fila
+ * por documento (título, detalle, insignia "Vigente" y botón de descarga). El primer grupo empieza abierto.
+ * Lo usan Sistema Integrado de Gestión y Depósito Temporal (wp-accordion).
  *
  * $args:
- *  - grupos        (array)   cada uno ['nombre', 'estado_vacio', 'documentos' => [['titulo', 'subtitulo', 'vigente', 'archivo']]]
+ *  - id            (string)  id del acordeón
+ *  - grupos        (array)   cada uno ['nombre', 'estado_vacio', 'documentos' => [[
+ *                              'titulo', 'subtitulo', 'vigente', 'archivo', 'boton_texto', 'archivo_alterno']]]
  *  - mensaje_vacio (string)  texto dentro de un grupo sin documentos
  */
 $grupos        = array_values(array_filter((array) ($args['grupos'] ?? []), static fn($grupo): bool => trim((string) ($grupo['nombre'] ?? '')) !== ''));
@@ -15,7 +18,14 @@ if (!$grupos) {
     return;
 }
 
-copam_theme_accordion_start('documentos-sig', [
+// Tipo y peso del archivo para el title del enlace ("PDF · 1 MB", "Excel · 40 KB").
+$descripcion_archivo = static function ($archivo): string {
+    $ext  = strtolower((string) pathinfo((string) ($archivo['filename'] ?? $archivo['url'] ?? ''), PATHINFO_EXTENSION));
+    $tipo = in_array($ext, ['xls', 'xlsx', 'csv'], true) ? 'Excel' : 'PDF';
+    return $tipo . (!empty($archivo['filesize']) ? ' · ' . size_format((int) $archivo['filesize'], 0) : '');
+};
+
+copam_theme_accordion_start((string) ($args['id'] ?? 'documentos-grupos'), [
     'icon'          => 'plus',
     'class'         => 'relative border-y border-line',
     'item_class'    => 'border-t border-line first:border-t-0',
@@ -42,7 +52,9 @@ foreach ($grupos as $i => $grupo) :
     foreach ($documentos as $doc) :
         $archivo = $doc['archivo'] ?? null;
         $enlace  = is_array($archivo) && !empty($archivo['url']) ? ['url' => $archivo['url'], 'target' => '_blank'] : null;
-        $peso    = is_array($archivo) && !empty($archivo['filesize']) ? ' · ' . size_format((int) $archivo['filesize'], 0) : '';
+        $alterno = $doc['archivo_alterno'] ?? null;
+        $ver     = is_array($alterno) && !empty($alterno['url']) ? ['url' => $alterno['url'], 'target' => '_blank'] : null;
+        $boton   = trim((string) ($doc['boton_texto'] ?? '')) ?: __('Descargar PDF', 'copam-theme');
         $sub     = (string) ($doc['subtitulo'] ?? '');
         ?>
         <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-[#E6E6E6] py-[clamp(18px,1.4vw,26px)] pr-[clamp(20px,2.1vw,40px)] pl-[clamp(24px,4vw,76px)] first:border-t-0">
@@ -55,16 +67,27 @@ foreach ($grupos as $i => $grupo) :
                     <span class="block rounded-[3px] bg-warning px-2.5 py-1.5 text-xs leading-[1.2] font-semibold tracking-[.14em] text-ink uppercase"><?= esc_html__('Vigente', 'copam-theme') ?></span>
                 <?php endif; ?>
             </div>
-            <?php if ($enlace) : ?>
-                <a<?= copam_theme_link_attrs($enlace, ['class' => 'group flex h-[46px] flex-none items-center rounded-[3px] bg-brand px-5 text-base font-medium text-white transition-colors duration-[350ms] hover:bg-brand-hover hover:text-white']) ?> title="<?= esc_attr('PDF' . $peso) ?>">
-                    <span class="block h-[1.15em] overflow-hidden leading-[1.15em]">
-                        <span class="flex flex-col transition-transform duration-[550ms] ease-in-out group-hover:-translate-y-1/2">
-                            <span class="whitespace-nowrap"><?= esc_html__('Descargar PDF', 'copam-theme') ?></span>
-                            <span class="whitespace-nowrap" aria-hidden="true"><?= esc_html__('Descargar PDF', 'copam-theme') ?></span>
-                        </span>
-                    </span>
-                    <span class="sr-only">(<?= esc_html__('se abre en una pestaña nueva', 'copam-theme') ?>)</span>
-                </a>
+            <?php if ($enlace || $ver) : ?>
+                <div class="flex flex-none flex-wrap items-center gap-x-[22px] gap-y-2.5">
+                    <?php if ($ver) : ?>
+                        <a<?= copam_theme_link_attrs($ver, ['class' => 'inline-flex items-center gap-1.5 text-[15px] font-medium text-brand transition-colors duration-[250ms] hover:text-brand-hover']) ?> title="<?= esc_attr($descripcion_archivo($alterno)) ?>">
+                            <?= esc_html__('Ver PDF', 'copam-theme') ?>
+                            <svg width="10" height="10" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.8"></path></svg>
+                            <span class="sr-only">(<?= esc_html__('se abre en una pestaña nueva', 'copam-theme') ?>)</span>
+                        </a>
+                    <?php endif; ?>
+                    <?php if ($enlace) : ?>
+                        <a<?= copam_theme_link_attrs($enlace, ['class' => 'group flex h-[46px] flex-none items-center rounded-[3px] bg-brand px-5 text-base font-medium text-white transition-colors duration-[350ms] hover:bg-brand-hover hover:text-white']) ?> title="<?= esc_attr($descripcion_archivo($archivo)) ?>">
+                            <span class="block h-[1.15em] overflow-hidden leading-[1.15em]">
+                                <span class="flex flex-col transition-transform duration-[550ms] ease-in-out group-hover:-translate-y-1/2">
+                                    <span class="whitespace-nowrap"><?= esc_html($boton) ?></span>
+                                    <span class="whitespace-nowrap" aria-hidden="true"><?= esc_html($boton) ?></span>
+                                </span>
+                            </span>
+                            <span class="sr-only">(<?= esc_html__('se abre en una pestaña nueva', 'copam-theme') ?>)</span>
+                        </a>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
         </div>
     <?php endforeach;
