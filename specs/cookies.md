@@ -18,7 +18,7 @@
   - Mismo enfoque que `privacidad` y `terminos`: hero + contenido con el cuerpo en un único campo WYSIWYG
   - Diferencia estructural: ninguna por ahora
   - si COPAM entrega una tabla de cookies (nombre, finalidad, duración), va dentro del WYSIWYG como tabla. "Inicio" y "Política de cookies" de las migas salen del componente `migas`, no son campos
-- **Estado:** pendiente
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -27,7 +27,8 @@
 - **Grupo:** `cookies_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas con el componente `migas` (Inicio > Política de cookies; el último sin enlace y con `aria-current="page"`); el `h1` lleva la animación de entrada `data-rise` del diseño (módulo JS de revelado compartido, respeta `prefers-reduced-motion`); la línea de actualización se oculta si el campo está vacío; no hay imagen ni tarjeta de accesos (el diseño reserva una columna vacía a la derecha, no se maqueta)
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -38,9 +39,9 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Las migas usan `<nav aria-label="Migas de pan">` y el `h1` es "Cookies"
-- [ ] El `h1` y la línea de actualización se ven y se animan igual que en el diseño
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Las migas usan `<nav aria-label="Migas de pan">` y el `h1` es "Cookies"
+- [x] El `h1` y la línea de actualización se ven y se animan igual que en el diseño
 
 ## Sección: contenido
 
@@ -49,7 +50,8 @@
 - **Grupo:** `cookies_contenido`
 - **Skill:** ninguna
 - **Comportamiento:** el diseño repite 3 bloques (línea horizontal, `h2` numerado, párrafo) con los títulos "1. Qué son las cookies", "2. Cookies que utilizamos" y "3. Cómo gestionar las cookies"; en WordPress todo el cuerpo es un único campo WYSIWYG y los bloques se reproducen con estilos de contenido (`h2` con la línea horizontal encima, párrafos, listas, enlaces y tablas) aplicados al contenedor, sin clases por elemento; la numeración de los títulos la escribe el editor dentro del texto; el `h2` imita el estilo de `titulo-linea`, que no se invoca por bloque porque el contenido sale de un solo campo; columna de lectura con el ancho del diseño; las animaciones de entrada por bloque (`data-sr`) se omiten o se aplican al contenedor entero; el texto del diseño es provisional (cada bloque dice "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.") y COPAM lo reemplaza
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -59,7 +61,7 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] El `h2` de cada sección del WYSIWYG tiene la línea superior y el tamaño del diseño; `h3` y listas no rompen el orden de encabezados
-- [ ] El WYSIWYG se imprime con `wp_kses_post` y las tablas no desbordan en móvil
-- [ ] Sin clases ni estilos por elemento dentro del campo: el aspecto sale de los estilos del contenedor
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] El `h2` de cada sección del WYSIWYG tiene la línea superior y el tamaño del diseño; `h3` y listas no rompen el orden de encabezados
+- [x] El WYSIWYG se imprime con `wp_kses_post` y las tablas no desbordan en móvil
+- [x] Sin clases ni estilos por elemento dentro del campo: el aspecto sale de los estilos del contenedor

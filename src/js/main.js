@@ -35,6 +35,14 @@ if (document.querySelector('form[data-form]')) {
     import('./modules/form.js').then(({ initForms }) => initForms()).catch(console.error);
 }
 
+if (document.querySelector('[data-comunicados]')) {
+    import('./modules/comunicados.js').then(({ iniciarComunicados }) => iniciarComunicados()).catch(console.error);
+}
+
+if (document.querySelector('[data-copiar-enlace]')) {
+    import('./modules/copiar-enlace.js').then(({ iniciarCopiarEnlace }) => iniciarCopiarEnlace()).catch(console.error);
+}
+
 if (document.querySelector('[data-hoja-reclamacion]')) {
     import('./modules/hoja-reclamacion.js').then(({ iniciarHojaReclamacion }) => iniciarHojaReclamacion()).catch(console.error);
 }

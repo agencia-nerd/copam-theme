@@ -10,8 +10,8 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | ----------------------------- | ------------------------------------------------------------------ | ------------------------------------------------- | --------- |
 | Inicio                        | [home.md](home.md)                                                 | `front-page.php`                                  | aplicado  |
 | Ajustes del sitio             | [opciones.md](opciones.md)                                         | `header.php`                                      | aplicado  |
-| Comunicados                   | [comunicados.md](comunicados.md)                                   | `home.php`                                        | pendiente |
-| Comunicado                    | [comunicado.md](comunicado.md)                                     | `single.php`                                      | pendiente |
+| Comunicados                   | [comunicados.md](comunicados.md)                                   | `home.php`                                        | aplicado  |
+| Comunicado                    | [comunicado.md](comunicado.md)                                     | `single.php`                                      | aplicado  |
 | Nosotros                      | [nosotros.md](nosotros.md)                                         | `pages/template-nosotros.php`                     | aplicado  |
 | Sistema Integrado de Gestión  | [sistema-integrado-de-gestion.md](sistema-integrado-de-gestion.md) | `pages/template-sistema-integrado-de-gestion.php` | aplicado  |
 | Compromiso Ambiental          | [compromiso-ambiental.md](compromiso-ambiental.md)                 | `pages/template-compromiso-ambiental.php`         | aplicado  |
@@ -29,9 +29,9 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | Canal de hostigamiento sexual | [canal-hostigamiento-sexual.md](canal-hostigamiento-sexual.md)     | `pages/template-canal-hostigamiento-sexual.php`   | aplicado |
 | Reclamos                      | [reclamos.md](reclamos.md)                                         | `pages/template-reclamos.php`                     | aplicado |
 | Libro de Reclamaciones        | [libro-de-reclamaciones.md](libro-de-reclamaciones.md)             | `pages/template-libro-de-reclamaciones.php`       | aplicado |
-| Política de privacidad        | [privacidad.md](privacidad.md)                                     | `pages/template-privacidad.php`                   | pendiente |
-| Términos y condiciones        | [terminos.md](terminos.md)                                         | `pages/template-terminos.php`                     | pendiente |
-| Política de cookies           | [cookies.md](cookies.md)                                           | `pages/template-cookies.php`                      | pendiente |
+| Política de privacidad        | [privacidad.md](privacidad.md)                                     | `pages/template-privacidad.php`                   | aplicado |
+| Términos y condiciones        | [terminos.md](terminos.md)                                         | `pages/template-terminos.php`                     | aplicado |
+| Política de cookies           | [cookies.md](cookies.md)                                           | `pages/template-cookies.php`                      | aplicado |
 
 | Servicios | [servicios.md](servicios.md) | `pages/template-servicios.php` | aplicado |
 <!-- design-import:paginas:fin -->
