@@ -6,7 +6,9 @@ defined('ABSPATH') || exit;
  * no se edita a mano.
  */
 return [
+    'canal-hostigamiento-sexual' => ['titulo' => 'Canal de hostigamiento sexual', 'slug' => 'canal-hostigamiento-sexual', 'frente' => false, 'plantilla' => 'pages/template-canal-hostigamiento-sexual.php', 'padre' => ''],
     'compromiso-ambiental' => ['titulo' => 'Compromiso Ambiental', 'slug' => 'compromiso-ambiental', 'frente' => false, 'plantilla' => 'pages/template-compromiso-ambiental.php', 'padre' => ''],
+    'contacto' => ['titulo' => 'Contacto', 'slug' => 'contacto', 'frente' => false, 'plantilla' => 'pages/template-contacto.php', 'padre' => ''],
     'deposito-temporal' => ['titulo' => 'Depósito Temporal', 'slug' => 'deposito-temporal', 'frente' => false, 'plantilla' => 'pages/template-deposito-temporal.php', 'padre' => ''],
     'home' => ['titulo' => 'Inicio', 'slug' => 'inicio', 'frente' => true, 'plantilla' => '', 'padre' => ''],
     'nosotros' => ['titulo' => 'Nosotros', 'slug' => 'nosotros', 'frente' => false, 'plantilla' => 'pages/template-nosotros.php', 'padre' => ''],

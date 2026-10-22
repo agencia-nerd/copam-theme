@@ -25,8 +25,8 @@ Antes de las páginas, revisa y aprueba [\_shared.md](_shared.md): tokens, compo
 | Servicios al pasajero         | [servicios-al-pasajero.md](servicios-al-pasajero.md)               | `pages/template-servicios-al-pasajero.php`        | aplicado  |
 | Servicios especiales          | [servicios-especiales.md](servicios-especiales.md)                 | `pages/template-servicios-especiales.php`         | aplicado  |
 | Servicios no portuarios       | [servicios-no-portuarios.md](servicios-no-portuarios.md)           | `pages/template-servicios-no-portuarios.php`      | descartado |
-| Contacto                      | [contacto.md](contacto.md)                                         | `pages/template-contacto.php`                     | pendiente |
-| Canal de hostigamiento sexual | [canal-hostigamiento-sexual.md](canal-hostigamiento-sexual.md)     | `pages/template-canal-hostigamiento-sexual.php`   | pendiente |
+| Contacto                      | [contacto.md](contacto.md)                                         | `pages/template-contacto.php`                     | aplicado |
+| Canal de hostigamiento sexual | [canal-hostigamiento-sexual.md](canal-hostigamiento-sexual.md)     | `pages/template-canal-hostigamiento-sexual.php`   | aplicado |
 | Reclamos                      | [reclamos.md](reclamos.md)                                         | `pages/template-reclamos.php`                     | pendiente |
 | Libro de Reclamaciones        | [libro-de-reclamaciones.md](libro-de-reclamaciones.md)             | `pages/template-libro-de-reclamaciones.php`       | pendiente |
 | Política de privacidad        | [privacidad.md](privacidad.md)                                     | `pages/template-privacidad.php`                   | pendiente |

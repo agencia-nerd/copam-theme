@@ -11,7 +11,8 @@ defined('ABSPATH') || exit;
  *  - lineas         (array)   alternativa a `titulo`: cada elemento es un bloque del h1
  *  - bajada         (string)
  *  - boton          (array)   campo Link de ACF; el texto del botón es su título
- *  - imagen         (mixed)   campo de imagen de ACF; es la imagen principal (carga eager)
+ *  - imagen         (mixed)   campo de imagen de ACF; es la imagen principal (carga eager). Sin imagen (Canal de
+ *                             hostigamiento) queda un espacio y la tarjeta no sube sobre la foto
  *  - posicion       (string)  clase de object-position, escrita completa en la página que la usa
  *  - accesos_titulo (string)  título de la tarjeta lateral
  *  - accesos        (array)   campos Link de ACF (texto y ancla de cada acceso)
@@ -22,6 +23,7 @@ $bajada   = (string) ($args['bajada'] ?? '');
 $boton    = $args['boton'] ?? null;
 $imagen   = $args['imagen'] ?? null;
 $posicion = (string) ($args['posicion'] ?? 'object-center');
+$con_foto = copam_theme_image_data($imagen) !== null;
 if (!$lineas && $titulo !== '') {
     $lineas = preg_split('/\s+/', $titulo, -1, PREG_SPLIT_NO_EMPTY);
 }
@@ -29,6 +31,9 @@ if (!$lineas && $titulo !== '') {
 <section class="relative bg-white pb-[clamp(64px,5vw,96px)]">
     <?php get_template_part('template-parts/components/migas', null, ['items' => $args['migas'] ?? []]); ?>
 
+    <?php if (!$con_foto) : ?>
+        <div class="h-[clamp(28px,4.3vw,82px)]" aria-hidden="true"></div>
+    <?php else : ?>
     <div class="relative h-[max(310px,min(36vw,100svh_-_426px))] overflow-hidden bg-gris-ef" data-sr="side">
         <div class="absolute inset-x-0 top-[-14%] bottom-0 origin-[50%_40%] will-change-transform" data-parallax-zoom>
             <?= copam_theme_image($imagen, [
@@ -40,9 +45,10 @@ if (!$lineas && $titulo !== '') {
             ]) ?>
         </div>
     </div>
+    <?php endif; ?>
 
     <div class="grid grid-cols-[minmax(0,1fr)] items-stretch gap-x-[clamp(32px,4vw,80px)] gap-y-11 px-[clamp(20px,4.17vw,80px)] md:grid-cols-[minmax(0,1fr)_33.3vw]">
-        <div class="min-w-0 pt-[clamp(28px,min(3.6vw,5svh),68px)]">
+        <div class="min-w-0 <?= $con_foto ? 'pt-[clamp(28px,min(3.6vw,5svh),68px)]' : 'pt-[clamp(36px,5vw,96px)]' ?>">
             <h1 class="m-0 flex flex-wrap gap-x-[.25em] text-[clamp(32px,3vw,58px)] leading-none font-bold tracking-[-.02em] text-ink uppercase">
                 <?php foreach ($lineas as $linea) : ?>
                     <span class="block overflow-hidden pb-[.06em]"><span class="block origin-[left_bottom]" data-sr="rise"><?= esc_html((string) $linea) ?></span></span>
@@ -65,7 +71,7 @@ if (!$lineas && $titulo !== '') {
         <?php get_template_part('template-parts/components/tarjeta-accesos', null, [
             'titulo' => (string) ($args['accesos_titulo'] ?? ''),
             'items'  => $args['accesos'] ?? [],
-            'clase'  => 'md:-mt-[200vh]',
+            'clase'  => $con_foto ? 'md:-mt-[200vh]' : '',
         ]); ?>
     </div>
 </section>

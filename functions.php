@@ -10,6 +10,7 @@ require_once get_theme_file_path('/inc/sitio.php');
 require_once get_theme_file_path('/inc/helpers/images.php');
 require_once get_theme_file_path('/inc/helpers/text.php');
 require_once get_theme_file_path('/inc/helpers/links.php');
+require_once get_theme_file_path('/inc/helpers/correos.php');
 require_once get_theme_file_path('/inc/acf/runner.php');
 require_once get_theme_file_path('/inc/accordions.php');
 require_once get_theme_file_path('/inc/redirecciones.php');

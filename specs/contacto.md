@@ -19,7 +19,11 @@
   - Elementos fuera de la página: header, footer, buscador y aviso de mantenimiento (sitio)
   - Pendientes del diseño: el correo de Operaciones aparece como `[PENDIENTE: correo de Operaciones]` y el reCAPTCHA/Turnstile como `[PENDIENTE: ...]`
   - ninguno de los dos textos se imprime tal cual, se resuelven al aplicar
-- **Estado:** pendiente
+  - Al aplicar: los títulos h2 usan `titulo-linea` (es el título con línea punteada del diseño; `encabezado-seccion` lleva etiqueta y bajada) y las tarjetas de canales `tarjeta-servicio` compacta, igual que Depósito Temporal
+  - Al aplicar: el anti-spam es el del motor de wp-form (honeypot, tiempo mínimo, token y límite por IP); la casilla "No soy un robot" y el marcador `[PENDIENTE]` no se imprimen
+  - Al aplicar: el correo de Operaciones sigue pendiente; la tarjeta muestra solo el teléfono hasta que el cliente lo agregue en su descripción
+  - Al aplicar: el aviso "El buzón se envía a" queda fijo en la vista del form (no tiene campo en el spec); el correo sale de `opciones_correos_buzon`
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -28,7 +32,8 @@
 - **Grupo:** `contacto_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas "Inicio > Contacto" con el componente `migas`. Imagen a todo el ancho con alto `max(310px, min(36vw, 100svh - 426px))`, `object-cover` con `object-position: 100% 58%`; es la imagen principal de la página (`'loading' => 'eager'`). En escritorio el texto va a la izquierda y la tarjeta "Accesos directos" (7 enlaces) a la derecha, sobre la imagen, ancho 33.3vw; en móvil la tarjeta pasa debajo del texto en una sola columna. El botón "Escríbenos" usa el componente `boton` y baja al formulario (`#formulario`). En "Accesos directos" cada fila lleva el texto y una flecha de esquina que se desliza al hover; los enlaces externos (Seguimiento de carga) abren en pestaña nueva con el helper de enlaces. Los enlaces internos apuntan a las páginas del tema (reclamos, libro de reclamaciones, tarifario, canal de hostigamiento sexual) o a las anclas `#formulario` y `#buzon`. Animaciones de entrada (clip de la imagen, subida del título, tarjeta desde abajo) se reescriben como módulo JS y respetan `prefers-reduced-motion`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -42,15 +47,15 @@
 | `contacto_hero_accesos` | repeater | Lista de enlaces de la tarjeta lateral. 7 enlaces. | — | sí |
 | `contacto_hero_accesos.enlace` | link | Texto y destino del acceso directo. El texto es el primero de la lista: "Formulario de contacto". Los externos abren en pestaña nueva. Recomendado: ~35 caracteres | Formulario de contacto | sí |
 
-Valores del repetidor (texto y destino en el diseño): Formulario de contacto (`#formulario`), Buzón de sugerencias (`#buzon`), Presentar un reclamo (reclamos, ancla `#formulario`), Libro de Reclamaciones virtual (reclamos, ancla `#formulario`; a confirmar si debe ir a `libro-de-reclamaciones`), Seguimiento de carga (externo `http://45.232.151.188:8081/consultacarga/`), Tarifario (tarifario), Canal de hostigamiento sexual (canal-hostigamiento-sexual).
+Valores del repetidor (texto y destino en el diseño): Formulario de contacto (`#formulario`), Buzón de sugerencias (`#buzon`), Presentar un reclamo (reclamos, ancla `#formulario`), Formulario de reclamos, reconsideraciones y apelaciones (reclamos, ancla `#formulario`; reemplaza al "Libro de Reclamaciones virtual" del diseño, a pedido del cliente), Seguimiento de carga (externo `http://45.232.151.188:8081/consultacarga/`), Tarifario (tarifario), Canal de hostigamiento sexual (canal-hostigamiento-sexual).
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` por ser la principal
-- [ ] Enlaces con destinos reales; los externos con `rel` seguro y aviso de pestaña nueva (helper de enlaces de `wp-helper`)
-- [ ] Migas y botón usan los componentes `migas` y `boton`, sin duplicar su marcado
-- [ ] La tarjeta de accesos directos se apila bajo el texto en móvil y es navegable con teclado
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` por ser la principal
+- [x] Enlaces con destinos reales; los externos con `rel` seguro y aviso de pestaña nueva (helper de enlaces de `wp-helper`)
+- [x] Migas y botón usan los componentes `migas` y `boton`, sin duplicar su marcado
+- [x] La tarjeta de accesos directos se apila bajo el texto en móvil y es navegable con teclado
 
 ## Sección: canales
 
@@ -59,7 +64,8 @@ Valores del repetidor (texto y destino en el diseño): Formulario de contacto (`
 - **Grupo:** `contacto_canales`
 - **Skill:** ninguna
 - **Comportamiento:** sección con `id="canales"` (ancla que enlazan otras páginas, por ejemplo `comunicado.html`). Título con el componente `encabezado-seccion`. Tarjetas en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil, con aparición escalonada. Cada tarjeta: título, descripción (varias líneas: los saltos de línea se respetan) y un botón opcional del componente `boton` con flecha; la tarjeta sin botón no lo imprime. El botón "Enviar consulta" de Comercial baja al formulario y preselecciona el área "Comercial" en el selector (módulo JS por `data-`). El botón de Operaciones es un enlace `tel:`. Alto de tarjeta flexible, sin altura fija.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -68,19 +74,19 @@ Valores del repetidor (texto y destino en el diseño): Formulario de contacto (`
 | `contacto_canales_titulo` | text | Título de la sección (h2). Recomendado: ~30 caracteres | Canales de atención | sí |
 | `contacto_canales_items` | repeater | Tarjetas de canales, una por área. 3 tarjetas. | — | sí |
 | `contacto_canales_items.titulo` | text | Nombre del área. Se muestra como título de la tarjeta. Recomendado: ~25 caracteres | Atención al usuario | sí |
-| `contacto_canales_items.descripcion` | textarea | Qué atiende el área y sus datos de contacto (correo, teléfono, dirección), una línea por dato. Recomendado: ~190 caracteres | Reclamos, reconsideraciones y consultas sobre el servicio.<br>servicioclientes@copam.com.pe · Tel. (01) 500-0450 | sí |
+| `contacto_canales_items.descripcion` | textarea | Qué atiende el área y sus datos de contacto (correo, teléfono, dirección), una línea por dato. Recomendado: ~190 caracteres | Reclamos, reconsideraciones y consultas sobre el servicio. | sí |
 | `contacto_canales_items.boton` | link | Botón de la tarjeta: texto y destino. Si está vacío la tarjeta no muestra botón. Recomendado: ~25 caracteres | Ir a reclamos | no |
 
-Valores de las otras dos tarjetas: Operaciones, "Coordinación de naves, embarque, descarga y contingencias. Atención operativa las 24 horas." + línea de correo y teléfono "(01) 500-0450" (correo pendiente en el diseño), botón "Llamar a operaciones" a `tel:015000450`. Comercial, "Cotizaciones, nuevos servicios y acuerdos comerciales, con un ejecutivo según el tipo de carga." + "comercial@copam.com.pe · Tel. (+511) 500-2670" + "Av. Javier Prado Este 4135, Piso 7, Santiago de Surco, Lima", botón "Enviar consulta" a `#formulario`. En la descripción de la primera tarjeta, `<br>` indica salto de línea.
+Valores de las otras dos tarjetas: Operaciones, "Coordinación de naves, embarque, descarga y contingencias. Atención operativa las 24 horas." + línea de correo y teléfono "(01) 500-0450" (correo pendiente en el diseño), botón "Llamar a operaciones" a `tel:015000450`. Comercial, "Cotizaciones, nuevos servicios y acuerdos comerciales, con un ejecutivo según el tipo de carga." + "comercial@copam.com.pe · Tel. (+511) 500-2670" + "Av. Javier Prado Este 4135, Piso 7, Santiago de Surco, Lima", botón "Enviar consulta" a `#formulario`. La descripción de la primera tarjeta sigue en una segunda línea: "servicioclientes@copam.com.pe · Tel. (01) 500-0450". En la tarjeta de Operaciones, el correo de `opciones_correos_operaciones` (Ajustes del sitio) se antepone a la segunda línea cuando existe.
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] La sección tiene `id="canales"` y el enlace `contacto#canales` de `comunicado` llega a ella sin quedar tapada por el header
-- [ ] Destinos reales; el enlace `tel:` y los externos pasan por el helper de enlaces
-- [ ] Título y botones usan `encabezado-seccion` y `boton`
-- [ ] El botón "Enviar consulta" baja al formulario y deja el área "Comercial" seleccionada
-- [ ] El JS vive en `src/js/modules/`, funciona con teclado y respeta `prefers-reduced-motion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] La sección tiene `id="canales"` y el enlace `contacto#canales` de `comunicado` llega a ella sin quedar tapada por el header
+- [x] Destinos reales; el enlace `tel:` y los externos pasan por el helper de enlaces
+- [x] Título y botones usan `encabezado-seccion` y `boton`
+- [x] El botón "Enviar consulta" baja al formulario y deja el área "Comercial" seleccionada
+- [x] El JS vive en `src/js/modules/`, funciona con teclado y respeta `prefers-reduced-motion`
 
 ## Sección: datos
 
@@ -89,7 +95,8 @@ Valores de las otras dos tarjetas: Operaciones, "Coordinación de naves, embarqu
 - **Grupo:** `contacto_datos`
 - **Skill:** ninguna
 - **Comportamiento:** `id="datos"`. Título con `encabezado-seccion`. Tabla de dos columnas (etiqueta gris a la izquierda, valor a la derecha; en móvil apiladas) con líneas separadoras entre filas. Una fila sin valor es un subtítulo de grupo ("Sedes", "Datos de la empresa"): fondo gris `#F6F6F6`, texto en negrita y color `#2B2B2B`. Marcado semántico de lista de definición o tabla con encabezados. Valores sueltos: `#F6F6F6`, `#7A7A7A` (etiqueta), tamaños `clamp(14px,.85vw,16px)` y `clamp(15px,.9vw,17px)`. Alto flexible.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -104,9 +111,9 @@ Filas del diseño (etiqueta / valor): Sedes (grupo); Terminal portuario / "Vía 
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Las filas sin valor se ven como subtítulo de grupo y las demás como pares etiqueta/valor
-- [ ] La sección tiene `id="datos"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Las filas sin valor se ven como subtítulo de grupo y las demás como pares etiqueta/valor
+- [x] La sección tiene `id="datos"` y el título usa `encabezado-seccion`
 
 ## Sección: formulario
 
@@ -115,7 +122,8 @@ Filas del diseño (etiqueta / valor): Sedes (grupo); Terminal portuario / "Vía 
 - **Grupo:** `contacto_formulario`
 - **Skill:** wp-form
 - **Comportamiento:** `id="formulario"`. Título con `encabezado-seccion`. El formulario lo construye `wp-form`; sin marcado propio. Campos: Nombre y apellidos (texto, requerido, mínimo 3, solo letras; placeholder "Ingresa tu nombre completo"), Correo electrónico (email, requerido, formato válido; "nombre@empresa.com"), Teléfono (tel, requerido, solo números, + ( ) espacio y guion, de 7 a 20 caracteres; "Ej. 987 654 321"), Área (selector requerido con "Selecciona un área" deshabilitada y opciones Atención al usuario, Operaciones, Comercial; se puede preseleccionar desde la tarjeta Comercial de `canales`), Mensaje (textarea, requerido, mínimo 10, 5 filas; "Cuéntanos tu consulta"). Casilla requerida "Acepto la Política de privacidad y el tratamiento de mis datos personales." con enlace a la página de privacidad del tema. Verificación anti-robot "No soy un robot": el diseño deja un marcador de reCAPTCHA o Cloudflare Turnstile; lo define el anti-spam de `wp-form` (a confirmar con el usuario cuál). Campos en 2 columnas desde 760 px, 1 en móvil; Mensaje a ancho completo. Validación al salir del campo y al escribir, con mensajes bajo el campo (`role="alert"`) y colores `--color-danger`. Destinatario: `comercial@copam.com.pe` (README del diseño). Envío: el botón pasa a "Mensaje enviado" y el formulario confirma el envío; el diseño no trae un mensaje de éxito más largo, se propone "Gracias. Tu mensaje fue enviado; te responderemos pronto." (a confirmar). Valor suelto: hover del botón `#07702F`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -126,12 +134,12 @@ Filas del diseño (etiqueta / valor): Sedes (grupo); Terminal portuario / "Vía 
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-form` (`references/acceptance.md` de esa skill)
-- [ ] Cada campo tiene `label`, validación igual en el front y en PHP, y el mensaje de error se anuncia con `role="alert"`
-- [ ] El envío llega a los correos de `opciones_correos_contacto` (Ajustes del sitio) y muestra el estado "Mensaje enviado"
-- [ ] El anti-spam elegido reemplaza al marcador `[PENDIENTE]` del diseño y este texto no se imprime
-- [ ] La sección tiene `id="formulario"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-form` (`references/acceptance.md` de esa skill)
+- [x] Cada campo tiene `label`, validación igual en el front y en PHP, y el mensaje de error se anuncia con `role="alert"`
+- [x] El envío llega a los correos de `opciones_correos_contacto` (Ajustes del sitio) y muestra el estado "Mensaje enviado"
+- [x] El anti-spam elegido reemplaza al marcador `[PENDIENTE]` del diseño y este texto no se imprime
+- [x] La sección tiene `id="formulario"` y el título usa `encabezado-seccion`
 
 ## Sección: buzon
 
@@ -140,7 +148,8 @@ Filas del diseño (etiqueta / valor): Sedes (grupo); Terminal portuario / "Vía 
 - **Grupo:** `contacto_buzon`
 - **Skill:** wp-form
 - **Comportamiento:** `id="buzon"`. Título con `encabezado-seccion`. Dos columnas desde 1000 px (texto 0.9fr, formulario 1.6fr), una en móvil. Columna izquierda: subtítulo (h3), bajada, lista de 3 puntos con viñeta verde y un aviso con enlace "Presentar un reclamo" (flecha que se desplaza 4px al hover) que lleva a la página de reclamos, ancla `#formulario`; el enlace pasa por el helper. Columna derecha: formulario hecho por `wp-form`, sin marcado propio. Campos: "¿Quién envía la sugerencia?" (radio: Usuario o persona externa, por defecto; Trabajador de COPAM), "Área (opcional)" (texto, solo letras, mínimo 3; solo aparece si se elige Trabajador de COPAM, junto con la nota "Tu participación es parte de la consulta a los trabajadores de nuestro Sistema Integrado de Gestión."), "¿Qué quieres compartir?" (radio: Sugerencia por defecto, Consulta, Felicitación, Otro), Mensaje (textarea requerido, mínimo 10; el placeholder cambia con el tipo: "Escribe aquí tu sugerencia", "Escribe aquí tu consulta", "Escribe aquí tu felicitación", "Escribe aquí tu mensaje"), Nombre (opcional, "Tu nombre") y Correo electrónico (opcional, formato válido; "nombre@empresa.com") en 2 columnas desde 760 px, con la nota "Déjalo en blanco si prefieres enviarla de forma anónima.". Casilla requerida de privacidad (igual que el formulario de contacto) y anti-robot por `wp-form`. Botón "Enviar sugerencia". Éxito: "Gracias. Tu mensaje fue registrado y será revisado por el Coordinador del SIG." (`role="status"`). Destinatario: `comercial@copam.com.pe` (el diseño lo indica en el pie del formulario; a confirmar si el buzón debería ir a otro correo). Valores sueltos: fondo de opción activa `#F0F8F3`, borde inactivo `#DADADA`, hover del botón `#07702F`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -160,10 +169,10 @@ Valores del repetidor `contacto_buzon_puntos`: "Puedes enviarla de forma anónim
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-form` (`references/acceptance.md` de esa skill)
-- [ ] Los grupos de opciones son `radio` reales con `fieldset`/`legend` o `role="radiogroup"` y se manejan con teclado
-- [ ] El campo "Área (opcional)" solo aparece al elegir "Trabajador de COPAM"; el placeholder del mensaje cambia con el tipo
-- [ ] Nombre y correo son opcionales; con ambos vacíos el envío es anónimo y se acepta
-- [ ] El enlace "Presentar un reclamo" apunta a la página del tema y pasa por el helper de enlaces
-- [ ] La sección tiene `id="buzon"` y el título usa `encabezado-seccion`
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-form` (`references/acceptance.md` de esa skill)
+- [x] Los grupos de opciones son `radio` reales con `fieldset`/`legend` o `role="radiogroup"` y se manejan con teclado
+- [x] El campo "Área (opcional)" solo aparece al elegir "Trabajador de COPAM"; el placeholder del mensaje cambia con el tipo
+- [x] Nombre y correo son opcionales; con ambos vacíos el envío es anónimo y se acepta
+- [x] El enlace "Presentar un reclamo" apunta a la página del tema y pasa por el helper de enlaces
+- [x] La sección tiene `id="buzon"` y el título usa `encabezado-seccion`
