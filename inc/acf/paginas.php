@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
  */
 return [
     'compromiso-ambiental' => ['titulo' => 'Compromiso Ambiental', 'slug' => 'compromiso-ambiental', 'frente' => false, 'plantilla' => 'pages/template-compromiso-ambiental.php', 'padre' => ''],
+    'deposito-temporal' => ['titulo' => 'Depósito Temporal', 'slug' => 'deposito-temporal', 'frente' => false, 'plantilla' => 'pages/template-deposito-temporal.php', 'padre' => ''],
     'home' => ['titulo' => 'Inicio', 'slug' => 'inicio', 'frente' => true, 'plantilla' => '', 'padre' => ''],
     'nosotros' => ['titulo' => 'Nosotros', 'slug' => 'nosotros', 'frente' => false, 'plantilla' => 'pages/template-nosotros.php', 'padre' => ''],
     'servicios' => ['titulo' => 'Servicios', 'slug' => 'servicios', 'frente' => false, 'plantilla' => 'pages/template-servicios.php', 'padre' => ''],

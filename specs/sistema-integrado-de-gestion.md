@@ -187,7 +187,7 @@ Archivo actual: `politica-sig-2025.pdf` (en `src/assets/docs/`).
 ## Sección: documentos
 
 - **Origen:** `sistema-integrado-de-gestion.html` líneas 281-330 (datos en el `<script>`, línea 711)
-- **Destino:** `template-parts/pages/sistema-integrado-de-gestion/documentos.php`, `template-parts/accordions/documentos-sig.php`
+- **Destino:** `template-parts/pages/sistema-integrado-de-gestion/documentos.php`, `template-parts/accordions/documentos-grupos.php`
 - **Grupo:** `sistema_integrado_de_gestion_documentos`
 - **Skill:** wp-accordion
 - **Comportamiento:** `section id="documentos"`; `titulo-linea` y debajo un acordeón sobre `<details>`/`<summary>` con un panel por grupo (Política, ISO 9001, ISO 14001, ISO 45001), separados por líneas finas. Cada cabecera muestra el nombre del grupo y, a la derecha, "N documento(s)" (calculado del número de filas) y un botón circular verde que alterna entre "+" y "−". El primer grupo abre por defecto. Cada fila interna (fondo gris #F8F8F8, borde superior fino) lleva título, subtítulo, una etiqueta "Vigente" verde si corresponde y el botón verde "Descargar PDF" (texto fijo, con deslizamiento al hover; abre el PDF en pestaña nueva, tamaño en el `title`). Un grupo sin filas muestra el mensaje de vacío en lugar de la lista y, en la cabecera, el texto de estado en lugar del conteo. El acordeón, la animación de alto, el teclado y `prefers-reduced-motion` los resuelve `wp-accordion`; no hay marcado propio. Valor suelto: hover del botón #07702F.

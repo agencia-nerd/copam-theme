@@ -12,6 +12,7 @@ defined('ABSPATH') || exit;
  *  - titulo   (string)             atributo title (tipo y peso del archivo en descargas)
  *  - datos    (array)              atributos data-* extra: ['sr' => 'rise', 'sr-delay' => '120']
  *  - relleno  (string)             relleno horizontal con flecha ('px-[26px]' por defecto)
+ *  - tamano   (string)             'normal' (por defecto) | 'chico' (46px de alto, 14px, flecha de 12px; tarjetas)
  *  - clase    (string)             clases extra para el <a>
  */
 $texto    = (string) ($args['texto'] ?? '');
@@ -22,6 +23,7 @@ $titulo   = (string) ($args['titulo'] ?? '');
 $datos    = (array) ($args['datos'] ?? []);
 $relleno  = (string) ($args['relleno'] ?? 'px-[26px]');
 $clase    = (string) ($args['clase'] ?? '');
+$chico    = ($args['tamano'] ?? 'normal') === 'chico';
 
 $data = copam_theme_link_data($enlace);
 if ($texto === '' || !$data) {
@@ -31,11 +33,14 @@ if ($texto === '' || !$data) {
 $colores = $variante === 'oscuro'
     ? 'bg-[#3D3D3D] hover:bg-[#1F1F1F]'
     : 'bg-brand hover:bg-brand-hover';
-$forma = $flecha
-    ? "gap-3.5 rounded-[3px] $relleno text-base"
-    : 'justify-center rounded px-6 text-[clamp(16px,.95vw,18px)]';
+$forma = match (true) {
+    $chico  => 'h-[46px] gap-2.5 rounded-[3px] px-[18px] text-sm',
+    $flecha => "h-[52px] gap-3.5 rounded-[3px] $relleno text-base",
+    default => 'h-[52px] justify-center rounded px-6 text-[clamp(16px,.95vw,18px)]',
+};
+$icono = $chico ? 'size-3' : 'size-3.5';
 
-$clases = trim("group flex h-[52px] items-center font-medium tracking-[.02em] text-white uppercase transition-colors duration-[350ms] hover:text-white $colores $forma $clase");
+$clases = trim("group flex items-center font-medium tracking-[.02em] text-white uppercase transition-colors duration-[350ms] hover:text-white $colores $forma $clase");
 
 $extra = '';
 foreach ($datos as $nombre => $valor) {
@@ -55,9 +60,9 @@ $abre_nueva = copam_theme_link_resolve($data, [])['blank'];
         </span>
     </span>
     <?php if ($flecha) : ?>
-        <span class="relative block size-3.5 overflow-hidden" aria-hidden="true">
-            <svg class="absolute inset-0 transition-transform duration-[550ms] ease-in-out group-hover:translate-x-[120%] group-hover:-translate-y-[120%]" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="#fff" stroke-width="1.6"></path></svg>
-            <svg class="absolute inset-0 -translate-x-[120%] translate-y-[120%] transition-transform duration-[550ms] ease-in-out group-hover:translate-x-0 group-hover:translate-y-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="#fff" stroke-width="1.6"></path></svg>
+        <span class="relative block flex-none overflow-hidden <?= esc_attr($icono) ?>" aria-hidden="true">
+            <svg class="absolute inset-0 size-full transition-transform duration-[550ms] ease-in-out group-hover:translate-x-[120%] group-hover:-translate-y-[120%]" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="#fff" stroke-width="<?= $chico ? '1.8' : '1.6' ?>"></path></svg>
+            <svg class="absolute inset-0 size-full -translate-x-[120%] translate-y-[120%] transition-transform duration-[550ms] ease-in-out group-hover:translate-x-0 group-hover:translate-y-0" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="#fff" stroke-width="<?= $chico ? '1.8' : '1.6' ?>"></path></svg>
         </span>
     <?php endif; ?>
     <?php if ($abre_nueva) : ?>

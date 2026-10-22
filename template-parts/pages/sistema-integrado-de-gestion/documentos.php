@@ -10,7 +10,8 @@ $grupo = get_field('sistema_integrado_de_gestion_documentos') ?: [];
 <section id="documentos">
     <?php get_template_part('template-parts/components/titulo-linea', null, ['titulo' => (string) ($grupo['titulo'] ?? '')]); ?>
     <div class="mt-[clamp(26px,2.1vw,40px)]">
-        <?php get_template_part('template-parts/accordions/documentos-sig', null, [
+        <?php get_template_part('template-parts/accordions/documentos-grupos', null, [
+            'id'            => 'documentos-sig',
             'grupos'        => (array) ($grupo['grupos'] ?? []),
             'mensaje_vacio' => (string) ($grupo['mensaje_vacio'] ?? ''),
         ]); ?>

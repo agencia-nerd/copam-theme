@@ -26,7 +26,7 @@
   - Componentes compartidos: `migas`, `boton`, `encabezado-seccion`, `tarjeta-servicio`, `bloque-acceso`, `faq-ayuda`, `cta-cotizar`
   - El script trae además `relDocs` y `tarifas` que el HTML no pinta
   - se ignoran
-- **Estado:** pendiente
+- **Estado:** aplicado
 
 ## Sección: hero
 
@@ -35,7 +35,8 @@
 - **Grupo:** `deposito_temporal_hero`
 - **Skill:** ninguna
 - **Comportamiento:** migas con el componente `migas` (Inicio > Depósito Temporal, el último sin enlace); imagen a todo el ancho con parallax y zoom al hacer scroll, `loading="eager"` (imagen principal); `h1` en dos líneas ("Depósito" / "Temporal"), bajada y botón "Seguimiento de carga" con el componente `boton` (variante primario) que abre el aplicativo externo en pestaña nueva; tarjeta lateral "Accesos directos" (`h2`) con 6 enlaces (5 anclas de esta página y 1 a la página de contacto), flecha de esquina que se desplaza al hover y color verde `--color-brand`; en escritorio la tarjeta va a la derecha y en móvil se apila bajo el texto. Mismo bloque que `servicios-especiales` (hero). Hover del botón `#07702F` (valor suelto). Sin alturas fijas.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -51,12 +52,12 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` (primera pantalla); el `alt` viene del campo de imagen
-- [ ] Imagen pasa por `copam_theme_image`; botón y accesos pasan por `copam_theme_link` (componente `boton` para el botón)
-- [ ] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
-- [ ] Los accesos llevan a `#tarifas`, `#documentos`, `#quejas-y-reclamos`, `#faq` y a la página de contacto con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`
-- [ ] El botón externo abre en pestaña nueva con `rel` seguro y aviso para lectores de pantalla
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Imagen con `width`/`height` o `aspect-ratio` y `loading="eager"` (primera pantalla); el `alt` viene del campo de imagen
+- [x] Imagen pasa por `copam_theme_image`; botón y accesos pasan por `copam_theme_link` (componente `boton` para el botón)
+- [x] Migas con el componente `migas` y `<nav aria-label="Migas de pan">`
+- [x] Los accesos llevan a `#tarifas`, `#documentos`, `#quejas-y-reclamos`, `#faq` y a la página de contacto con scroll suave, funcionan con teclado y respetan `prefers-reduced-motion`
+- [x] El botón externo abre en pestaña nueva con `rel` seguro y aviso para lectores de pantalla
 
 ## Sección: atendemos
 
@@ -65,7 +66,8 @@
 - **Grupo:** `deposito_temporal_atendemos`
 - **Skill:** ninguna
 - **Comportamiento:** `id="atendemos"`; `h2` con línea (componente `encabezado-seccion`, sin etiqueta ni bajada); 3 tarjetas con el componente `tarjeta-servicio` (`h3` y descripción) en rejilla de 3 columnas desde 1180 px, 2 desde 600 px y 1 en móvil, con aparición escalonada; cada tarjeta lleva un botón "Ver tarifa" (componente `boton`, hover `#07702F` valor suelto) que baja a `#tarifas`. `tarjeta-servicio` hoy no define botón: se le suma un argumento opcional `boton` (array Link) al aplicar. Sin alturas fijas.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -79,10 +81,10 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Los ítems se recorren con un bucle (no hay una tarjeta por ítem escrita a mano) y la rejilla admite más o menos ítems
-- [ ] El botón de cada tarjeta se oculta si su campo está vacío y baja a `#tarifas`
-- [ ] El `id="atendemos"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Los ítems se recorren con un bucle (no hay una tarjeta por ítem escrita a mano) y la rejilla admite más o menos ítems
+- [x] El botón de cada tarjeta se oculta si su campo está vacío y baja a `#tarifas`
+- [x] El `id="atendemos"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: tarifas
 
@@ -91,7 +93,8 @@
 - **Grupo:** `deposito_temporal_tarifas`
 - **Skill:** ninguna
 - **Comportamiento:** `id="tarifas"`; `h2` con línea (componente `encabezado-seccion`); tabla de 4 columnas (Servicio, Unidad de cobro, Tarifa S/, IGV (18%)) con fila de cabecera, filas de grupo a todo el ancho (fondo `#F6F6F6`, negrita: Contenedores, Carga fraccionada) y filas de tarifa con las dos últimas columnas alineadas a la derecha; separadores entre filas y animación de aparición; la unidad de cobro va en gris `#7A7A7A`. Debe ser una `<table>` real con `<th scope>`, no una rejilla de `div`; en móvil se mantiene la tabla con columnas más estrechas. Las cabeceras de columna son fijas en la plantilla. Los montos se escriben como texto (con decimales) y no se calculan. Nota al pie con el texto de vigencia.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -108,20 +111,21 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] La tabla es una `<table>` con `<caption>` oculta (`sr-only`), cabeceras `<th scope="col">` y filas de grupo con `colspan`
-- [ ] Las filas se recorren con un bucle y admiten más o menos filas; una celda vacía en unidad o montos no rompe la tabla
-- [ ] Las columnas de monto están alineadas a la derecha y se leen sin desbordar en móvil
-- [ ] El `id="tarifas"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] La tabla es una `<table>` con `<caption>` oculta (`sr-only`), cabeceras `<th scope="col">` y filas de grupo con `colspan`
+- [x] Las filas se recorren con un bucle y admiten más o menos filas; una celda vacía en unidad o montos no rompe la tabla
+- [x] Las columnas de monto están alineadas a la derecha y se leen sin desbordar en móvil
+- [x] El `id="tarifas"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: documentos
 
 - **Origen:** `deposito-temporal.html` líneas 261-313; contenido en el script (`dtDocs`, línea 954, y `acc()`, líneas 652-668)
-- **Destino:** `template-parts/pages/deposito-temporal/documentos.php`, `template-parts/accordions/` (acordeón de `wp-accordion`)
+- **Destino:** `template-parts/pages/deposito-temporal/documentos.php`, `template-parts/accordions/documentos-grupos.php`
 - **Grupo:** `deposito_temporal_documentos`
 - **Skill:** wp-accordion
 - **Comportamiento:** `id="documentos"`; `h2` con línea (componente `encabezado-seccion`). Acordeón de 4 grupos (Tarifario del depósito, Autorización SUNAT, Procedimientos, Formatos y solicitudes) sobre `<details>`/`<summary>`; el primero abre por defecto; cada cabecera muestra el título del grupo, el contador "N documentos" (lo calcula la plantilla; con 1 dice "1 documento") y el ícono más/menos. Cada documento es una fila con título, subtítulo, insignia "Vigente" (si está marcada) y botón verde de descarga (texto por defecto "Descargar PDF"); un documento puede tener además un enlace secundario "Ver PDF" (caso del formato, que ofrece "Descargar Excel" y "Ver PDF"). Si un grupo no tiene documentos, muestra "Los documentos de esta sección se publicarán próximamente." y el contador dice el texto de estado del grupo. Todos los archivos se suben al sitio: son `file` (PDF y Excel), no `link`. Esta sección no lleva marcado propio: `wp-accordion` lo construye. Hover del botón `#07702F` (valor suelto). Los menús "Autorización SUNAT" y "Procedimientos y formatos" apuntan a `#documentos`; abrir el grupo exacto por hash es una decisión pendiente con `wp-accordion`.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -141,21 +145,22 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion` (`<details>`/`<summary>`, teclado, `prefers-reduced-motion`)
-- [ ] Grupos y documentos se recorren con bucles; el contador se calcula del número de documentos
-- [ ] Los archivos se descargan desde la biblioteca de medios con `rel` seguro; el enlace alterno solo aparece si hay archivo alterno
-- [ ] Un grupo sin documentos muestra el mensaje de "próximamente" y no rompe el acordeón
-- [ ] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion` (`<details>`/`<summary>`, teclado, `prefers-reduced-motion`)
+- [x] Grupos y documentos se recorren con bucles; el contador se calcula del número de documentos
+- [x] Los archivos se descargan desde la biblioteca de medios con `rel` seguro; el enlace alterno solo aparece si hay archivo alterno
+- [x] Un grupo sin documentos muestra el mensaje de "próximamente" y no rompe el acordeón
+- [x] El `id="documentos"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: quejas_reclamos
 
 - **Origen:** `deposito-temporal.html` líneas 315-471
-- **Destino:** `template-parts/pages/deposito-temporal/quejas-reclamos.php`, `template-parts/forms/` (formulario de `wp-form`)
+- **Destino:** `template-parts/pages/deposito-temporal/quejas-reclamos.php`, `template-parts/forms/hoja-reclamacion-dt.php`, `inc/forms/hoja-reclamacion-dt.php`
 - **Grupo:** `deposito_temporal_quejas_reclamos`
 - **Skill:** wp-form
 - **Comportamiento:** `id="quejas-y-reclamos"`; `h2` con línea y párrafo de introducción. El formulario es la hoja de reclamación del Depósito Temporal y lo construye `wp-form` (sin marcado propio). Estructura: cabecera con "Hoja de reclamación N.°" (correlativa, se asigna al enviar) y "Fecha" del día; datos del proveedor en solo lectura (razón social, RUC, domicilio, código de identificación); "1. Identificación del consumidor reclamante": nombre, tipo de documento (DNI o Carné de extranjería), número, domicilio, teléfono, correo, casilla "Soy menor de edad" que muestra nombre y número de documento del padre o madre; "2. Identificación del bien contratado": tipo (selector de dos opciones), monto reclamado en S/ (opcional), descripción; "3. Detalle de la reclamación y pedido del consumidor": tipo (queja o reclamo), detalle, pedido; "4. Observaciones y acciones adoptadas por el proveedor", espacio informativo que COPAM completa al responder; casilla de aceptación con enlace a la política de privacidad, verificación anti-robot, botón "Enviar queja o reclamo" y botón "Imprimir / descargar copia". Destinatario `comercial@copam.com.pe`; el usuario recibe copia en el correo que registró. Notas legales bajo el formulario. Pendientes marcados en el diseño: código de identificación del establecimiento y anti-spam (reCAPTCHA o Turnstile, lo resuelve `wp-form`). Los campos del formulario los define `wp-form`; aquí solo se editan los textos fijos. El correo de destino no es campo de esta página: sale de `opciones_correos_deposito.correo` en Ajustes del sitio (se admite más de uno).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -166,19 +171,30 @@
 | `deposito_temporal_quejas_reclamos_razon_social` | text | Razón social del proveedor, solo lectura en la hoja. Recomendado: ~55 caracteres | Concesionaria Puerto Amazonas S.A. | sí |
 | `deposito_temporal_quejas_reclamos_ruc` | text | RUC del proveedor. Recomendado: ~15 caracteres | 20543480291 | sí |
 | `deposito_temporal_quejas_reclamos_domicilio` | text | Domicilio del establecimiento. Recomendado: ~120 caracteres | Vía de Evitamiento Km 0.0, Caserío Santa Rosa, Yurimaguas, Alto Amazonas, Loreto | sí |
-| `deposito_temporal_quejas_reclamos_codigo` | text | Código de identificación del establecimiento, si aplica. Si está vacío se oculta la fila | [PENDIENTE: código de identificación del establecimiento, si aplica] | no |
+| `deposito_temporal_quejas_reclamos_codigo` | text | Código de identificación del establecimiento, si aplica. Si está vacío se oculta la fila (pendiente de COPAM) | — | no |
 | `deposito_temporal_quejas_reclamos_nota_indecopi` | textarea | Nota legal sobre otras vías de solución. Recomendado: ~230 caracteres | La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI. | no |
 | `deposito_temporal_quejas_reclamos_nota_plazo` | textarea | Nota legal sobre el plazo de respuesta. Recomendado: ~190 caracteres | El proveedor debe dar respuesta al reclamo o queja en un plazo no mayor a quince (15) días hábiles, el cual es improrrogable. | no |
 | `deposito_temporal_quejas_reclamos_nota_copia` | text | Aviso de la copia por correo. Recomendado: ~130 caracteres | Recibirás una copia de tu hoja de reclamación en el correo electrónico que registraste. | no |
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-form` (nonce, anti-spam, validación en front y en PHP, doble envío, `wp_mail`)
-- [ ] Cada campo tiene su `<label>`, los obligatorios se marcan con * y los errores se asocian al campo (`aria-describedby`)
-- [ ] La casilla "Soy menor de edad" muestra u oculta los campos del padre o madre y estos se exigen solo si está marcada
-- [ ] El enlace de privacidad apunta a la página del tema; el botón de imprimir/descargar copia funciona sin JS externo
-- [ ] El `id="quejas-y-reclamos"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-form` (nonce, anti-spam, validación en front y en PHP, doble envío, `wp_mail`)
+- [x] Cada campo tiene su `<label>`, los obligatorios se marcan con * y los errores se asocian al campo (`aria-describedby`)
+- [x] La casilla "Soy menor de edad" muestra u oculta los campos del padre o madre y estos se exigen solo si está marcada
+- [x] El enlace de privacidad apunta a la página del tema; el botón de imprimir/descargar copia funciona sin JS externo
+- [x] El `id="quejas-y-reclamos"` existe y el scroll deja el encabezado visible bajo el header fijo
+
+**Criterios de wp-form** (`hoja-reclamacion-dt`)
+
+- [x] `install.mjs --check` sale con 0; `form.js` y `hoja-reclamacion.js` solo cargan en páginas con el form
+- [x] Prueba de paridad: 61/61 casos iguales en JS, PHP y lo esperado
+- [x] Sin reglas JS (curl a `admin-ajax.php`), "menor" sin datos del padre o madre devuelve 422 con el error en cada campo
+- [x] Envío válido: hoja `DT-<año>-00001` correlativa, correo a `opciones_correos.deposito`, copia al reclamante y envío guardado en "Envíos" con el número en el título
+- [x] Sin nonce en el HTML (se pide al ver el form); honeypot, tiempo mínimo, token de un uso y límite por IP del motor
+- [x] Radios en `fieldset` con `legend`; cada campo con `label`, `*` en los obligatorios y error asociado
+
+Pendiente de revisar a mano en el navegador: teclado, lector de pantalla, impresión de la copia y correos en Mailpit.
 
 ## Sección: seguimiento
 
@@ -187,7 +203,8 @@
 - **Grupo:** `deposito_temporal_seguimiento`
 - **Skill:** ninguna
 - **Comportamiento:** `id="seguimiento"`; usa el componente compartido `bloque-acceso` (`titulo`, `descripcion`, `boton`, `url`, `nota`, `imagen`, `alt`) en variante `fila`. El botón "Consultar mi carga" abre el aplicativo externo en pestaña nueva con `rel` seguro y aviso para lectores de pantalla; el diseño apunta a `http://45.232.151.188:8081/consultacarga/` (HTTP sin cifrar y por IP: conviene confirmar la URL definitiva; es la misma del botón del hero). Sin `nota` en el diseño. Imagen con `object-cover`, `loading="lazy"`, alto mínimo de 528 px en escritorio. Hover del botón `#07702F` (valor suelto).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -200,19 +217,20 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Usa el componente `bloque-acceso` con `$args` y no repite su marcado
-- [ ] Imagen con `loading="lazy"` y `alt` del campo de imagen; botón por `copam_theme_link` con `rel` seguro y aviso de pestaña nueva
-- [ ] El `id="seguimiento"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Usa el componente `bloque-acceso` con `$args` y no repite su marcado
+- [x] Imagen con `loading="lazy"` y `alt` del campo de imagen; botón por `copam_theme_link` con `rel` seguro y aviso de pestaña nueva
+- [x] El `id="seguimiento"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: faq
 
 - **Origen:** `deposito-temporal.html` líneas 480-511; preguntas en el script (`faqs`, línea 914)
-- **Destino:** `template-parts/components/faq-ayuda.php`, `template-parts/accordions/` (acordeón de `wp-accordion`)
+- **Destino:** `template-parts/pages/deposito-temporal/faq.php`, `template-parts/components/faq-ayuda.php`, `template-parts/accordions/faq-ayuda.php`
 - **Grupo:** `deposito_temporal_faq`
 - **Skill:** wp-accordion
 - **Comportamiento:** usa el componente compartido `faq-ayuda` (`titulo`, `descripcion`, `items`) y `encabezado-seccion` con etiqueta "Ayuda". `id="faq"` como ancla. Acordeón con `<details>`/`<summary>`; la primera pregunta abre por defecto en el diseño; icono más/menos blanco sobre círculo verde. Esta sección no lleva marcado propio: `wp-accordion` lo construye. En el diseño la FAQ se desliza sobre la sección anterior (pila con escala y desenfoque, espacio `faqHold`); se resuelve en la etapa C. Mismo bloque que `servicios-especiales` (faq).
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -227,10 +245,10 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Pasa los criterios de `wp-accordion`
-- [ ] Usa el componente `faq-ayuda` y las preguntas se recorren con un bucle
-- [ ] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Pasa los criterios de `wp-accordion`
+- [x] Usa el componente `faq-ayuda` y las preguntas se recorren con un bucle
+- [x] El `id="faq"` existe y el scroll deja el encabezado visible bajo el header fijo
 
 ## Sección: cta
 
@@ -239,7 +257,8 @@
 - **Grupo:** `deposito_temporal_cta`
 - **Skill:** ninguna
 - **Comportamiento:** usa el componente compartido `cta-cotizar` (`titulo`, `bajada`, `boton`, `imagen`). Bloque a dos columnas desde 1000 px y apilado en móvil; el título entra palabra por palabra; botón "Contáctanos" con `boton` hacia el formulario de contacto (`contacto.html#formulario` pasa a la página del tema); imagen con `object-cover`, `loading="lazy"`. El texto difiere del de las páginas de servicios (aquí habla de almacenar carga), por eso se pide como campo.
-- **Estado:** pendiente
+- **Estado:** aplicado
+- **ACF:** conectado
 
 **Campos ACF**
 
@@ -252,6 +271,6 @@
 
 **Criterios de aceptación**
 
-- [ ] Cumple los criterios comunes de `_shared.md`
-- [ ] Usa el componente `cta-cotizar`; la imagen pasa por `copam_theme_image` y el botón por `copam_theme_link`
-- [ ] Imagen con `loading="lazy"` y proporción fija
+- [x] Cumple los criterios comunes de `_shared.md`
+- [x] Usa el componente `cta-cotizar`; la imagen pasa por `copam_theme_image` y el botón por `copam_theme_link`
+- [x] Imagen con `loading="lazy"` y proporción fija
