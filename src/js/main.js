@@ -38,3 +38,15 @@ if (document.querySelector('form[data-form]')) {
 if (document.querySelector('[data-hoja-reclamacion]')) {
     import('./modules/hoja-reclamacion.js').then(({ iniciarHojaReclamacion }) => iniciarHojaReclamacion()).catch(console.error);
 }
+
+if (document.querySelector('[data-contacto-form]')) {
+    import('./modules/contacto.js').then(({ iniciarContacto }) => iniciarContacto()).catch(console.error);
+}
+
+if (document.querySelector('form[data-buzon]')) {
+    import('./modules/buzon.js').then(({ iniciarBuzon }) => iniciarBuzon()).catch(console.error);
+}
+
+if (document.querySelector('form[data-reporte]')) {
+    import('./modules/reporte-hostigamiento.js').then(({ iniciarReporteHostigamiento }) => iniciarReporteHostigamiento()).catch(console.error);
+}

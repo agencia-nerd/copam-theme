@@ -860,7 +860,7 @@
                     "name": "codigo",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "Código de identificación del establecimiento, si aplica. Si está vacío se oculta la fila",
+                    "instructions": "Código de identificación del establecimiento, si aplica. Si está vacío se oculta la fila (pendiente de COPAM)",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1315,5 +1315,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792687933
+    "modified": 1792693359
 }
