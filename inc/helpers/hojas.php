@@ -84,14 +84,17 @@ function copam_theme_hoja_lineas(array $form, array $data, array $secciones, arr
     return $lineas;
 }
 
-// Copia de la hoja al correo de quien la envió. Devuelve si salió, para que la respuesta no prometa una copia
+// Copia de la hoja al correo de quien la envió, en HTML (inc/correos-html.php) con el texto como versión plana.
+// $form ayuda a reconocer las filas del texto. Devuelve si salió, para que la respuesta no prometa una copia
 // que no llegó; un fallo se anota y no corta el envío (la hoja ya está registrada).
-function copam_theme_hoja_enviar_copia(string $correo, string $asunto, string $texto): bool
+function copam_theme_hoja_enviar_copia(string $correo, string $asunto, string $texto, array $form = []): bool
 {
     if (!is_email($correo)) {
         return false;
     }
-    if (!wp_mail($correo, $asunto, $texto, ['Content-Type: text/plain; charset=UTF-8'])) {
+    $html = copam_theme_correo_html('usuario', ['asunto' => $asunto, 'doc' => copam_theme_correo_ordenar($texto, $form)]);
+    copam_theme_correo_texto_plano($asunto, $texto);
+    if (!wp_mail($correo, $asunto, $html, ['Content-Type: text/html; charset=UTF-8'])) {
         copam_theme_form_log('No se pudo enviar la copia "' . $asunto . '" a quien la presentó.');
         return false;
     }

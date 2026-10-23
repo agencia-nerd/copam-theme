@@ -258,7 +258,8 @@ function copam_theme_hoja_dt_enviado($form_id, $data, $sent, $form)
         $correo,
         'Copia de tu hoja de reclamación N.° ' . $hoja['numero'],
         "Hola,\n\nEsta es la copia de tu hoja de reclamación registrada en el Depósito Temporal de Concesionaria Puerto Amazonas S.A.\n\n"
-            . copam_theme_hoja_dt_texto($form, $data, $hoja)
+            . copam_theme_hoja_dt_texto($form, $data, $hoja),
+        $form
     );
 
     wp_send_json_success([
