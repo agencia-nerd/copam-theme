@@ -317,7 +317,8 @@ function copam_theme_reclamos_enviado($form_id, $data, $sent, $form)
         $correo,
         'Copia de tu solicitud N.° ' . $hoja['numero'],
         "Hola,\n\nEsta es la copia de tu solicitud presentada ante Concesionaria Puerto Amazonas S.A. Los archivos que adjuntaste los recibió el área de Atención al Usuario.\n\n"
-            . copam_theme_reclamos_texto($form, $data, $hoja, $nombres)
+            . copam_theme_reclamos_texto($form, $data, $hoja, $nombres),
+        $form
     );
 
     wp_send_json_success([

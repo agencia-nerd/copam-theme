@@ -23,4 +23,5 @@ require_once get_theme_file_path('/inc/acf/runner.php');
 require_once get_theme_file_path('/inc/acf-grupos-vacios.php');
 require_once get_theme_file_path('/inc/accordions.php');
 require_once get_theme_file_path('/inc/redirecciones.php');
+require_once get_theme_file_path('/inc/correos-html.php');
 require_once get_theme_file_path('/inc/forms.php');

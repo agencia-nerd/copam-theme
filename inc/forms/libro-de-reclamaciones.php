@@ -261,7 +261,8 @@ function copam_theme_libro_enviado($form_id, $data, $sent, $form)
         $correo,
         'Copia de tu hoja de reclamación N.° ' . $hoja['numero'],
         "Hola,\n\nEsta es la copia de tu hoja de reclamación del Libro de Reclamaciones de Concesionaria Puerto Amazonas S.A.\n\n"
-            . copam_theme_libro_texto($form, $data, $hoja)
+            . copam_theme_libro_texto($form, $data, $hoja),
+        $form
     );
 
     $mensaje = trim(copam_theme_libro_campos()['mensaje_exito']) ?: $form['success'];
