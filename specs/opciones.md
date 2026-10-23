@@ -15,7 +15,7 @@
   - el buscador del header es un módulo JS (`src/js/modules/header.js`) que filtra el índice fijo de `inc/sitio.php`; se decide después de qué fuente busca de verdad
   - la cabecera (barra, menú por grupos, menú móvil y buscador) vive en `header.php`; el fondo de agua del pie es `src/js/modules/ocean.js`
   - valores sueltos de la cabecera y el pie sin token: fondo oscuro de la barra `rgba(20,24,26,.58)`, borde de subtítulos `#3E3E3E` (escritorio) y `#E6E6E6` (móvil), y las pastillas por tipo del buscador (Documento, Reglamento, Servicio, Comunicado, Página)
-  - el aviso se muestra como franja bajo la barra en móvil y como aviso flotante abajo a la izquierda desde 760 px; su cierre se recuerda en `sessionStorage`
+  - el aviso se muestra como franja bajo la barra en móvil y como aviso flotante abajo a la izquierda desde 760 px; no se puede cerrar y, si el detalle no entra, se desplaza en bucle
   - se ignora el `noindex` del diseño
   - efectos de todo el sitio, como módulos JS: precarga con el logo (`precarga.js`, solo la primera vez de la sesión), scroll suave con anclas animadas (`scroll.js`) y cursor personalizado (`cursor.js`); los tres se desactivan con `prefers-reduced-motion` y en pantallas táctiles según corresponda
   - la transición de cortina entre páginas no se implementó: el diseño define `navCurtain` en `copam-shared.js` pero ningún enlace la usa
@@ -28,7 +28,7 @@
 - **Destino:** `template-parts/components/aviso-superior.php`
 - **Grupo:** `opciones_aviso`
 - **Skill:** ninguna
-- **Comportamiento:** aviso corto de mantenimiento (punto de color, título y detalle) bajo la barra superior. Se muestra solo si está activo; el texto no desborda en móvil y se anuncia con `role="status"`.
+- **Comportamiento:** aviso corto de mantenimiento (punto de color, título y detalle) bajo la barra superior. Se muestra solo si está activo; el texto no desborda en móvil y se anuncia con `role="status"`. Si tiene enlace, todo el aviso lleva a esa entrada.
 - **Estado:** aplicado
 - **ACF:** conectado
 
@@ -39,6 +39,7 @@
 | `opciones_aviso_activo` | true_false | Activa o desactiva el aviso en todo el sitio | sí | no |
 | `opciones_aviso_titulo` | text | Título del aviso. Recomendado: ~20 caracteres | Mantenimiento | sí |
 | `opciones_aviso_detalle` | text | Fecha, horario y sistema afectado. Recomendado: ~60 caracteres | Sáb 27 set · 22:00–02:00 · Portal de clientes | sí |
+| `opciones_aviso_enlace` | link | Entrada que explica el aviso: con «Seleccionar enlace» busca y elige el post. Sin enlace, el aviso no es clicable | — | no |
 
 **Criterios de aceptación**
 

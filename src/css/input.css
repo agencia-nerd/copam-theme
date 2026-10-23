@@ -74,6 +74,53 @@
     50% { transform: scale(1.45); }
 }
 
+/* Aviso de mantenimiento: el detalle que no entra se desplaza en bucle (header.js marca `data-desborda`). */
+@keyframes aviso-desplazar {
+    to { transform: translateX(calc(-1 * var(--aviso-recorrido))); }
+}
+
+[data-aviso-detalle][data-desborda] {
+    display: flex;
+    text-overflow: clip;
+    mask-image: linear-gradient(to right, transparent, #000 8px, #000 calc(100% - 20px), transparent);
+}
+
+[data-desborda] .aviso-pista {
+    flex: none;
+    padding-right: 2.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    [data-desborda] .aviso-pista {
+        animation: aviso-desplazar var(--aviso-duracion) linear 1.5s infinite;
+    }
+
+    [data-aviso]:hover .aviso-pista {
+        animation-play-state: paused;
+    }
+}
+
+/* Sin movimiento: el detalle baja a 2 líneas dentro del mismo alto. */
+@media (prefers-reduced-motion: reduce) {
+    [data-aviso-detalle][data-desborda] {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        white-space: normal;
+        line-height: 1.2;
+        mask-image: none;
+    }
+
+    [data-desborda] .aviso-pista {
+        padding-right: 0;
+    }
+
+    [data-aviso-copia] {
+        display: none;
+    }
+}
+
 @layer base {
     body {
         @apply bg-white font-sans text-ink antialiased;
