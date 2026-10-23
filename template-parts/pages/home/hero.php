@@ -47,6 +47,13 @@ $vineta = 'bg-[radial-gradient(ellipse_farthest-corner_at_50%_46%,rgba(10,22,28,
             <div class="pointer-events-none absolute inset-0 z-[4] <?= esc_attr($vineta) ?>" aria-hidden="true"></div>
 
             <div class="absolute right-3 bottom-3 z-[5] flex gap-3">
+                <?php // Pausa del autoplay (WCAG 2.2.2). Solo con efectos: con movimiento reducido no hay autoplay. ?>
+                <div class="hidden overflow-hidden rounded js:block">
+                    <button class="group grid size-12 cursor-pointer place-items-center rounded border-0 bg-ink/70 transition-colors duration-300 hover:bg-ink focus-visible:bg-brand" type="button" data-hero-pausa data-hero-rise aria-pressed="false" aria-label="<?= esc_attr__('Pausar presentación', 'copam-theme') ?>" data-label-pausar="<?= esc_attr__('Pausar presentación', 'copam-theme') ?>" data-label-reanudar="<?= esc_attr__('Reanudar presentación', 'copam-theme') ?>">
+                        <svg class="block group-aria-pressed:hidden" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4.5 2.5v9M9.5 2.5v9" stroke="#fff" stroke-width="1.6"></path></svg>
+                        <svg class="hidden group-aria-pressed:block" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 2.5l7 4.5-7 4.5z" fill="#fff"></path></svg>
+                    </button>
+                </div>
                 <div class="overflow-hidden rounded">
                     <button class="group grid h-12 w-[clamp(52px,3.65vw,70px)] cursor-pointer place-items-center rounded border-0 bg-ink transition-colors duration-300 hover:bg-brand focus-visible:bg-brand" type="button" data-hero-prev data-hero-rise aria-label="<?= esc_attr__('Imagen anterior', 'copam-theme') ?>">
                         <span class="block size-[18px] overflow-hidden" aria-hidden="true">

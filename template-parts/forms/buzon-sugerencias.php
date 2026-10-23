@@ -52,7 +52,8 @@ $radios = static function (string $key, string $leyenda, string $marcada, string
     </fieldset>
 <?php };
 ?>
-<form class="min-w-0 rounded-md bg-[#F8F8F8] px-[clamp(20px,2.6vw,50px)] py-[clamp(24px,2.6vw,50px)]" data-sr="wipe" data-buzon <?php copam_theme_form_attrs($form_id); ?>>
+<form class="min-w-0 rounded-md bg-[#F8F8F8] px-[clamp(20px,2.6vw,50px)] py-[clamp(24px,2.6vw,50px)]" data-sr="wipe" data-buzon method="post" <?php copam_theme_form_attrs($form_id); ?>>
+    <?php get_template_part('template-parts/components/aviso-sin-js', null, ['correo' => $destino]); ?>
     <?php $radios('quien', '¿Quién envía la sugerencia?', 'usuario'); ?>
 
     <div class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-500 ease-out motion-reduce:transition-none data-abierto:grid-rows-[1fr] data-abierto:opacity-100" data-buzon-area>

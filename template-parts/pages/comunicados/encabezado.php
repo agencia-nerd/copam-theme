@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
  */
 $sec     = get_field('comunicados_encabezado', 'option') ?: [];
 $termino = ($args['termino'] ?? null) instanceof WP_Term ? $args['termino'] : null;
-$titulo  = trim((string) ($sec['titulo'] ?? ''));
+$titulo  = trim((string) ($sec['titulo'] ?? '')) ?: trim(html_entity_decode(get_the_title((int) get_option('page_for_posts')), ENT_QUOTES)); // sin campo, el título de la página de entradas
 $bajada  = trim((string) ($sec['bajada'] ?? ''));
 
 $migas = [

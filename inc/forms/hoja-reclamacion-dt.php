@@ -243,30 +243,30 @@ function copam_theme_hoja_dt_titulo_envio($post_data, $postarr)
     return $post_data;
 }
 
-// Tras enviar: copia al reclamante y respuesta con el número de hoja.
+// Tras enviar: copia al reclamante y respuesta con el número de hoja. Si el correo al proveedor falló, la hoja
+// ya quedó guardada en Envíos: se responde igual con el número (ver copam_theme_libro_enviado).
 add_action('copam_theme_form_submitted', 'copam_theme_hoja_dt_enviado', 10, 4);
 function copam_theme_hoja_dt_enviado($form_id, $data, $sent, $form)
 {
     $hoja = copam_theme_hoja_dt_actual();
-    if ($form_id !== COPAM_THEME_HOJA_DT || !$sent || !$hoja) {
+    if ($form_id !== COPAM_THEME_HOJA_DT || !$hoja) {
         return;
     }
 
     $correo = (string) ($data['correo'] ?? '');
-    if (is_email($correo)) {
-        $copia = "Hola,\n\nEsta es la copia de tu hoja de reclamación registrada en el Depósito Temporal de Concesionaria Puerto Amazonas S.A.\n\n"
-            . copam_theme_hoja_dt_texto($form, $data, $hoja);
-        if (!wp_mail($correo, 'Copia de tu hoja de reclamación N.° ' . $hoja['numero'], $copia, ['Content-Type: text/plain; charset=UTF-8'])) {
-            copam_theme_form_log('No se pudo enviar la copia de la hoja ' . $hoja['numero'] . ' al reclamante.');
-        }
-    }
+    $copia  = copam_theme_hoja_enviar_copia(
+        $correo,
+        'Copia de tu hoja de reclamación N.° ' . $hoja['numero'],
+        "Hola,\n\nEsta es la copia de tu hoja de reclamación registrada en el Depósito Temporal de Concesionaria Puerto Amazonas S.A.\n\n"
+            . copam_theme_hoja_dt_texto($form, $data, $hoja)
+    );
 
     wp_send_json_success([
         'message'  => sprintf(
-            'Tu queja o reclamo fue registrado con la hoja N.° %1$s el %2$s. Enviamos una copia a %3$s. COPAM dará respuesta en un plazo no mayor a quince (15) días hábiles.',
+            'Tu queja o reclamo fue registrado con la hoja N.° %1$s el %2$s. %3$s COPAM dará respuesta en un plazo no mayor a quince (15) días hábiles.',
             $hoja['numero'],
             $hoja['fecha'],
-            $correo
+            copam_theme_hoja_aviso_envio((bool) $sent, $copia, $correo)
         ),
         'redirect' => '',
     ]);

@@ -266,8 +266,9 @@ function copam_theme_reclamos_correo($mail, $form, $data)
 
 /*
  * Tras enviar: el envío guardado muestra los nombres de los archivos (no el identificador del lote), los
- * archivos se borran, sale la copia al solicitante y la respuesta lleva el número. Si el correo falló, los
- * archivos quedan para el reintento y se borran solos pasado COPAM_THEME_ADJUNTOS_VIDA.
+ * archivos se borran, sale la copia al solicitante y la respuesta lleva el número. Si el correo al área falló,
+ * la solicitud ya está guardada en Envíos: se responde igual con el número (constancia) y se pide reenviar los
+ * archivos, que quedan en el servidor y se borran solos pasado COPAM_THEME_ADJUNTOS_VIDA.
  */
 add_action('copam_theme_form_submitted', 'copam_theme_reclamos_enviado', 10, 4);
 function copam_theme_reclamos_enviado($form_id, $data, $sent, $form)
@@ -298,15 +299,21 @@ function copam_theme_reclamos_enviado($form_id, $data, $sent, $form)
         update_post_meta($hoja['envio'], '_copam_theme_rows', wp_slash($filas));
     }
 
-    if (!$sent) {
-        return;
-    }
-    foreach (COPAM_THEME_RECLAMOS_ADJUNTOS as $campo => $canal) {
-        copam_theme_adjuntos_borrar_lote($canal['carpeta'], (string) ($data[$campo] ?? ''));
+    // Con el correo al área caído, los archivos no se borran (solo viajaban en ese correo) y se pide reenviarlos.
+    $reenviar = '';
+    if ($sent) {
+        foreach (COPAM_THEME_RECLAMOS_ADJUNTOS as $campo => $canal) {
+            copam_theme_adjuntos_borrar_lote($canal['carpeta'], (string) ($data[$campo] ?? ''));
+        }
+    } elseif (array_filter($nombres)) {
+        $area     = copam_theme_correos('reclamos')[0] ?? '';
+        $reenviar = $area !== ''
+            ? sprintf(' Envía también tus archivos a %1$s indicando el N.° %2$s.', $area, $hoja['numero'])
+            : '';
     }
 
     $correo = (string) ($data['correo'] ?? '');
-    copam_theme_hoja_enviar_copia(
+    $copia  = copam_theme_hoja_enviar_copia(
         $correo,
         'Copia de tu solicitud N.° ' . $hoja['numero'],
         "Hola,\n\nEsta es la copia de tu solicitud presentada ante Concesionaria Puerto Amazonas S.A. Los archivos que adjuntaste los recibió el área de Atención al Usuario.\n\n"
@@ -314,7 +321,13 @@ function copam_theme_reclamos_enviado($form_id, $data, $sent, $form)
     );
 
     wp_send_json_success([
-        'message'  => sprintf('Recibimos tu solicitud N.° %1$s el %2$s. Te enviamos una copia a %3$s.', $hoja['numero'], $hoja['fecha'], $correo),
+        'message'  => sprintf(
+            'Recibimos tu solicitud N.° %1$s el %2$s. %3$s%4$s',
+            $hoja['numero'],
+            $hoja['fecha'],
+            copam_theme_hoja_aviso_envio((bool) $sent, $copia, $correo),
+            $reenviar
+        ),
         'redirect' => '',
     ]);
 }

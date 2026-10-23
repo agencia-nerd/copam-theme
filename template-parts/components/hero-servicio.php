@@ -24,6 +24,10 @@ $boton    = $args['boton'] ?? null;
 $imagen   = $args['imagen'] ?? null;
 $posicion = (string) ($args['posicion'] ?? 'object-center');
 $con_foto = copam_theme_image_data($imagen) !== null;
+// Sin título en el campo, el h1 usa el de la página (nunca queda vacío).
+if (!$lineas && $titulo === '') {
+    $titulo = trim(html_entity_decode(get_the_title(), ENT_QUOTES));
+}
 if (!$lineas && $titulo !== '') {
     $lineas = preg_split('/\s+/', $titulo, -1, PREG_SPLIT_NO_EMPTY);
 }

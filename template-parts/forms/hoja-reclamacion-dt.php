@@ -64,7 +64,8 @@ $radios = static function (string $key, string $leyenda, array $definiciones = [
 <?php };
 ?>
 <div class="mt-[clamp(28px,2.4vw,46px)]" data-hoja-reclamacion data-sr="clip">
-    <form class="rounded-md bg-white px-[clamp(20px,1.9vw,36px)] pt-[clamp(26px,2.5vw,48px)] pb-[clamp(26px,2.3vw,44px)] [&_[data-error-for]]:mt-0" <?php copam_theme_form_attrs($form_id); ?>>
+    <form class="rounded-md bg-white px-[clamp(20px,1.9vw,36px)] pt-[clamp(26px,2.5vw,48px)] pb-[clamp(26px,2.3vw,44px)] [&_[data-error-for]]:mt-0" method="post" <?php copam_theme_form_attrs($form_id); ?>>
+        <?php get_template_part('template-parts/components/aviso-sin-js', null, ['correo' => copam_theme_correos('deposito')[0] ?? '']); ?>
         <div class="grid grid-cols-[minmax(0,1fr)] gap-x-[clamp(16px,1.25vw,24px)] gap-y-4 rounded bg-gris-f4 px-5 py-[18px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div class="flex min-w-0 flex-col gap-1.5"><span class="text-[13px] text-gris-7a">Hoja de reclamación N.°</span><span class="text-[15px] leading-[1.45] text-ink">Se asigna automáticamente al enviar</span></div>
             <div class="flex min-w-0 flex-col gap-1.5"><span class="text-[13px] text-gris-7a">Fecha</span><span class="text-[15px] leading-[1.45] text-ink" data-hoja-fecha><?= esc_html(wp_date('d/m/Y')) ?></span></div>

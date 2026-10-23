@@ -16,11 +16,14 @@ export function iniciarHero() {
     const progresos = [...hero.querySelectorAll('[data-hero-progress]')];
     const estado = hero.querySelector('[data-hero-status]');
     const medios = hero.querySelector('[data-hero-media]');
+    estado?.setAttribute('aria-live', 'off'); // en silencio hasta que el usuario cambie de imagen (ver mover)
 
     let actual = 0;
     let ocupado = false;
     let listo = false;
     let pausado = false;
+    // Razones activas de pausa: 'usuario' (botón), 'foco', 'cursor' y 'pestana'. Con cualquiera, el autoplay se detiene.
+    const razones = new Set();
     let animacionProgreso = null;
     let temporizadorOcupado = 0;
 
@@ -99,7 +102,11 @@ export function iniciarHero() {
         }, esTactil() ? 0 : 1100);
     }
 
-    const mover = (direccion) => irA((actual + direccion + total) % total, direccion);
+    // El estado se anuncia solo cuando el cambio lo pide el usuario; en el autoplay queda en silencio.
+    const mover = (direccion, anunciar = false) => {
+        estado?.setAttribute('aria-live', anunciar ? 'polite' : 'off');
+        irA((actual + direccion + total) % total, direccion);
+    };
 
     function actualizarIndicadores() {
         contadores.forEach((el) => {
@@ -130,10 +137,12 @@ export function iniciarHero() {
         animacionProgreso.todas = animaciones;
     }
 
-    function pausar(valor) {
-        pausado = valor;
+    function pausar(razon, activa) {
+        if (activa) razones.add(razon);
+        else razones.delete(razon);
+        pausado = razones.size > 0;
         const animaciones = animacionProgreso?.todas || [];
-        animaciones.forEach((a) => (valor ? a.pause() : a.play()));
+        animaciones.forEach((a) => (pausado ? a.pause() : a.play()));
     }
 
     // ── Entrada inicial ──────────────────────────────────────────────────────
@@ -160,11 +169,21 @@ export function iniciarHero() {
 
     // ── Controles ────────────────────────────────────────────────────────────
 
-    hero.querySelector('[data-hero-prev]')?.addEventListener('click', () => mover(-1));
-    hero.querySelector('[data-hero-next]')?.addEventListener('click', () => mover(1));
-    medios?.addEventListener('focusin', () => pausar(true));
-    medios?.addEventListener('focusout', () => pausar(false));
-    document.addEventListener('visibilitychange', () => pausar(document.hidden));
+    hero.querySelector('[data-hero-prev]')?.addEventListener('click', () => mover(-1, true));
+    hero.querySelector('[data-hero-next]')?.addEventListener('click', () => mover(1, true));
+    medios?.addEventListener('focusin', () => pausar('foco', true));
+    medios?.addEventListener('focusout', () => pausar('foco', false));
+    medios?.addEventListener('mouseenter', () => pausar('cursor', true));
+    medios?.addEventListener('mouseleave', () => pausar('cursor', false));
+    document.addEventListener('visibilitychange', () => pausar('pestana', document.hidden));
+
+    const botonPausa = hero.querySelector('[data-hero-pausa]');
+    botonPausa?.addEventListener('click', () => {
+        const enPausa = !razones.has('usuario');
+        pausar('usuario', enPausa);
+        botonPausa.setAttribute('aria-pressed', String(enPausa));
+        botonPausa.setAttribute('aria-label', enPausa ? botonPausa.dataset.labelReanudar : botonPausa.dataset.labelPausar);
+    });
 
     // ── Título: si una línea se parte, reduce el tamaño hasta que entre ──────
 
@@ -198,7 +217,7 @@ export function iniciarHero() {
 
     // ── Efecto de pila: al llegar la sección siguiente, el hero se aleja y se desenfoca ──
 
-    const siguiente = document.querySelector('[data-hero-next]');
+    const siguiente = document.querySelector('[data-hero-siguiente]');
     const velo = hero.querySelector('[data-hero-wash]');
     let topActual = null;
 

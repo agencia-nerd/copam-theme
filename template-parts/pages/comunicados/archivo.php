@@ -17,7 +17,9 @@ $args = ['termino' => $termino instanceof WP_Term ? $termino : null];
 <div data-comunicados-encabezado>
     <?php get_template_part('template-parts/pages/comunicados/encabezado', null, $args); ?>
 </div>
-<section class="relative z-[1] bg-white pb-[clamp(88px,7.3vw,140px)]" id="lista" aria-label="<?= esc_attr__('Listado de comunicados', 'copam-theme') ?>" data-comunicados>
+<section class="relative z-[1] bg-white pb-[clamp(88px,7.3vw,140px)]" id="lista" aria-labelledby="lista-titulo" data-comunicados>
+    <?php // h2 oculto: las tarjetas (h3) quedan bajo un nivel intermedio después del h1 del encabezado. ?>
+    <h2 class="sr-only" id="lista-titulo"><?= esc_html__('Listado de comunicados', 'copam-theme') ?></h2>
     <?php get_template_part('template-parts/pages/comunicados/filtros', null, $args); ?>
     <div class="transition-opacity duration-300 aria-busy:opacity-50" data-comunicados-resultados aria-live="polite">
         <?php

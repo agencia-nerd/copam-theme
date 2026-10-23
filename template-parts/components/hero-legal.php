@@ -10,7 +10,7 @@ defined('ABSPATH') || exit;
  *  - titulo        (string)
  *  - actualizacion (string)  se omite si está vacía
  */
-$titulo        = trim((string) ($args['titulo'] ?? ''));
+$titulo        = trim((string) ($args['titulo'] ?? '')) ?: trim(html_entity_decode(get_the_title(), ENT_QUOTES)); // el h1 nunca queda vacío
 $actualizacion = trim((string) ($args['actualizacion'] ?? ''));
 ?>
 <section class="relative bg-white pb-[clamp(96px,10vw,190px)]">

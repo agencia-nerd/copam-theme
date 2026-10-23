@@ -6,6 +6,8 @@ defined('ABSPATH') || exit;
  *
  * $args:
  *  - texto    (string, requerido)  texto visible
+ *  - contexto (string)             texto solo para lectores de pantalla tras el visible, cuando el texto se
+ *                                  repite en varias tarjetas ("Descargar" + título del documento)
  *  - enlace   (array|string)       campo Link de ACF o URL; sin destino válido no se imprime
  *  - variante (string)             'verde' (por defecto) | 'oscuro'
  *  - flecha   (bool)               agrega la flecha diagonal
@@ -16,6 +18,7 @@ defined('ABSPATH') || exit;
  *  - clase    (string)             clases extra para el <a>
  */
 $texto    = (string) ($args['texto'] ?? '');
+$contexto = trim((string) ($args['contexto'] ?? ''));
 $enlace   = $args['enlace'] ?? '';
 $variante = (string) ($args['variante'] ?? 'verde');
 $flecha   = !empty($args['flecha']);
@@ -59,6 +62,9 @@ $abre_nueva = copam_theme_link_resolve($data, [])['blank'];
             <span class="whitespace-nowrap" aria-hidden="true"><?= esc_html($texto) ?></span>
         </span>
     </span>
+    <?php if ($contexto !== '') : ?>
+        <span class="sr-only"> <?= esc_html($contexto) ?></span>
+    <?php endif; ?>
     <?php if ($flecha) : ?>
         <span class="relative block flex-none overflow-hidden <?= esc_attr($icono) ?>" aria-hidden="true">
             <svg class="absolute inset-0 size-full transition-transform duration-[550ms] ease-in-out group-hover:translate-x-[120%] group-hover:-translate-y-[120%]" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="#fff" stroke-width="<?= $chico ? '1.8' : '1.6' ?>"></path></svg>

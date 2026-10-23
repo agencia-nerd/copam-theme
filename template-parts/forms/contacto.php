@@ -27,7 +27,8 @@ $caja_error = static function (string $key) use ($form_id, $error): void {
     echo '></p>';
 };
 ?>
-<form class="mt-[clamp(28px,2.4vw,46px)] rounded-md bg-white p-[clamp(24px,2.6vw,50px)]" data-sr="wipe" data-contacto-form <?php copam_theme_form_attrs($form_id); ?>>
+<form class="mt-[clamp(28px,2.4vw,46px)] rounded-md bg-white p-[clamp(24px,2.6vw,50px)]" data-sr="wipe" data-contacto-form method="post" <?php copam_theme_form_attrs($form_id); ?>>
+    <?php get_template_part('template-parts/components/aviso-sin-js', null, ['correo' => $destino]); ?>
     <div class="grid grid-cols-[minmax(0,1fr)] gap-x-[clamp(16px,1.25vw,24px)] gap-y-[clamp(18px,1.4vw,26px)] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div class="<?= esc_attr($campo) ?>">
             <?php $label('nombre', 'Nombre y apellidos'); ?>
