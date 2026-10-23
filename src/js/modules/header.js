@@ -303,16 +303,36 @@ function iniciarAviso(header) {
     const avisos = [...document.querySelectorAll('[data-aviso]')];
     if (!avisos.length) return;
 
-    const CLAVE = 'copam-toast-x';
-    let cerrado = false;
-    try {
-        cerrado = sessionStorage.getItem(CLAVE) === '1';
-    } catch (e) {}
-    const quitar = () => {
-        avisos.forEach((a) => a.remove());
-        header.removeAttribute('data-aviso');
+    // Si el detalle no entra, se desplaza en bucle: una copia oculta sigue a la pista para no dar saltos.
+    const anchos = new WeakMap();
+    const ajustarDetalle = (detalle) => {
+        const ancho = detalle.clientWidth;
+        if (!ancho || anchos.get(detalle) === ancho) return;
+        anchos.set(detalle, ancho);
+        detalle.querySelectorAll('[data-aviso-copia]').forEach((c) => c.remove());
+        detalle.removeAttribute('data-desborda');
+        if (detalle.scrollWidth <= ancho) return;
+
+        const pista = detalle.firstElementChild;
+        detalle.setAttribute('data-desborda', '');
+        const copia = pista.cloneNode(true);
+        copia.setAttribute('aria-hidden', 'true');
+        copia.setAttribute('data-aviso-copia', '');
+        detalle.append(copia);
+        const recorrido = pista.getBoundingClientRect().width;
+        detalle.style.setProperty('--aviso-recorrido', `${recorrido}px`);
+        detalle.style.setProperty('--aviso-duracion', `${Math.max(8, recorrido / 40)}s`);
     };
-    if (cerrado) return quitar();
+    const observador = new ResizeObserver((entradas) => entradas.forEach((e) => ajustarDetalle(e.target)));
+    const detalles = [...document.querySelectorAll('[data-aviso-detalle]')];
+    detalles.forEach((d) => observador.observe(d));
+    // La fuente web cambia el ancho del texto sin cambiar el del contenedor: se vuelve a medir.
+    document.fonts?.ready.then(() =>
+        detalles.forEach((d) => {
+            anchos.delete(d);
+            ajustarDetalle(d);
+        }),
+    );
 
     // En móvil la franja empuja la página y el menú compacto debe bajar su contenido.
     iniciarAviso.ajustar = () => header.toggleAttribute('data-aviso', !MAYOR_QUE_MOVIL.matches && window.innerWidth < 760 && avisos.some((a) => a.hasAttribute('data-visible')));
@@ -323,15 +343,4 @@ function iniciarAviso(header) {
         }, efectosActivos() ? 700 : 0),
     );
     window.addEventListener('resize', iniciarAviso.ajustar);
-
-    document.querySelectorAll('[data-aviso-cerrar]').forEach((b) =>
-        b.addEventListener('click', () => {
-            try {
-                sessionStorage.setItem(CLAVE, '1');
-            } catch (e) {}
-            avisos.forEach((a) => a.removeAttribute('data-visible'));
-            iniciarAviso.ajustar();
-            setTimeout(quitar, 1500);
-        }),
-    );
 }
