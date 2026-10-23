@@ -242,18 +242,22 @@ function copam_theme_libro_correo($mail, $form, $data)
     return $mail;
 }
 
-// Tras enviar: copia al reclamante y respuesta con el número de hoja.
+/*
+ * Tras enviar: copia al reclamante y respuesta con el número de hoja. Si el correo al área falló, la hoja ya
+ * quedó guardada en Envíos con su número: se responde igual con el número (constancia del reclamante) en lugar
+ * del error genérico, que llevaría a reintentar y abrir otra hoja.
+ */
 add_action('copam_theme_form_submitted', 'copam_theme_libro_enviado', 10, 4);
 function copam_theme_libro_enviado($form_id, $data, $sent, $form)
 {
     $hoja = copam_theme_hoja_en_curso();
-    if ($form_id !== COPAM_THEME_FORM_LIBRO || !$sent || !$hoja) {
+    if ($form_id !== COPAM_THEME_FORM_LIBRO || !$hoja) {
         return;
     }
     copam_theme_hoja_en_curso([]);
 
     $correo = (string) ($data['correo'] ?? '');
-    copam_theme_hoja_enviar_copia(
+    $copia  = copam_theme_hoja_enviar_copia(
         $correo,
         'Copia de tu hoja de reclamación N.° ' . $hoja['numero'],
         "Hola,\n\nEsta es la copia de tu hoja de reclamación del Libro de Reclamaciones de Concesionaria Puerto Amazonas S.A.\n\n"
@@ -263,11 +267,11 @@ function copam_theme_libro_enviado($form_id, $data, $sent, $form)
     $mensaje = trim(copam_theme_libro_campos()['mensaje_exito']) ?: $form['success'];
     wp_send_json_success([
         'message'  => sprintf(
-            '%1$s Tu hoja es la N.° %2$s, registrada el %3$s; enviamos una copia a %4$s.',
+            '%1$s Tu hoja es la N.° %2$s, registrada el %3$s. %4$s',
             $mensaje,
             $hoja['numero'],
             $hoja['fecha'],
-            $correo
+            copam_theme_hoja_aviso_envio((bool) $sent, $copia, $correo)
         ),
         'redirect' => '',
     ]);

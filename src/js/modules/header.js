@@ -217,7 +217,7 @@ export function iniciarHeader() {
         buscador.removeAttribute('data-abierto');
         buscador.inert = true;
         clearTimeout(temporizadorFoco);
-        header.querySelectorAll('[data-buscar-abrir]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+        document.querySelectorAll('[data-buscar-abrir]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
         if (devolverFoco && abridor) abridor.focus({ preventScroll: true });
         actualizarScroll();
     }
@@ -230,13 +230,13 @@ export function iniciarHeader() {
         pintarResultados();
         buscador.inert = false;
         buscador.setAttribute('data-abierto', '');
-        header.querySelectorAll('[data-buscar-abrir]').forEach((b) => b.setAttribute('aria-expanded', 'true'));
+        document.querySelectorAll('[data-buscar-abrir]').forEach((b) => b.setAttribute('aria-expanded', 'true'));
         temporizadorFoco = setTimeout(() => campo.focus({ preventScroll: true }), 350);
         actualizarScroll();
     }
 
     if (buscador && campo) {
-        header.querySelectorAll('[data-buscar-abrir]').forEach((b) => {
+        document.querySelectorAll('[data-buscar-abrir]').forEach((b) => {
             b.addEventListener('click', () => (buscadorAbierto() ? cerrarBuscador() : abrirBuscador(b)));
             ['pointerenter', 'focus'].forEach((evento) => b.addEventListener(evento, cargarIndice, { once: true }));
         });

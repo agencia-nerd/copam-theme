@@ -5,6 +5,11 @@
 // - la evidencia se sube aparte (el motor no envía archivos) y el form manda el identificador del lote.
 
 import { iniciarAdjuntos } from './adjuntos.js';
+import { iniciarReglasExtra } from './reglas-extra.js';
+
+// Con identificación, nombre, documento y correo son obligatorios (en PHP: 'required' => $identificado).
+const OBLIGATORIO = 'Este campo es obligatorio.';
+const IDENTIDAD = ['nombre', 'documento', 'correo'];
 
 function limpiarCampos(contenedor, form) {
     contenedor.querySelectorAll('input').forEach((input) => {
@@ -64,5 +69,12 @@ export function iniciarReporteHostigamiento() {
         }
         iniciarIdentificacion(form);
         iniciarEvidencia(form);
+
+        const identificado = () => form.elements.namedItem('identificarse')?.value !== 'no';
+        const reglas = {};
+        IDENTIDAD.forEach((nombre) => {
+            reglas[nombre] = () => (identificado() && !form.elements.namedItem(nombre)?.value.trim() ? OBLIGATORIO : '');
+        });
+        iniciarReglasExtra(form, reglas);
     });
 }

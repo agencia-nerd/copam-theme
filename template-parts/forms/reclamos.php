@@ -57,7 +57,8 @@ $casilla = static function (string $key, string $html) use ($form_id, $check): v
     </div>
 <?php };
 ?>
-<form class="mt-[clamp(28px,2.4vw,46px)] rounded-md bg-white px-[clamp(20px,1.9vw,36px)] pt-[clamp(26px,2.5vw,48px)] pb-[clamp(26px,2.3vw,44px)] [&_[data-error-for]]:mt-0" data-reclamos data-sr="clip" <?php copam_theme_form_attrs($form_id); ?>>
+<form class="mt-[clamp(28px,2.4vw,46px)] rounded-md bg-white px-[clamp(20px,1.9vw,36px)] pt-[clamp(26px,2.5vw,48px)] pb-[clamp(26px,2.3vw,44px)] [&_[data-error-for]]:mt-0" data-reclamos data-sr="clip" method="post" <?php copam_theme_form_attrs($form_id); ?>>
+    <?php get_template_part('template-parts/components/aviso-sin-js', null, ['correo' => $destino]); ?>
     <fieldset class="m-0 min-w-0 border-0 p-0">
         <legend class="p-0 <?= esc_attr($titulo) ?>">Tipo de solicitud<?= $req // phpcs:ignore WordPress.Security.EscapeOutput -- marcado fijo ?></legend>
         <div class="mt-4 flex flex-wrap gap-2">

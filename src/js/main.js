@@ -12,20 +12,34 @@ import { iniciarPrecarga } from './modules/precarga.js';
 import { iniciarRevelado } from './modules/reveal.js';
 import { iniciarScroll } from './modules/scroll.js';
 
+// Avisa a la red de seguridad de inc/head.php que el JS llegó: los estados iniciales ocultos ya se pueden revelar.
+document.documentElement.classList.add('js-listo');
+
+// Un módulo que falla no frena a los siguientes (si se cortara antes del revelado, el contenido quedaría oculto).
+const seguro = (iniciar) => {
+    try {
+        iniciar();
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 // Cada módulo se activa solo si su marcado (data-*) está en la página.
-iniciarPrecarga();
-iniciarScroll();
-iniciarCursor();
-iniciarHeader();
-iniciarHero();
-iniciarRevelado();
-iniciarConoce();
-iniciarConectividad();
-iniciarCarga();
-iniciarParalaje();
-iniciarPila();
-iniciarIndice();
-iniciarOceano();
+[
+    iniciarPrecarga,
+    iniciarScroll,
+    iniciarCursor,
+    iniciarHeader,
+    iniciarHero,
+    iniciarRevelado,
+    iniciarConoce,
+    iniciarConectividad,
+    iniciarCarga,
+    iniciarParalaje,
+    iniciarPila,
+    iniciarIndice,
+    iniciarOceano,
+].forEach(seguro);
 
 if (document.querySelector('[data-accordion]')) {
     import('./modules/accordion.js').then(({ initAccordions }) => initAccordions()).catch(console.error);

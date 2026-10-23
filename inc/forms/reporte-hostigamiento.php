@@ -123,6 +123,11 @@ function copam_theme_reporte_definicion($forms)
             'max'          => 32,
             'autocomplete' => 'off',
         ],
+        'privacidad' => [
+            'type'     => 'consent',
+            'label'    => 'Acepta la Política de privacidad y el tratamiento de sus datos personales',
+            'messages' => ['required' => 'Debes aceptar la Política de privacidad para enviar el reporte.'],
+        ],
         'declaracion' => [
             'type'     => 'consent',
             'label'    => 'Declara que la información es veraz y acepta que sea tratada de forma confidencial por el Delegado',

@@ -66,6 +66,8 @@ foreach ($grupos as $i => $grupo) :
         $ver     = is_array($alterno) && !empty($alterno['url']) ? ['url' => $alterno['url'], 'target' => '_blank'] : null;
         $boton   = trim((string) ($doc['boton_texto'] ?? '')) ?: $boton_base;
         $sub     = (string) ($doc['subtitulo'] ?? '');
+        // "Ver PDF" y el botón se repiten en cada fila: el título va oculto tras el texto para los lectores de pantalla.
+        $contexto = '<span class="sr-only"> ' . esc_html((string) $doc['titulo']) . '</span>';
         ?>
         <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-[#E6E6E6] py-[clamp(18px,1.4vw,26px)] pr-[clamp(20px,2.1vw,40px)] pl-[clamp(24px,4vw,76px)] first:border-t-0">
             <div class="flex min-w-0 flex-wrap items-center gap-x-[18px] gap-y-2.5">
@@ -81,7 +83,7 @@ foreach ($grupos as $i => $grupo) :
                 <div class="flex flex-none flex-wrap items-center gap-x-[22px] gap-y-2.5">
                     <?php if ($ver) : ?>
                         <a<?= copam_theme_link_attrs($ver, ['class' => 'inline-flex items-center gap-1.5 text-[15px] font-medium text-brand transition-colors duration-[250ms] hover:text-brand-hover']) ?> title="<?= esc_attr($descripcion_archivo($alterno)) ?>">
-                            <?= esc_html__('Ver PDF', 'copam-theme') ?>
+                            <?= esc_html__('Ver PDF', 'copam-theme') ?><?= $contexto // phpcs:ignore WordPress.Security.EscapeOutput -- escapado al armarlo ?>
                             <svg width="10" height="10" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M4.5 3H11v6.5" stroke="currentColor" stroke-width="1.8"></path></svg>
                             <span class="sr-only">(<?= esc_html__('se abre en una pestaña nueva', 'copam-theme') ?>)</span>
                         </a>
@@ -94,6 +96,7 @@ foreach ($grupos as $i => $grupo) :
                                     <span class="whitespace-nowrap" aria-hidden="true"><?= esc_html($boton) ?></span>
                                 </span>
                             </span>
+                            <?= $contexto // phpcs:ignore WordPress.Security.EscapeOutput -- escapado al armarlo ?>
                             <span class="sr-only">(<?= esc_html__('se abre en una pestaña nueva', 'copam-theme') ?>)</span>
                         </a>
                     <?php endif; ?>

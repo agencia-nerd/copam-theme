@@ -27,11 +27,12 @@ $total = count($servicios);
                     <h3 class="mt-[clamp(8px,.8vw,16px)] w-full text-[clamp(17px,.95vw,18px)] leading-[1.3] font-bold tracking-[.01em] text-ink uppercase"><?= esc_html((string) ($s['titulo'] ?? '')) ?></h3>
                     <p class="mt-3.5 mb-[clamp(28px,2.4vw,46px)] w-full text-[15px] leading-[1.5] text-pretty text-gris-5a"><?= esc_html((string) ($s['descripcion'] ?? '')) ?></p>
                     <?php get_template_part('template-parts/components/boton', null, [
-                        'texto'   => __('Ver detalle', 'copam-theme'),
-                        'enlace'  => $s['enlace'] ?? null,
-                        'flecha'  => true,
-                        'relleno' => 'px-6',
-                        'clase'   => 'mt-auto',
+                        'texto'    => __('Ver detalle', 'copam-theme'),
+                        'contexto' => (string) ($s['titulo'] ?? ''),
+                        'enlace'   => $s['enlace'] ?? null,
+                        'flecha'   => true,
+                        'relleno'  => 'px-6',
+                        'clase'    => 'mt-auto',
                     ]); ?>
                 </article>
             <?php endforeach; ?>

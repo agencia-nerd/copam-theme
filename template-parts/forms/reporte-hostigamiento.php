@@ -12,6 +12,7 @@ defined('ABSPATH') || exit;
 $form_id = COPAM_THEME_FORM_REPORTE;
 $nota    = (string) ($args['nota_envio'] ?? '');
 $destino = copam_theme_correos('hostigamiento')[0] ?? '';
+$privacy = get_privacy_policy_url() ?: home_url('/privacidad/');
 
 $dos_col  = 'grid grid-cols-[minmax(0,1fr)] gap-x-[clamp(16px,1.25vw,24px)] gap-y-[clamp(18px,1.4vw,26px)] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]';
 $campo    = 'flex min-w-0 flex-col gap-2.5';
@@ -66,7 +67,8 @@ $bloque_fin = static function () { ?>
     </div>
 <?php };
 ?>
-<form class="mt-[clamp(28px,2.4vw,46px)] rounded-md bg-white px-[clamp(20px,1.9vw,36px)] pt-[clamp(26px,2.5vw,48px)] pb-[clamp(26px,2.3vw,44px)]" data-sr="clip" data-reporte <?php copam_theme_form_attrs($form_id); ?>>
+<form class="mt-[clamp(28px,2.4vw,46px)] rounded-md bg-white px-[clamp(20px,1.9vw,36px)] pt-[clamp(26px,2.5vw,48px)] pb-[clamp(26px,2.3vw,44px)]" data-sr="clip" data-reporte method="post" <?php copam_theme_form_attrs($form_id); ?>>
+    <?php get_template_part('template-parts/components/aviso-sin-js', null, ['correo' => $destino]); ?>
     <?php $radios('quien', '¿Quién reporta?', 'trabajador'); ?>
 
     <?= $linea // phpcs:ignore WordPress.Security.EscapeOutput -- marcado fijo ?>
@@ -155,6 +157,13 @@ $bloque_fin = static function () { ?>
     <?php copam_theme_form_honeypot(); ?>
     <div class="flex flex-wrap items-center justify-between gap-5">
         <div class="flex max-w-[640px] flex-col gap-2.5 rounded bg-[#EBF4EE] px-4 py-3.5">
+            <div class="flex items-center gap-2.5">
+                <input class="m-0 size-4 flex-none accent-brand" <?php copam_theme_field_attrs($form_id, 'privacidad'); ?>>
+                <label class="cursor-pointer text-sm leading-[1.4] text-ink" for="<?= esc_attr(copam_theme_field_id($form_id, 'privacidad')) ?>">
+                    Acepto la <a class="text-ink underline underline-offset-[3px] hover:text-brand" href="<?= esc_url($privacy) ?>" target="_blank" rel="noopener">Política de privacidad<span class="sr-only"> (se abre en una pestaña nueva)</span></a> y el tratamiento de mis datos personales.
+                </label>
+            </div>
+            <?php $caja_error('privacidad'); ?>
             <div class="flex items-center gap-2.5">
                 <input class="m-0 size-4 flex-none accent-brand" <?php copam_theme_field_attrs($form_id, 'declaracion'); ?>>
                 <label class="cursor-pointer text-sm leading-[1.4] text-ink" for="<?= esc_attr(copam_theme_field_id($form_id, 'declaracion')) ?>">Declaro que la información es veraz y acepto que sea tratada de forma confidencial por el Delegado.</label>

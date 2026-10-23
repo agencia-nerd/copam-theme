@@ -59,7 +59,8 @@ export function iniciarAdjuntos({ form, archivos, estado, lote, zona, url, accio
         lista.forEach((archivo) => cuerpo.append('archivos[]', archivo));
 
         try {
-            const respuesta = await fetch(url, { method: 'POST', body: cuerpo, credentials: 'same-origin' });
+            // Hasta 10 MB por lote: 60 s antes de cortar la subida.
+            const respuesta = await fetch(url, { method: 'POST', body: cuerpo, credentials: 'same-origin', signal: AbortSignal.timeout(60000) });
             const json = await respuesta.json().catch(() => null);
             if (actual !== pedido) return;
             if (!json?.success) throw new Error(json?.data?.message || '');
@@ -69,7 +70,8 @@ export function iniciarAdjuntos({ form, archivos, estado, lote, zona, url, accio
         } catch (error) {
             if (actual !== pedido) return;
             archivos.value = '';
-            mostrar(error.message || 'No pudimos subir los archivos. Intenta de nuevo.', true);
+            const mensaje = error.name === 'TimeoutError' ? 'La subida tardó demasiado. Vuelve a intentarlo.' : error.message;
+            mostrar(mensaje || 'No pudimos subir los archivos. Intenta de nuevo.', true);
         } finally {
             if (actual === pedido && enviar) enviar.disabled = false;
         }

@@ -6,10 +6,14 @@ defined('ABSPATH') || exit;
  * visita de la sesión agrega además `precarga`, que muestra la pantalla de carga con el logo (precarga.js la quita).
  * Los estados iniciales de las animaciones (src/css/input.css) solo valen con esa clase: sin JS
  * o con movimiento reducido, todo el contenido se ve completo y quieto.
+ * Red de seguridad: si a los COPAM_THEME_JS_ESPERA_MS main.js no marcó `js-listo` (no cargó o falló antes de
+ * empezar), se quitan `js` y `precarga` para que el contenido no quede oculto por los estados iniciales.
  */
+const COPAM_THEME_JS_ESPERA_MS = 4000;
+
 function copam_theme_head_js_class()
 {
-    echo "<script>(function(d){if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js');try{if(!sessionStorage.getItem('copam-pre')){d.classList.add('precarga');setTimeout(function(){d.classList.remove('precarga');d.style.overflow='';},12000);}}catch(e){}}})(document.documentElement);</script>
+    echo "<script>(function(d){if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js');setTimeout(function(){if(!d.classList.contains('js-listo')){d.classList.remove('js','precarga');d.style.overflow='';}}," . (int) COPAM_THEME_JS_ESPERA_MS . ");try{if(!sessionStorage.getItem('copam-pre')){d.classList.add('precarga');setTimeout(function(){d.classList.remove('precarga');d.style.overflow='';},12000);}}catch(e){}}})(document.documentElement);</script>
 ";
 }
 add_action('wp_head', 'copam_theme_head_js_class', 1);

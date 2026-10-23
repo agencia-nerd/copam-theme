@@ -18,7 +18,7 @@ $peso_archivo = static function ($archivo): string {
     return trim($tipo . ($tamano !== '' ? ' · ' . $tamano : ''), ' ·');
 };
 ?>
-<section class="relative z-[1] overflow-hidden rounded-t-[clamp(20px,2vw,36px)] bg-gris-f9 pt-[clamp(80px,7.3vw,140px)] pb-[clamp(96px,9.4vw,180px)]" data-hero-next>
+<section class="relative z-[1] overflow-hidden rounded-t-[clamp(20px,2vw,36px)] bg-gris-f9 pt-[clamp(80px,7.3vw,140px)] pb-[clamp(96px,9.4vw,180px)]" data-hero-siguiente>
     <?php get_template_part('template-parts/components/encabezado-seccion', null, [
         'etiqueta' => (string) ($reglamentos['etiqueta'] ?? ''),
         'titulo'   => (string) ($reglamentos['titulo'] ?? ''),
@@ -40,11 +40,12 @@ $peso_archivo = static function ($archivo): string {
                     $archivo = $d['archivo'] ?? null;
                     $url = is_array($archivo) ? (string) ($archivo['url'] ?? '') : (string) wp_get_attachment_url((int) $archivo);
                     get_template_part('template-parts/components/boton', null, [
-                        'texto'  => __('Descargar', 'copam-theme'),
-                        'enlace' => ['url' => $url, 'title' => sprintf(__('Descargar %s', 'copam-theme'), (string) ($d['titulo'] ?? '')), 'target' => '_blank'],
-                        'flecha' => true,
-                        'titulo' => $peso_archivo($archivo),
-                        'clase'  => 'mt-auto',
+                        'texto'    => __('Descargar', 'copam-theme'),
+                        'contexto' => (string) ($d['titulo'] ?? ''),
+                        'enlace'   => ['url' => $url, 'title' => sprintf(__('Descargar %s', 'copam-theme'), (string) ($d['titulo'] ?? '')), 'target' => '_blank'],
+                        'flecha'   => true,
+                        'titulo'   => $peso_archivo($archivo),
+                        'clase'    => 'mt-auto',
                     ]); ?>
                 </article>
             <?php endforeach; ?>
