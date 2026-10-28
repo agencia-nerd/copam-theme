@@ -333,3 +333,7 @@
     .texto-comunicado a:hover { color: var(--color-brand); }
     .texto-comunicado img { max-width: 100%; height: auto; margin-inline: auto; }
 }
+
+/* Insignia de reCAPTCHA (la inserta Google, inc/recaptcha.php): queda detrás de las secciones de la página,
+   así que se sube por encima del contenido y por debajo del header (z-50). */
+.grecaptcha-badge { z-index: 49 !important; }

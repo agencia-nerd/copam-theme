@@ -36,8 +36,8 @@ Stack: WordPress (Local WP) + Vite + Tailwind + pnpm.
 - No subas al servidor `hot`, `node_modules/`, `src/` ni archivos de config (`package.json`, `pnpm-*`, `vite.config.ts`, `CLAUDE.md`).
 
 <!-- wp-helper:start -->
-## Helpers (wp-helper 1.1.0)
-- Los helpers viven en `inc/helpers/` y se cargan con `require_once` desde `functions.php`. No edites los archivos del motor: se actualizan desde la skill wp-helper.
+## Helpers (wp-helper 1.1.0)
+- Los helpers viven en `inc/helpers/` y se cargan con `require_once` desde `functions.php`. No edites los archivos del motor: se actualizan desde la skill wp-helper.
 - Un helper propio de este proyecto va en `inc/helpers/<nombre>.php` con el prefijo `copam_theme_`, y también se carga desde `functions.php`.
 - Toda imagen de un campo ACF pasa por `copam_theme_image($campo, [...])` (devuelve el `<img>` o `''`) o por `copam_theme_image_data($campo)` (`url`, `alt`, `width`, `height` o `null`). No uses `$campo['url']` ni `wp_get_attachment_image_url()` directo en las vistas. Usa `'loading' => 'eager'` en la imagen principal de la página.
 - Un texto con partes de otro color se imprime con `copam_theme_highlight($texto)`; ya sale escapado. Los marcadores y sus clases están en `inc/helpers/text-styles.php`: para sumar un estilo corre `install.mjs --add-style` de la skill wp-helper, no lo edites a mano.
@@ -45,12 +45,12 @@ Stack: WordPress (Local WP) + Vite + Tailwind + pnpm.
 <!-- wp-helper:end -->
 
 <!-- design-import:start -->
-## Specs de diseño (design-import 1.4.0)
-- Los specs viven en `specs/` (`_index.md`, `_shared.md` y un archivo por página). Son documentación del tema: no se suben al servidor.
-- Aplica solo las páginas con estado `aprobado` en `specs/_index.md` y deja el estado en `aplicado` al terminar.
-- Cada página es un grupo de campos ACF (`Grupo ACF` y `Ubicación` en su spec) y cada sección es un campo `group` (`home_hero`). Blog, catálogo y WooCommerce se describen en la tabla "Contenido dinámico" de `_shared.md`: no escribas consultas, filtros ni lógica de Woo hasta ese paso.
-- Lo que se repite en todo el sitio (contacto, redes, textos del pie) está en `specs/opciones.md` y va en una página de opciones de ACF; el logo y el ícono son de Personalizar y los menús son menús de WordPress.
-- Los campos ACF se nombran `<página>_<sección>_<campo>` en snake_case y en español. No pongas límites de caracteres ni de tamaño de imagen: la descripción del campo solo lo recomienda.
+## Specs de diseño (design-import 1.4.0)
+- Los specs viven en `specs/` (`_index.md`, `_shared.md` y un archivo por página). Son documentación del tema: no se suben al servidor.
+- Aplica solo las páginas con estado `aprobado` en `specs/_index.md` y deja el estado en `aplicado` al terminar.
+- Cada página es un grupo de campos ACF (`Grupo ACF` y `Ubicación` en su spec) y cada sección es un campo `group` (`home_hero`). Blog, catálogo y WooCommerce se describen en la tabla "Contenido dinámico" de `_shared.md`: no escribas consultas, filtros ni lógica de Woo hasta ese paso.
+- Lo que se repite en todo el sitio (contacto, redes, textos del pie) está en `specs/opciones.md` y va en una página de opciones de ACF; el logo y el ícono son de Personalizar y los menús son menús de WordPress.
+- Los campos ACF se nombran `<página>_<sección>_<campo>` en snake_case y en español. No pongas límites de caracteres ni de tamaño de imagen: la descripción del campo solo lo recomienda.
 - El texto del diseño queda fijo en la plantilla y su campo está en el spec ("valor actual"): al pasarlo a ACF se reemplaza uno a uno.
 <!-- design-import:end -->
 
@@ -65,10 +65,10 @@ Stack: WordPress (Local WP) + Vite + Tailwind + pnpm.
 <!-- wp-acf:end -->
 
 <!-- wp-accordion:start -->
-## Acordeones (wp-accordion 1.0.0)
-- Cada acordeón es una vista en `template-parts/accordions/<id>.php` que se muestra con `get_template_part('template-parts/accordions/<id>')`. Ábrelo con `copam_theme_accordion_start($id, [...])`, un `copam_theme_accordion_item_start($titulo)` / `_item_end()` por ítem y `copam_theme_accordion_end()`; el contenido de cada ítem es libre. Con una lista (p. ej. un repeater de ACF) usa `copam_theme_accordion($id, $items)`.
-- El diseño sale de Figma: clases por parte (`class`, `item_class`, `summary_class`, `title_class`, `icon_class`, `panel_class`), `icon` e `icon_position`. Lo que se repite en varios acordeones va una vez como variable `--accordion-*` en el CSS del proyecto.
-- Es un `<details>` nativo: no pongas enlaces ni botones dentro del título, no ocultes el panel con `display: none` ni armes uno con `div` y `aria-expanded`. Para enlazar un ítem, dale `id` y usa `<a href="#id">`.
+## Acordeones (wp-accordion 1.0.0)
+- Cada acordeón es una vista en `template-parts/accordions/<id>.php` que se muestra con `get_template_part('template-parts/accordions/<id>')`. Ábrelo con `copam_theme_accordion_start($id, [...])`, un `copam_theme_accordion_item_start($titulo)` / `_item_end()` por ítem y `copam_theme_accordion_end()`; el contenido de cada ítem es libre. Con una lista (p. ej. un repeater de ACF) usa `copam_theme_accordion($id, $items)`.
+- El diseño sale de Figma: clases por parte (`class`, `item_class`, `summary_class`, `title_class`, `icon_class`, `panel_class`), `icon` e `icon_position`. Lo que se repite en varios acordeones va una vez como variable `--accordion-*` en el CSS del proyecto.
+- Es un `<details>` nativo: no pongas enlaces ni botones dentro del título, no ocultes el panel con `display: none` ni armes uno con `div` y `aria-expanded`. Para enlazar un ítem, dale `id` y usa `<a href="#id">`.
 - No edites el motor (`inc/accordions.php`, `src/js/modules/accordion.js`, `src/css/accordion.css`): se actualiza desde la skill wp-accordion.
 <!-- wp-accordion:end -->
 
@@ -79,4 +79,7 @@ Stack: WordPress (Local WP) + Vite + Tailwind + pnpm.
 - Define los campos, las reglas y los mensajes solo en la definición.
 - No escribas a mano `name`, `id`, `required`, `maxlength` ni `aria-*` en los campos: los imprimen los helpers `copam_theme_*`.
 - Instala Zod con `pnpm add zod@latest`.
+- reCAPTCHA v3 (propio del proyecto, no es de la skill): `inc/recaptcha.php` verifica el token con el hook `wp_ajax_*copam_theme_form_submit` en prioridad 0, y `src/js/modules/recaptcha.js` lo pide al enviar. Las claves van en `wp-config.php` (`COPAM_THEME_RECAPTCHA_SITE_KEY` y `COPAM_THEME_RECAPTCHA_SECRET_KEY`), nunca en el repo; sin ellas no se exige nada.
+- Parche en el motor: `src/js/modules/form.js` tiene 3 líneas de reCAPTCHA (el `import`, `precargarRecaptcha()` en `requestToken` y `body.append('recaptcha', await tokenRecaptcha())`). Si la skill wp-form actualiza `form.js`, acopla esas 3 líneas a la versión nueva (no pises la versión nueva con la anterior). `inc/forms.php` no tiene parche.
+- Un form nuevo que use el motor queda protegido solo. Los endpoints de subida de adjuntos (`copam_theme_reclamos_*`, `copam_theme_reporte_adjuntos`) no verifican reCAPTCHA.
 <!-- wp-form:end -->
