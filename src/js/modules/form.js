@@ -11,6 +11,7 @@
  * en inc/forms/ y su vista en template-parts/forms/.
  */
 import * as z from 'zod';
+import { precargarRecaptcha, tokenRecaptcha } from './recaptcha.js'; // Parche del proyecto: reCAPTCHA (ver CLAUDE.md).
 
 const TOKEN_ACTION = 'copam_theme_form_token';
 const SUBMIT_ACTION = 'copam_theme_form_submit';
@@ -172,6 +173,7 @@ function initForm(form) {
 
     const requestToken = () => {
         if (!tokenRequest) {
+            precargarRecaptcha()?.catch(() => {});
             const body = new FormData();
             body.append('action', TOKEN_ACTION);
             tokenRequest = post(url, body).then((res) => {
@@ -311,6 +313,7 @@ function initForm(form) {
             body.append('form', form.dataset.form);
             body.append('nonce', nonce);
             body.append('token', token);
+            body.append('recaptcha', await tokenRecaptcha());
             body.append(HONEYPOT, form.elements.namedItem(HONEYPOT)?.value ?? '');
             keys.forEach((key) => {
                 const value = result.data[key];
