@@ -27,7 +27,7 @@ $vineta = 'bg-[radial-gradient(ellipse_farthest-corner_at_50%_46%,rgba(10,22,28,
                 <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,.08)_0%,rgba(10,10,10,0)_35%,rgba(10,10,10,.62)_100%)]" aria-hidden="true"></div>
 
                 <div class="relative z-[1] px-[clamp(20px,2.1vw,40px)] pb-[clamp(40px,5vw,96px)]">
-                    <span class="relative block h-0.5 overflow-hidden rounded-[1px] bg-white/[.22] max-md:absolute max-md:inset-x-5 max-md:top-[clamp(84px,13svh,120px)]" data-pin-line aria-hidden="true">
+                    <span class="relative block h-0.5 overflow-hidden rounded-[1px] bg-white/[.22] max-md:hidden" data-pin-line aria-hidden="true">
                         <span class="absolute inset-0 origin-left scale-x-0 bg-white" data-pin-bar></span>
                     </span>
                     <div class="mt-[clamp(32px,2.6vw,50px)] grid grid-cols-1 gap-x-10 gap-y-7 md:grid-cols-2 xl:grid-cols-[clamp(150px,11vw,210px)_minmax(0,1fr)_minmax(0,640px)]">

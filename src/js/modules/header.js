@@ -19,9 +19,9 @@ const MAX_RESULTADOS = 8;
 const normalizar = (texto) =>
     [...texto].map((c) => c.normalize('NFD')[0].toLowerCase()).join('');
 
+// Solo en <html>: con overflow también en <body>, este pasa a ser el contenedor de scroll y el header sticky deja de pegarse.
 function bloquearScroll(bloquear) {
     document.documentElement.style.overflow = bloquear ? 'hidden' : '';
-    document.body.style.overflow = bloquear ? 'hidden' : '';
 }
 
 export function iniciarHeader() {
