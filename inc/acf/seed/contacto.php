@@ -80,7 +80,6 @@ return [
             'aviso_titulo' => '¿Tienes un problema con un servicio?',
             'aviso_texto'  => 'El buzón no reemplaza al reclamo. Si necesitas una respuesta formal en plazo, presenta un reclamo.',
             'aviso_enlace' => ['title' => 'Presentar un reclamo', 'url' => '/reclamos/#formulario'],
-            'exito'        => 'Gracias. Tu mensaje fue registrado y será revisado por el Coordinador del SIG.',
         ],
     ],
 ];

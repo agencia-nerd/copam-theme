@@ -19,6 +19,7 @@ require_once get_theme_file_path('/inc/helpers/adjuntos.php');
 require_once get_theme_file_path('/inc/helpers/validacion.php');
 require_once get_theme_file_path('/inc/helpers/texto-legal.php');
 require_once get_theme_file_path('/inc/helpers/comunicados.php');
+require_once get_theme_file_path('/inc/helpers/copyright.php');
 require_once get_theme_file_path('/inc/acf/runner.php');
 require_once get_theme_file_path('/inc/acf-grupos-vacios.php');
 require_once get_theme_file_path('/inc/accordions.php');

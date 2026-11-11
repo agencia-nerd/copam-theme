@@ -27,12 +27,6 @@ return [
             'nota_legal' => 'Conforme a la Ley N.° 27942, Ley de Prevención y Sanción del Hostigamiento Sexual, y su Reglamento (D.S. N.° 014-2019-MIMP).',
         ],
 
-        'canal_hostigamiento_sexual_reporte' => [
-            'titulo'        => 'Enviar un reporte',
-            'nota_envio'    => 'Llega únicamente al Delegado de prevención y sanción del hostigamiento sexual:',
-            'mensaje_exito' => 'Tu reporte fue enviado de forma confidencial al Delegado.',
-        ],
-
         'canal_hostigamiento_sexual_politica' => [
             'titulo'                => 'Política y procedimiento',
             'bajada'                => 'Conoce la política de prevención y el procedimiento de atención de COPAM.',

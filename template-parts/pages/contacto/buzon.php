@@ -4,7 +4,7 @@ defined('ABSPATH') || exit;
 /**
  * Contacto · buzón de sugerencias: a la izquierda el texto, las condiciones y el aviso que deriva a reclamos;
  * a la derecha el form de wp-form (template-parts/forms/buzon-sugerencias.php). Dos columnas desde 1000 px.
- * Lee el grupo `contacto_buzon` (ACF); el mensaje de éxito (`exito`) lo usa la definición del form.
+ * Lee el grupo `contacto_buzon` (ACF); el mensaje de éxito es fijo, en la definición del form.
  */
 $grupo  = get_field('contacto_buzon') ?: [];
 $puntos = array_values(array_filter((array) ($grupo['puntos'] ?? []), static fn($p): bool => trim((string) ($p['texto'] ?? '')) !== ''));

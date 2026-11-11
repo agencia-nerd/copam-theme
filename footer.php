@@ -3,13 +3,12 @@ defined('ABSPATH') || exit;
 
 /**
  * Pie del sitio: datos de contacto, columnas del menú `pie`, línea legal (menú `legal`) y logo grande sobre el fondo de agua.
- * Los textos son el grupo `opciones_pie` de Ajustes del sitio; los menús, de Apariencia > Menús.
+ * Teléfono y correo son el grupo `opciones_pie` de Ajustes del sitio; la descripción y el copyright son fijos
+ * (el año del copyright es automático); los menús, de Apariencia > Menús.
  */
-$pie         = get_field('opciones_pie', 'option') ?: [];
-$descripcion = (string) ($pie['descripcion'] ?? '');
-$telefono    = (string) ($pie['telefono'] ?? '');
-$correo      = (string) ($pie['correo'] ?? '');
-$copyright   = (string) ($pie['copyright'] ?? '');
+$pie      = get_field('opciones_pie', 'option') ?: [];
+$telefono = (string) ($pie['telefono'] ?? '');
+$correo   = (string) ($pie['correo'] ?? '');
 
 // Cada elemento de primer nivel es una columna; sus hijos, los enlaces.
 $columnas = array_map(static fn(array $columna): array => [
@@ -27,7 +26,7 @@ $logo  = get_theme_mod('custom_logo');
                 <div class="grid grid-cols-2 gap-x-[clamp(20px,2vw,40px)] gap-y-9 min-[600px]:grid-cols-3 xl:grid-cols-[minmax(0,1.5fr)_repeat(5,minmax(0,1fr))]">
                     <div class="overflow-hidden">
                         <div data-sr="rise" data-sr-fast data-sr-delay="120">
-                            <p class="m-0 max-w-[300px] text-[15px] leading-[1.6] text-ink-muted"><?= esc_html($descripcion) ?></p>
+                            <p class="m-0 max-w-[300px] text-[15px] leading-[1.6] text-ink-muted"><?= esc_html__('Terminal Portuario de Yurimaguas – Nueva Reforma.', 'copam-theme') ?></p>
                             <?php if ($telefono !== '') : ?>
                                 <a class="mt-4 inline-block text-base font-medium text-ink" href="<?= esc_url('tel:' . preg_replace('/\D+/', '', $telefono)) ?>"><?= esc_html($telefono) ?></a>
                             <?php endif; ?>
@@ -60,7 +59,7 @@ $logo  = get_theme_mod('custom_logo');
                 <span class="mt-[clamp(40px,3.6vw,68px)] block h-px bg-line js:origin-left js:scale-x-0" data-sr="lineX" data-sr-fast data-sr-delay="200"></span>
                 <div class="overflow-hidden">
                     <div class="flex flex-wrap items-center justify-between gap-x-8 gap-y-5 py-[clamp(24px,2vw,38px)]" data-sr="rise" data-sr-fast data-sr-delay="248">
-                        <p class="m-0 text-sm text-ink-muted"><?= esc_html($copyright) ?></p>
+                        <p class="m-0 text-sm text-ink-muted"><?= esc_html(copam_theme_copyright()) ?></p>
                         <div class="flex flex-wrap gap-x-6 gap-y-3">
                             <?php foreach ($legal as $enlace) : ?>
                                 <a class="text-sm text-ink-muted underline underline-offset-[3px] transition-colors hover:text-brand" href="<?= esc_url($enlace['url']) ?>"><?= esc_html($enlace['texto']) ?></a>

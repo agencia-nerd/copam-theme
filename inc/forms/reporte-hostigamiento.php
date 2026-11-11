@@ -163,13 +163,10 @@ function copam_theme_reporte_es_envio()
         && sanitize_key(wp_unslash($_POST['form'])) === COPAM_THEME_FORM_REPORTE;
 }
 
-// Mensaje de éxito: campo de la página del Canal (el envío llega por AJAX, sin la página en contexto).
+// Mensaje de éxito: texto fijo (no es campo ACF).
 function copam_theme_reporte_exito()
 {
-    $paginas = get_pages(['meta_key' => '_wp_page_template', 'meta_value' => 'pages/template-canal-hostigamiento-sexual.php', 'number' => 1]);
-    $grupo   = ($paginas && function_exists('get_field')) ? (get_field('canal_hostigamiento_sexual_reporte', (int) $paginas[0]->ID) ?: []) : [];
-
-    return (string) ($grupo['mensaje_exito'] ?? '');
+    return __('Tu reporte fue enviado de forma confidencial al Delegado.', 'copam-theme');
 }
 
 /* -------------------------------------------------------------------------

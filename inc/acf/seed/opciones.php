@@ -14,10 +14,8 @@ return [
             'detalle' => 'Sáb 27 set · 22:00–02:00 · Portal de clientes',
         ],
         'opciones_pie' => [
-            'descripcion' => 'Terminal Portuario de Yurimaguas – Nueva Reforma.',
-            'telefono'    => '(01) 500-0450',
-            'correo'      => 'servicioclientes@copam.com.pe',
-            'copyright'   => '© 2026 Concesionaria Puerto Amazonas S.A. · RUC 20543480291',
+            'telefono' => '(01) 500-0450',
+            'correo'   => 'servicioclientes@copam.com.pe',
         ],
         'opciones_correos' => [
             'contacto'      => [['correo' => 'comercial@copam.com.pe']],

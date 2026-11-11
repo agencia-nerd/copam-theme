@@ -3,16 +3,15 @@ defined('ABSPATH') || exit;
 
 /**
  * Comunicados · encabezado: migas (Inicio › Zona Clientes › Comunicados), h1 y bajada.
- * Lee el grupo `comunicados_encabezado` de la página de opciones "Archivo de comunicado" (contenido inicial en
- * inc/acf/seed/comunicados.php). En una categoría (category.php) el título y la bajada son los del término.
+ * El h1 es el título de la página de entradas (Ajustes > Lectura) y la bajada es fija.
+ * En una categoría (category.php) el título y la bajada son los del término.
  *
  * $args:
  *  - termino (WP_Term) la categoría que se está viendo, si es una
  */
-$sec     = get_field('comunicados_encabezado', 'option') ?: [];
 $termino = ($args['termino'] ?? null) instanceof WP_Term ? $args['termino'] : null;
-$titulo  = trim((string) ($sec['titulo'] ?? '')) ?: trim(html_entity_decode(get_the_title((int) get_option('page_for_posts')), ENT_QUOTES)); // sin campo, el título de la página de entradas
-$bajada  = trim((string) ($sec['bajada'] ?? ''));
+$titulo  = trim(html_entity_decode(get_the_title((int) get_option('page_for_posts')), ENT_QUOTES)) ?: __('Comunicados', 'copam-theme');
+$bajada  = __('Avisos operativos, novedades y publicaciones regulatorias del Terminal Portuario de Yurimaguas – Nueva Reforma.', 'copam-theme');
 
 $migas = [
     ['texto' => __('Inicio', 'copam-theme'), 'url' => home_url('/')],

@@ -217,9 +217,7 @@ if ($tipo === 'usuario') {
                         <tr>
                             <td class="c-pad" bgcolor="#10303B" style="background-color:#10303B; padding:26px 40px 28px; font-family:<?= esc_attr($fuente) ?>;">
                                 <p style="margin:0; font-size:14px; line-height:20px; font-weight:600; color:#FFFFFF;"><?= esc_html($sitio) ?></p>
-                                <?php if (!empty($pie['descripcion'])) : ?>
-                                    <p style="margin:4px 0 0; font-size:13px; line-height:19px; color:#B5B5B5;"><?= esc_html($pie['descripcion']) ?></p>
-                                <?php endif; ?>
+                                <p style="margin:4px 0 0; font-size:13px; line-height:19px; color:#B5B5B5;"><?= esc_html__('Terminal Portuario de Yurimaguas – Nueva Reforma.', 'copam-theme') ?></p>
                                 <?php if (!empty($pie['telefono']) || !empty($pie['correo'])) : ?>
                                     <p style="margin:14px 0 0; font-size:13px; line-height:20px; color:#FFFFFF;">
                                         <?php if (!empty($pie['telefono'])) : ?>
@@ -235,7 +233,7 @@ if ($tipo === 'usuario') {
                                 <?php endif; ?>
                                 <p style="margin:18px 0 0; padding-top:14px; border-top:1px solid #1F4552; font-size:11px; line-height:17px; color:#8A8A8A;">
                                     <?= esc_html__('Recibes este correo porque presentaste este registro en nuestra web. Es una copia automática: para consultas, escríbenos al correo de arriba.', 'copam-theme') ?>
-                                    <?php if (!empty($pie['copyright'])) : ?><br><?= esc_html($pie['copyright']) ?><?php endif; ?>
+                                    <br><?= esc_html(copam_theme_copyright()) ?>
                                 </p>
                             </td>
                         </tr>

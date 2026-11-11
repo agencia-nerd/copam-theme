@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
  * Además de lo que hace el motor (inc/forms.php), este form:
  *  - solo toma el área cuando quien envía es "Trabajador de COPAM" (lo decide el servidor, no la vista);
  *  - acepta envíos anónimos: nombre y correo son opcionales;
- *  - toma el mensaje de éxito del campo `contacto_buzon_exito` de la página Contacto.
+ *  - usa un mensaje de éxito propio y fijo (copam_theme_buzon_exito()).
  * Los destinatarios salen de Ajustes del sitio > Correos > Buzón de sugerencias.
  */
 const COPAM_THEME_FORM_BUZON = 'buzon-sugerencias';
@@ -88,11 +88,8 @@ function copam_theme_buzon_definicion($forms)
     return $forms;
 }
 
-// Mensaje de éxito: campo de la página Contacto (el envío llega por AJAX, sin la página en contexto).
+// Mensaje de éxito: texto fijo (no es campo ACF).
 function copam_theme_buzon_exito()
 {
-    $paginas = get_pages(['meta_key' => '_wp_page_template', 'meta_value' => 'pages/template-contacto.php', 'number' => 1]);
-    $grupo   = ($paginas && function_exists('get_field')) ? (get_field('contacto_buzon', (int) $paginas[0]->ID) ?: []) : [];
-
-    return (string) ($grupo['exito'] ?? '');
+    return __('Gracias. Tu mensaje fue registrado y será revisado por el Coordinador del SIG.', 'copam-theme');
 }
