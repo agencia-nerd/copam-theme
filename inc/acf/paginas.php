@@ -8,6 +8,7 @@ defined('ABSPATH') || exit;
 return [
     'canal-hostigamiento-sexual' => ['titulo' => 'Canal de hostigamiento sexual', 'slug' => 'canal-hostigamiento-sexual', 'frente' => false, 'plantilla' => 'pages/template-canal-hostigamiento-sexual.php', 'padre' => ''],
     'compromiso-ambiental' => ['titulo' => 'Compromiso Ambiental', 'slug' => 'compromiso-ambiental', 'frente' => false, 'plantilla' => 'pages/template-compromiso-ambiental.php', 'padre' => ''],
+    'comunicados' => ['titulo' => 'Comunicados', 'slug' => 'comunicados', 'frente' => false, 'plantilla' => '', 'padre' => '', 'entradas' => true],
     'contacto' => ['titulo' => 'Contacto', 'slug' => 'contacto', 'frente' => false, 'plantilla' => 'pages/template-contacto.php', 'padre' => ''],
     'cookies' => ['titulo' => 'Política de cookies', 'slug' => 'cookies', 'frente' => false, 'plantilla' => 'pages/template-cookies.php', 'padre' => ''],
     'deposito-temporal' => ['titulo' => 'Depósito Temporal', 'slug' => 'deposito-temporal', 'frente' => false, 'plantilla' => 'pages/template-deposito-temporal.php', 'padre' => ''],

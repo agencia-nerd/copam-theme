@@ -4,10 +4,9 @@ defined('ABSPATH') || exit;
 /**
  * Libro de Reclamaciones · formulario: título, nota de obligatorios, aviso con enlace al formulario de reclamos
  * OSITRAN, hoja de reclamación (wp-form, template-parts/forms/libro-de-reclamaciones.php) y notas legales.
- * Lee el grupo `libro_de_reclamaciones_formulario` (ACF).
+ * Lee el grupo `libro_de_reclamaciones_formulario` (ACF); la nota de obligatorios y la de envío son fijas.
  */
 $grupo         = get_field('libro_de_reclamaciones_formulario') ?: [];
-$obligatorios  = (string) ($grupo['nota_obligatorios'] ?? '');
 $aviso         = (string) ($grupo['aviso_ositran'] ?? '');
 $aviso_enlace  = $grupo['aviso_enlace'] ?? null;
 $aviso_link    = copam_theme_link_data($aviso_enlace);
@@ -19,9 +18,7 @@ $notas         = array_values(array_filter([
 <section class="relative z-[1] bg-gris-f9 px-[clamp(20px,4.17vw,80px)] pt-[clamp(64px,5.6vw,108px)] pb-[clamp(72px,6vw,116px)]" id="formulario">
     <div class="flex flex-col items-start gap-[clamp(10px,.83vw,16px)]">
         <?php get_template_part('template-parts/components/titulo-linea', null, ['titulo' => (string) ($grupo['titulo'] ?? '')]); ?>
-        <?php if ($obligatorios !== '') : ?>
-            <p class="m-0 text-[13px] leading-normal text-ink-muted" data-sr="clip" data-sr-delay="200"><?= esc_html($obligatorios) ?></p>
-        <?php endif; ?>
+        <p class="m-0 text-[13px] leading-normal text-ink-muted" data-sr="clip" data-sr-delay="200"><?= esc_html__('Los campos con * son obligatorios.', 'copam-theme') ?></p>
     </div>
 
     <?php if ($aviso !== '' || $aviso_link) : ?>
@@ -42,7 +39,7 @@ $notas         = array_values(array_filter([
             'direccion'    => (string) ($grupo['proveedor_direccion'] ?? ''),
         ],
         'observaciones' => (string) ($grupo['nota_observaciones'] ?? ''),
-        'nota_envio'    => (string) ($grupo['nota_envio'] ?? ''),
+        'nota_envio'    => __('El formulario se envía a', 'copam-theme'),
     ]); ?>
 
     <?php if ($notas) : ?>

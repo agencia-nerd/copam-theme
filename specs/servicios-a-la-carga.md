@@ -27,7 +27,7 @@
 - **Destino:** `template-parts/pages/servicios-a-la-carga/hero.php`
 - **Grupo:** `servicios_a_la_carga_hero`
 - **Skill:** ninguna
-- **Comportamiento:** migas con el componente `migas` (Inicio > Zona Clientes > Servicios a la carga; texto fijo, "Zona Clientes" sin enlace, último sin url). Imagen de fondo a ancho completo con `aspect-ratio` y `object-cover` y parallax suave al hacer scroll (imagen principal: `'loading' => 'eager'`). Título y bajada sobre el bloque; el botón usa el componente `boton` (variante primario) y lleva a `contacto.html#formulario`. A la derecha (escritorio) una tarjeta "Accesos directos" con 4 enlaces a las anclas de la página (flecha que se desplaza 2px y borde verde `--color-brand` al hover); en móvil la tarjeta va debajo del texto. Las anclas son fijas (`#que-incluye`, `#tarifas`, `#documentos`, `#faq`); solo el texto es editable. Valores sueltos: hover del botón `#07702F` (ya definido en el componente `boton`).
+- **Comportamiento:** migas con el componente `migas` (Inicio > Zona Clientes > Servicios a la carga; texto fijo, "Zona Clientes" sin enlace, último sin url). Imagen de fondo a ancho completo con `aspect-ratio` y `object-cover` y parallax suave al hacer scroll (imagen principal: `'loading' => 'eager'`). Título y bajada sobre el bloque; el botón usa el componente `boton` (variante primario) y lleva a `contacto.html#formulario`. A la derecha (escritorio) una tarjeta "Accesos directos" con 4 enlaces a las anclas de la página (flecha que se desplaza 2px y borde verde `--color-brand` al hover); en móvil la tarjeta va debajo del texto. Cada acceso es un campo Link con texto y destino, como en las demás páginas (decisión del usuario 2026-11-11); el contenido inicial apunta a `#que-incluye`, `#tarifas`, `#documentos` y `#faq`. Valores sueltos: hover del botón `#07702F` (ya definido en el componente `boton`).
 - **Estado:** aplicado
 - **ACF:** conectado
 
@@ -40,8 +40,8 @@
 | `servicios_a_la_carga_hero_boton` | link | Botón principal: texto y destino | Solicitar cotización | sí |
 | `servicios_a_la_carga_hero_imagen` | image | Imagen principal del hero. Se recorta para llenar el bloque. Recomendado: 2400 × 1350 px (16:9), mínimo 1200 px de ancho | — | sí |
 | `servicios_a_la_carga_hero_accesos_titulo` | text | Título de la tarjeta de accesos directos. Recomendado: ~25 caracteres | Accesos directos | sí |
-| `servicios_a_la_carga_hero_accesos` | repeater | Enlaces de la tarjeta. 4 ítems; cada uno lleva a una sección de la página (el destino es fijo) | — | sí |
-| `servicios_a_la_carga_hero_accesos.texto` | text | Texto del enlace. Recomendado: ~35 caracteres | Qué incluye | sí |
+| `servicios_a_la_carga_hero_accesos` | repeater | Enlaces de la tarjeta lateral (4 en el diseño). Cada uno baja a una sección de la página o lleva a otra página | — | sí |
+| `servicios_a_la_carga_hero_accesos.enlace` | link | Texto y destino del acceso. Recomendado: ~35 caracteres | Qué incluye | sí |
 
 **Criterios de aceptación**
 

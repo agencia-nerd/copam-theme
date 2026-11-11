@@ -227,87 +227,6 @@
             ]
         },
         {
-            "key": "field_ced51ccc5de94",
-            "label": "Reporte",
-            "name": "canal_hostigamiento_sexual_reporte",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_241ba6a40e5d1",
-                    "label": "Título",
-                    "name": "titulo",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Título de la sección (h2). Recomendado: ~25 caracteres",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_242bb0a452886",
-                    "label": "Nota envio",
-                    "name": "nota_envio",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Aviso bajo el formulario que indica a quién llega el reporte. Va antes del correo, que se imprime aparte. Recomendado: ~110 caracteres",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_4bf4e71ad0dd3",
-                    "label": "Mensaje exito",
-                    "name": "mensaje_exito",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Mensaje que se muestra tras enviar el reporte. Recomendado: ~85 caracteres",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                }
-            ]
-        },
-        {
             "key": "field_1b03fdf365a78",
             "label": "Política",
             "name": "canal_hostigamiento_sexual_politica",
@@ -616,5 +535,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792691638
+    "modified": 1794420978
 }

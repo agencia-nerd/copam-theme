@@ -15,10 +15,10 @@ return [
             'imagen'         => ['_file' => 'assets/img/servicio-carga-hero.webp', 'alt' => 'Reach stacker cargando un contenedor sobre un camión en el patio del terminal'],
             'accesos_titulo' => 'Accesos directos',
             'accesos'        => [
-                ['texto' => 'Qué incluye'],
-                ['texto' => 'Tarifas'],
-                ['texto' => 'Documentos relacionados'],
-                ['texto' => 'Preguntas frecuentes'],
+                ['enlace' => ['title' => 'Qué incluye', 'url' => '#que-incluye']],
+                ['enlace' => ['title' => 'Tarifas', 'url' => '#tarifas']],
+                ['enlace' => ['title' => 'Documentos relacionados', 'url' => '#documentos']],
+                ['enlace' => ['title' => 'Preguntas frecuentes', 'url' => '#faq']],
             ],
         ],
 

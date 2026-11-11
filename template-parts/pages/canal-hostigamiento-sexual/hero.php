@@ -15,7 +15,7 @@ if ($contacto) {
 }
 $migas[] = ['texto' => get_the_title()];
 
-// Cada acceso lleva al ancla de su sección y usa el título que el cliente le puso.
+// Cada acceso lleva al ancla de su sección y usa el título que el cliente le puso; el de reporte es fijo (reporte.php).
 $secciones = [
     'como_funciona' => '#como-funciona',
     'reporte'       => '#reporte',
@@ -24,8 +24,12 @@ $secciones = [
 ];
 $accesos = [];
 foreach ($secciones as $seccion => $ancla) {
-    $grupo  = get_field('canal_hostigamiento_sexual_' . $seccion) ?: [];
-    $titulo = trim((string) ($grupo['titulo'] ?? ''));
+    if ($seccion === 'reporte') {
+        $titulo = __('Enviar un reporte', 'copam-theme');
+    } else {
+        $grupo  = get_field('canal_hostigamiento_sexual_' . $seccion) ?: [];
+        $titulo = trim((string) ($grupo['titulo'] ?? ''));
+    }
     if ($titulo !== '') {
         $accesos[] = ['title' => $titulo, 'url' => $ancla, 'target' => ''];
     }

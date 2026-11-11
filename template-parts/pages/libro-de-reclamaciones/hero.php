@@ -15,14 +15,11 @@ if ($reclamos) {
 }
 $migas[] = ['texto' => get_the_title()];
 
-// El botón siempre baja a la hoja; su texto es un campo.
-$boton_texto = trim((string) ($hero['boton_texto'] ?? ''));
-
 get_template_part('template-parts/components/hero-servicio', null, [
     'migas'          => $migas,
     'titulo'         => (string) ($hero['titulo'] ?? ''),
     'bajada'         => (string) ($hero['bajada'] ?? ''),
-    'boton'          => $boton_texto !== '' ? ['title' => $boton_texto, 'url' => '#formulario', 'target' => ''] : null,
+    'boton'          => ['title' => __('Llenar hoja de reclamación', 'copam-theme'), 'url' => '#formulario', 'target' => ''], // fijo: siempre baja a la hoja
     'accesos_titulo' => (string) ($hero['accesos_titulo'] ?? ''),
     'accesos'        => array_map(static fn($fila) => $fila['enlace'] ?? null, (array) ($hero['accesos'] ?? [])),
 ]);

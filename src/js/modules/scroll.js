@@ -113,6 +113,22 @@ function marcarDestino(el) {
     temporizadores.push(setTimeout(limpiar, entrada + 2100));
 }
 
+// Destino dentro de la pila (pila.js): el bloque es sticky y, ya fijo, la posición en pantalla de sus secciones no
+// cambia al bajar, así que se mide su lugar en el flujo. Y no se baja más allá del punto en que la FAQ empieza a
+// cubrirlo: el destino queda visible y sin desenfoque (más abajo en la pantalla si no cabe arriba).
+function destinoEnPila(el, margen) {
+    const pila = el.closest('[data-pila]');
+    const despues = pila?.nextElementSibling;
+    const tope = document.querySelector('[data-pila-tope]');
+    if (!pila || !despues || !tope || getComputedStyle(pila).position !== 'sticky') return null;
+
+    let dentro = 0;
+    for (let n = el; n && n !== pila; n = n.offsetParent) dentro += n.offsetTop;
+    const inicioPila = despues.getBoundingClientRect().top + window.scrollY - pila.offsetHeight;
+    const limite = tope.getBoundingClientRect().top + window.scrollY - window.innerHeight;
+    return Math.min(inicioPila + dentro - margen, limite);
+}
+
 function irA(id) {
     const arriba = id === '__arriba';
     const el = arriba ? document.documentElement : document.getElementById(id);
@@ -125,7 +141,10 @@ function irA(id) {
 
     const header = document.querySelector('[data-header]');
     const margen = () => Math.round(header?.getBoundingClientRect().height || 64) + (window.innerWidth < 760 ? 24 : 40);
-    const destino = () => Math.max(0, Math.min(maxScroll(), el.getBoundingClientRect().top + window.scrollY - margen()));
+    const destino = () => {
+        const y = (arriba ? null : destinoEnPila(el, margen())) ?? el.getBoundingClientRect().top + window.scrollY - margen();
+        return Math.max(0, Math.min(maxScroll(), y));
+    };
     const saltar = (y) => {
         window.scrollTo(0, y);
         actual = meta = y;

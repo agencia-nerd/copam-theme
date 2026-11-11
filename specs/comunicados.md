@@ -7,15 +7,15 @@
 - **Contenido:** comunicado
 - **Secciones (en orden):** encabezado, filtros, listado, paginacion, vacio
 - **Skills usadas:** ninguna
-- **Grupo ACF:** Comunicados
-- **Ubicación:** página de opciones: archivo de comunicado
+- **Grupo ACF:** Comunicados (sin campos)
+- **Ubicación:** página de entradas
 - **Notas de página:**
   - `h1` en el encabezado ("Comunicados")
   - título SEO "Comunicados · COPAM"
   - meta descripción del diseño "Concesionaria Puerto Amazonas S.A. · Terminal Portuario de Yurimaguas – Nueva Reforma."
   - el `noindex, nofollow` del diseño es de maqueta y no se copia
   - `category.php` reutiliza estas secciones (título y bajada del término)
-  - los campos viven en la página de opciones "archivo de comunicado" porque un archivo no tiene pantalla de edición
+  - decisión del usuario (2026-11-11): sin campos ACF ni página de opciones "Archivo de comunicado". El `h1` es el título de la página de entradas ("Comunicados"); la bajada y el mensaje de vacío son textos fijos de la plantilla
   - header, footer y aviso superior son del sitio y no se repiten
   - decisión del usuario (2026-10-22): el listado usa el loop principal de WordPress (sin `WP_Query`) con las entradas reales; los 4 comunicados del diseño son entradas de ejemplo en `inc/acf/seed/comunicado.php`
   - `home.php`, `category.php` y `search.php` comparten `template-parts/pages/comunicados/archivo.php` (encabezado + sección `#lista` con filtros, listado o vacío, y paginación)
@@ -29,18 +29,15 @@
 
 - **Origen:** `comunicados.html` líneas 158-182
 - **Destino:** `template-parts/pages/comunicados/encabezado.php`
-- **Grupo:** `comunicados_encabezado`
+- **Grupo:** `ninguno`
 - **Skill:** ninguna
-- **Comportamiento:** migas de pan `Inicio > Zona Clientes > Comunicados` en `<nav aria-label="Ruta de navegación">` con lista ordenada (el último ítem con `aria-current="page"`; "Zona Clientes" es texto sin enlace; el ícono de casa y los chevrones son SVG decorativos con `aria-hidden`); debajo, el `h1` con el título y el párrafo de introducción; las animaciones de entrada `data-rise`/`data-clip` se reescriben como módulo JS que respeta `prefers-reduced-motion`; el motor `phCols` (columnas del encabezado) se resuelve con CSS responsive; gris suelto `#8A8A8A` de los chevrones se reporta
+- **Comportamiento:** migas de pan `Inicio > Zona Clientes > Comunicados` en `<nav aria-label="Ruta de navegación">` con lista ordenada (el último ítem con `aria-current="page"`; "Zona Clientes" es texto sin enlace; el ícono de casa y los chevrones son SVG decorativos con `aria-hidden`); debajo, el `h1` con el título y el párrafo de introducción; las animaciones de entrada `data-rise`/`data-clip` se reescriben como módulo JS que respeta `prefers-reduced-motion`; el motor `phCols` (columnas del encabezado) se resuelve con CSS responsive; gris suelto `#8A8A8A` de los chevrones se reporta. El `h1` es el título de la página de entradas (Ajustes > Lectura); la bajada es fija: "Avisos operativos, novedades y publicaciones regulatorias del Terminal Portuario de Yurimaguas – Nueva Reforma."
 - **Estado:** aplicado
-- **ACF:** conectado
 
 **Campos ACF**
 
 | Campo | Tipo | Descripción | Valor actual | Requerido |
 |---|---|---|---|---|
-| `comunicados_encabezado_titulo` | text | Título principal de la página de comunicados (`h1`). Se muestra en grande bajo las migas de pan. Recomendado: ~20 caracteres. | Comunicados | sí |
-| `comunicados_encabezado_bajada` | textarea | Texto de introducción bajo el título. Recomendado: ~170 caracteres. | Avisos operativos, novedades y publicaciones regulatorias del Terminal Portuario de Yurimaguas – Nueva Reforma. | no |
 
 **Criterios de aceptación**
 
@@ -114,17 +111,15 @@
 
 - **Origen:** `comunicados.html` líneas 243-245
 - **Destino:** `template-parts/pages/comunicados/vacio.php`
-- **Grupo:** `comunicados_vacio`
+- **Grupo:** `ninguno`
 - **Skill:** ninguna
-- **Comportamiento:** mensaje centrado en un recuadro que reemplaza la rejilla y la paginación cuando los filtros o la búsqueda no devuelven comunicados. En la maqueta va oculto (`hidden`) mientras la lista de muestra tenga elementos; al conectar la consulta se muestra cuando el loop no tiene entradas. Con `role="status"`
+- **Comportamiento:** mensaje centrado en un recuadro que reemplaza la rejilla y la paginación cuando los filtros o la búsqueda no devuelven comunicados. En la maqueta va oculto (`hidden`) mientras la lista de muestra tenga elementos; al conectar la consulta se muestra cuando el loop no tiene entradas. Con `role="status"`. Texto fijo: "No hay comunicados que coincidan con tu búsqueda."
 - **Estado:** aplicado
-- **ACF:** conectado
 
 **Campos ACF**
 
 | Campo | Tipo | Descripción | Valor actual | Requerido |
 |---|---|---|---|---|
-| `comunicados_vacio_mensaje` | text | Mensaje que se muestra cuando ningún comunicado coincide con la búsqueda o los filtros. Recomendado: ~80 caracteres. | No hay comunicados que coincidan con tu búsqueda. | no |
 
 **Criterios de aceptación**
 

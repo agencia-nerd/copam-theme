@@ -117,27 +117,6 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_dbb85619d6188",
-                    "label": "Descripción",
-                    "name": "descripcion",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Frase bajo la marca. Recomendado: ~60 caracteres",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
                     "key": "field_fea61dd5eb74e",
                     "label": "Teléfono",
                     "name": "telefono",
@@ -173,27 +152,6 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_5eec84022ac2c",
-                    "label": "Copyright",
-                    "name": "copyright",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Línea legal. Recomendado: ~80 caracteres",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
@@ -593,5 +551,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792786432
+    "modified": 1794419362
 }

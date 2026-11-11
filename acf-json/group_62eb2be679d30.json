@@ -636,27 +636,6 @@
                     },
                     "return_format": "array",
                     "allow_in_bindings": 0
-                },
-                {
-                    "key": "field_65866b01d6dc1",
-                    "label": "Exito",
-                    "name": "exito",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Mensaje que se muestra tras enviar la sugerencia. Recomendado: ~90 caracteres",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
                 }
             ]
         }
@@ -682,5 +661,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792691638
+    "modified": 1794421324
 }

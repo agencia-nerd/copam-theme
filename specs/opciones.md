@@ -52,7 +52,7 @@
 - **Destino:** `footer.php`
 - **Grupo:** `opciones_pie`
 - **Skill:** wp-helper
-- **Comportamiento:** descripción, teléfono y correo en la primera columna; las demás columnas de enlaces salen del menú `pie` y los tres enlaces legales del menú `legal`; línea inferior con el copyright. El logo viene de Identidad del sitio. El teléfono es un enlace `tel:` con los dígitos y el correo un `mailto:`, ambos por `copam_theme_link`.
+- **Comportamiento:** descripción fija en la plantilla ("Terminal Portuario de Yurimaguas – Nueva Reforma."), teléfono y correo en la primera columna; las demás columnas de enlaces salen del menú `pie` y los tres enlaces legales del menú `legal`; línea inferior con el copyright fijo en la plantilla ("© {año} Concesionaria Puerto Amazonas S.A. · RUC 20543480291") y el año actual automático (`copam_theme_copyright()`). El logo viene de Identidad del sitio. El teléfono es un enlace `tel:` con los dígitos y el correo un `mailto:`, ambos por `copam_theme_link`.
 - **Estado:** aplicado
 - **ACF:** conectado
 
@@ -60,10 +60,8 @@
 
 | Campo | Tipo | Descripción | Valor actual | Requerido |
 |---|---|---|---|---|
-| `opciones_pie_descripcion` | text | Frase bajo la marca. Recomendado: ~60 caracteres | Terminal Portuario de Yurimaguas – Nueva Reforma. | no |
 | `opciones_pie_telefono` | text | Número visible; el enlace `tel:` se arma con los dígitos | (01) 500-0450 | sí |
 | `opciones_pie_correo` | email | Correo de atención al cliente | servicioclientes@copam.com.pe | sí |
-| `opciones_pie_copyright` | text | Línea legal. Recomendado: ~80 caracteres | © 2026 Concesionaria Puerto Amazonas S.A. · RUC 20543480291 | sí |
 
 **Criterios de aceptación**
 

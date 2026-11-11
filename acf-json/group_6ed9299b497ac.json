@@ -130,7 +130,7 @@
                     "name": "accesos",
                     "aria-label": "",
                     "type": "repeater",
-                    "instructions": "Enlaces de la tarjeta. 4 ítems; cada uno lleva a una sección de la página (el destino es fijo)",
+                    "instructions": "Enlaces de la tarjeta lateral (4 en el diseño). Cada uno baja a una sección de la página o lleva a otra página",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -147,12 +147,12 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_5c29695cee5f4",
-                            "label": "Texto",
-                            "name": "texto",
+                            "key": "field_9d9dc5ed76700",
+                            "label": "Enlace",
+                            "name": "enlace",
                             "aria-label": "",
-                            "type": "text",
-                            "instructions": "Texto del enlace. Recomendado: ~35 caracteres",
+                            "type": "link",
+                            "instructions": "Texto y destino del acceso. Recomendado: ~35 caracteres",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -160,12 +160,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "return_format": "array",
+                            "allow_in_bindings": 0
                         }
                     ]
                 }
@@ -800,5 +796,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792683439
+    "modified": 1794422100
 }
