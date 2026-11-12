@@ -10,3 +10,6 @@ pnpm-debug.log*
 .vscode/*
 !.vscode/extensions.json
 .idea
+.env.manual
+specs/manual/capturas/
+specs/manual/salida/
