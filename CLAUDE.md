@@ -83,3 +83,11 @@ Stack: WordPress (Local WP) + Vite + Tailwind + pnpm.
 - Parche en el motor: `src/js/modules/form.js` tiene 3 líneas de reCAPTCHA (el `import`, `precargarRecaptcha()` en `requestToken` y `body.append('recaptcha', await tokenRecaptcha())`). Si la skill wp-form actualiza `form.js`, acopla esas 3 líneas a la versión nueva (no pises la versión nueva con la anterior). `inc/forms.php` no tiene parche.
 - Un form nuevo que use el motor queda protegido solo. Los endpoints de subida de adjuntos (`copam_theme_reclamos_*`, `copam_theme_reporte_adjuntos`) no verifican reCAPTCHA.
 <!-- wp-form:end -->
+
+<!-- wp-manual:start -->
+## Manual de administración (wp-manual 1.0.0)
+- Borradores en `specs/manual/<capítulo>.md` (se editan a mano); capturas y PDF en `specs/manual/capturas/` y `specs/manual/salida/`.
+- `.env.manual` tiene credenciales del sitio local: no se sube a git y se borra al terminar el manual.
+- Si cambia un grupo de ACF, vuelve a correr `init.mjs` (conserva los textos) y regenera el manual.
+- Regenerar: `build.mjs --formato horizontal --html-only` y luego `node specs/manual/ajustar.mjs --playwright-from <shim>` (agrega Envíos, quita Menús y logo, junta secciones cortas, web debajo e imprime el PDF). `recapturar.mjs` repite la captura web del índice lateral.
+<!-- wp-manual:end -->
